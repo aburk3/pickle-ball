@@ -1,0 +1,9 @@
+<h1>Here are all the User's Posts</h1>
+
+<div>
+  <h3>Filter News</h3>
+  <%= form_tag("/posts", method: "get") do %>
+  <%= select_tag "date", options_for_select(["All", "State", "City"]), include_blank: true %>
+  <%= submit_tag "Filter" %>
+  <% end %>
+</div>
