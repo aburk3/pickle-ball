@@ -1,0 +1,15 @@
+<%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %><br>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.submit "Signin" %>
+<% end %>
+
+<%= link_to('Log in with Facebook!', '/auth/facebook') %><br>
+
+or <br>
+
+<%= link_to "Sign Up", new_user_path %>

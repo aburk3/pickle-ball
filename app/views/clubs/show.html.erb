@@ -1,0 +1,42 @@
+<div class="center">
+  <h1><%= @club.name + " - " + "Members: #{@club.users.count}" %></h1>
+  <p>"<%= @club.description %>"</p>
+</div>
+
+<div class="center">
+  <% if @club.users.include? current_user %>
+    <%= button_to 'Leave Club', { :controller => "users", :action => "leave", :club_id => @club.id, :user_id=> session[:user_id] }, :method=>:post, data: { confirm: "Are you sure you want to leave this club?" }, class: 'btn btn-danger' %><br>
+    <% if @club.is_admin?(current_user) %>
+      <%= button_to 'Delete Club', { :controller => "clubs", :action => "destroy", :club_id => @club.id, :user_id=> session[:user_id] }, :method=>:delete, data: { confirm: "Are you sure you want to delete this club?" }, class: 'btn btn-danger' %>
+    <% end %>
+  <% else %>
+    <%= button_to 'Join', { :controller => "users", :action => "join", :club_id => @club.id, :user_id=> session[:user_id] }, :method=>:post, class: "btn btn-primary" %><br>
+  <% end %>
+  <p id="notice"><%= notice %></p>
+</div>
+
+
+<h2><u>Club Members</u></h2>
+<% @club.users.each do |user| %>
+  <ul>
+    <li><%= link_to "#{ user.first_name } #{ user.last_name }", user_path(user) %>
+    <% if @club.is_admin?(current_user) && (@club.admin != user.id) %>
+      <%= button_to 'Make Admin', {:controller => "clubs", :action => "make_admin", :club_id => @club.id, :user_id=> user.id}, :method=>:post, class: "btn-xs btn-primary" %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+
+<% if @club.is_admin?(current_user) %>
+  <%= button_to 'Create', { :controller => "meetings", :action => "new", :club_id => @club.id }, :method=>:get, class: 'btn btn-success' %><br>
+<% end %>
+
+<% if @club.meetings %>
+  <div class="center">
+    <hr>
+    <h3><u>Meetings</u></h3>
+  </div>
+
+  <%= render :collection => @club.meetings, :partial => "meetings/meeting_list", :as => :meeting %>
+<% end %>

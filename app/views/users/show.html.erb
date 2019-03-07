@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-2">
+    <% if @user.image %>
+      <img src="<%= @user.image %>", class="user_pic">
+    <% end %>
+    <% if @user != current_user %>
+      <h1><%= @user.first_name + " " + @user.last_name %></h1>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <% if @user == current_user %>
+      <h1>Welcome <%= @user.first_name + " " + @user.last_name %>!</h1>
+    <% end %>
+    <div class="mt-2">
+      <% if @user == current_user %>
+        <%= button_to 'Create Club', new_club_path, method: :get, class: 'btn btn-success' %><br>
+        <%= link_to "Join New Club", clubs_path %><br>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+  <hr>
+
+<div class="row">
+  <div class="col-md-6">
+    <h3><u><%= @user.first_name + "'s " %>Clubs</u></h3>
+    <% @user.clubs.each do |club| %>
+      <%= link_to club.name, club_path(club) %><br>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <div class="list-group">
+      <a href="<%= clubs_path %>" class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+              <p class="mb-1"><b>Recent Clubs Created</b></p>
+          </div>
+      </a>
+      <% @clubs.each do |club| %>
+        <a href="/clubs/<%= club.id %>" class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><%= club.name %></h5>
+          </div>
+          <p class="mb-1">Members: <%= club.users.count %> | Club Category: <%= club.club_category %></p>
+          <small>Description: <%= club.description %></small>
+        </a>
+      <% end %>
+    </div>
+  </div>
+</div>

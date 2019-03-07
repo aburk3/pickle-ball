@@ -1,0 +1,10 @@
+<div class="center">
+  <h1>Clubs</h1>
+</div>
+
+
+<% @clubs.open_clubs.each do |club| %>
+  <% if !club.users.include? current_user %>
+    <%= link_to "#{club.name}", club_path(club) %><br>
+  <% end %>
+<% end %>

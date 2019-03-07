@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="col-md-5">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <section class="post-heading">
+          <h4><u><%= meeting.name %></u> - <%= meeting.meeting_datetime %></h4>
+          <div class="row">
+            <div class="col-md-11">
+              <section class="post-body">
+                <p><%= meeting.description %></p>
+              </section>
+              <% if @club.is_admin?(current_user) %>
+                <%= form_tag(club_meeting_path(@club, meeting), :method => :delete) do %>
+                  <button type="submit" class='btn btn-xs btn-danger' name="button">Delete</button>
+                 <% end %>
+                <%= link_to "Edit", edit_club_meeting_path(@club, meeting) %>
+              <% end %>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
