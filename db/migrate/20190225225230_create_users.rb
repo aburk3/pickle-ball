@@ -8,8 +8,12 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :club
       t.string :state
       t.string :city
-      t.float :utpr
-      t.float :skill
+      t.float :utpr_d
+      t.float :utpr_m
+      t.float :utpr_s
+      t.integer :member_num
+      t.float :skill_d
+      t.float :skill_s
       t.integer :score
       t.string :image
       t.string :uid
