@@ -20,16 +20,32 @@
   </div>
   <% if logged_in? %>
     <div class="field">
-      <%= f.label :utpr, "Doubles UTPR" %><br>
+      <%= f.label :utpr_d, "Doubles UTPR" %><br>
       <%= f.text_field :utpr_d %>
     </div>
     <div class="field">
-      <%= f.label :utpr, "Mixed UTPR" %><br>
+      <%= f.label :utpr_m, "Mixed UTPR" %><br>
       <%= f.text_field :utpr_m %>
     </div>
     <div class="field">
-      <%= f.label :utpr, "Singles UTPR" %><br>
+      <%= f.label :utpr_s, "Singles UTPR" %><br>
       <%= f.text_field :utpr_s %>
+    </div>
+    <div class="field">
+      <%= f.label :club, "Club" %><br>
+      <%= f.text_field :club %>
+    </div>
+    <div class="field">
+      <%= f.label :state, "State" %><br>
+      <%= f.text_field :state %>
+    </div>
+    <div class="field">
+      <%= f.label :city, "City" %><br>
+      <%= f.text_field :city %>
+    </div>
+    <div class="field">
+      <%= f.label :member_num, "Singles UTPR" %><br>
+      <%= f.text_field :member_num %>
     </div>
   <% end %>
   <div class="field">
