@@ -18,18 +18,20 @@
     <%= f.label :last_name %><br>
     <%= f.text_field :last_name %>
   </div>
-  <div class="field">
-    <%= f.label :utpr, "Doubles UTPR" %><br>
-    <%= f.text_field :utpr_d %>
-  </div>
-  <div class="field">
-    <%= f.label :utpr, "Mixed UTPR" %><br>
-    <%= f.text_field :utpr_d %>
-  </div>
-  <div class="field">
-    <%= f.label :utpr, "Doubles UTPR" %><br>
-    <%= f.text_field :utpr_d %>
-  </div>
+  <% if logged_in? %>
+    <div class="field">
+      <%= f.label :utpr, "Doubles UTPR" %><br>
+      <%= f.text_field :utpr_d %>
+    </div>
+    <div class="field">
+      <%= f.label :utpr, "Mixed UTPR" %><br>
+      <%= f.text_field :utpr_m %>
+    </div>
+    <div class="field">
+      <%= f.label :utpr, "Singles UTPR" %><br>
+      <%= f.text_field :utpr_s %>
+    </div>
+  <% end %>
   <div class="field">
     <%= f.label :last_name %><br>
     <%= f.text_field :last_name %>
