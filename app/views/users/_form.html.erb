@@ -18,7 +18,7 @@
     <%= f.label :last_name %><br>
     <%= f.text_field :last_name %>
   </div>
-  <% if logged_in? %>
+  <% if current_user %>
     <div class="field">
       <%= f.label :utpr_d, "Doubles UTPR" %><br>
       <%= f.text_field :utpr_d %>
@@ -48,10 +48,6 @@
       <%= f.text_field :member_num %>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
   <div class="field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>
