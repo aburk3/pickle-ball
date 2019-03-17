@@ -56,11 +56,15 @@
     <%= f.label :password %><br>
     <% if current_user %>
       <%= f.password_field :password, placeholder: "Current Password" %>
+      <div class="actions">
+        <br><%= f.submit "Save", class: 'btn btn-success' %>
+      </div>
     <% else %>
       <%= f.password_field :password, placeholder: "New Password" %>
+      <div class="actions">
+        <br><%= f.submit :Submit, class: 'btn btn-success' %>
+      </div>
     <% end %>
   </div>
-  <div class="actions">
-    <br><%= f.submit :Submit, class: 'btn btn-success' %>
-  </div>
+
 <% end %>
