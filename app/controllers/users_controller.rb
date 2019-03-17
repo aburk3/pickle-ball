@@ -64,7 +64,14 @@ class UsersController < ApplicationController
         :last_name,
         :email,
         :password,
-        :admin
+        :state,
+        :city,
+        :utpr_d,
+        :utpr_m,
+        :utpr_s,
+        :member_num,
+        :skill_d,
+        :skill_s
       )
     end
 
