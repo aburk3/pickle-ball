@@ -17,8 +17,6 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 gem 'pry'
 gem 'thin'
-#Added to allow for cities and states to be used in drop-downs
-gem 'city-state'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
