@@ -15,7 +15,7 @@ class ClubsController < ApplicationController
 
   def create
     @club = Club.new(club_params)
-    @club.admin = current_user.id
+    @club.club_admin = current_user.id
     if @club.save # need to get rid of this, since instance `@club.users << current_user`
       @club.users << current_user
       @club.save
@@ -28,7 +28,7 @@ class ClubsController < ApplicationController
   def make_admin
     @club = Club.find(params[:club_id])
     @user = User.find(params[:user_id])
-    @club.admin = @user.id
+    @club.club_admin = @user.id
     @club.save
     redirect_to club_path(@club)
   end
@@ -36,7 +36,7 @@ class ClubsController < ApplicationController
   def destroy
     @club = Club.find(params[:id])
     @club.destroy
-    redirect_to user_path(@club.admin)
+    redirect_to user_path(@club.club_admin)
   end
 
   private
@@ -47,8 +47,10 @@ class ClubsController < ApplicationController
     def club_params
       params.require(:club).permit(
         :name,
-        :club_category,
-        :description
+        :description,
+        :state,
+        :city,
+        :contact,
       )
     end
 
