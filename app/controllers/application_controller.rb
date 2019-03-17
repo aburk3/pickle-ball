@@ -8,9 +8,6 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-  def search
-    
-  end
 
   private
     def require_logged_in
