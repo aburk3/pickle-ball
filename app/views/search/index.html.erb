@@ -1,24 +1,26 @@
-<% if @users || @clubs || @tournaments  %>
-  <% if @users.any? %>
-    <h3>Players Found:</h3>
-    <% @users.each do |user| %>
-      <%= link_to "#{ user.first_name } #{ user.last_name }", user_path(user) %>
+<ul>
+  <% if @users.any? || @clubs.any? || @tournaments.any?  %>
+    <% if @users.any? %>
+      <h3>Players Found:</h3>
+      <% @users.each do |user| %>
+        <li><%= link_to "#{ user.first_name } #{ user.last_name }", user_path(user) %></li>
+      <% end %>
     <% end %>
-  <% end %>
-  
-  <% if @clubs.any? %>
-    <h3>Clubs Found:</h3>
-    <% @clubs.each do |club| %>
-      <%= link_to "#{ club.name }", club_path(club) %>
-    <% end %>
-  <% end %>
 
-  <% if %>
-    <h3>Tournaments Found:</h3>
-    <% @tournaments.each do |tournament| %>
-      <%= link_to "#{ tournament.name } #{ tournament }", tournament_path(tournament) %>
+    <% if @clubs.any? %>
+      <h3>Clubs Found:</h3>
+      <% @clubs.each do |club| %>
+        <li><%= link_to "#{ club.name }", club_path(club) %></li>
+      <% end %>
     <% end %>
+
+    <% if @tournaments.any?%>
+      <h3>Tournaments Found:</h3>
+      <% @tournaments.each do |tournament| %>
+        <li><%= link_to "#{ tournament.name } #{ tournament }", tournament_path(tournament) %></li>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>Sorry! No results were found!</p>
   <% end %>
-<% else %>
-  <p>Sorry! No results were found!</p>
-<% end %>
+</ul>
