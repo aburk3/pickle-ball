@@ -14,14 +14,27 @@
     <%= f.label :name, "Club Name" %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="form-group">
-    <%= f.label :club_category %><br>
-    <%= f.text_field :club_category %>
-  </div>
+
   <div class="form-group">
     <%= f.label :description %><br>
     <%= f.text_area :description, size: "55x8" %>
   </div>
+
+  <div class="form-group">
+    <%= f.label :state %><br>
+    <%= f.text_field :state %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :contact %><br>
+    <%= f.text_field :contact %>
+  </div>
+
   <div class="actions">
   	<%= f.submit :Submit, class: 'btn btn-success' %>
   	<%= link_to "cancel", root_path, :class=>"btn btn-xs btn-danger" %>

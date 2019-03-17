@@ -14,13 +14,12 @@ ActiveRecord::Schema.define(version: 2019_03_17_204836) do
 
   create_table "clubs", force: :cascade do |t|
     t.string "name"
-    t.string "club_category"
     t.string "description"
     t.string "state"
     t.string "city"
     t.string "contact"
-    t.integer "admin"
-    t.boolean "has_max", default: false
+    t.integer "club_admin"
+    t.boolean "status", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
