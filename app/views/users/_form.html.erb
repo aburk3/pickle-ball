@@ -21,15 +21,15 @@
   <% if current_user %>
     <div class="field">
       <%= f.label :utpr_d, "Doubles UTPR" %><br>
-      <%= f.text_field :utpr_d %>
+      <%= f.select(:utpr_d, [1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5,5.0], {include_blank: true}, { :class => '#' }) %>
     </div>
     <div class="field">
       <%= f.label :utpr_m, "Mixed UTPR" %><br>
-      <%= f.text_field :utpr_m %>
+      <%= f.select(:utpr_m, [1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5,5.0], {include_blank: true}, { :class => '#' }) %>
     </div>
     <div class="field">
       <%= f.label :utpr_s, "Singles UTPR" %><br>
-      <%= f.text_field :utpr_s %>
+      <%= f.select(:utpr_s, [1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5,5.0], {include_blank: true}, { :class => '#' }) %>
     </div>
     <div class="field">
       <%= f.label :club, "Club" %><br>
