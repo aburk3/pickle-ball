@@ -30,6 +30,10 @@
             <% end %>
             <a class="navbar-brand" href="<%= signout_path %>"/>Logout</a>
           <% end %>
+          <%= form_tag(search_path, method: 'get', class: 'navbar-form navbar-right') do %>
+            <%= search_field_tag 'search', nil, class: 'form-control', placeholder: 'Search'  %>
+            <%= submit_tag "Submit", class: 'btn btn-default', :name => nil %>
+          <% end %>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">

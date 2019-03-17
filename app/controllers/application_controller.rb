@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  def search
+    
+  end
+
   private
     def require_logged_in
       redirect_to root_path unless logged_in?

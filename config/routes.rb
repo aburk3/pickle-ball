@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   post "/leave", to: "users#leave"
   get '/auth/facebook/callback' => 'sessions#create'
   post "/admin", to: "clubs#make_admin", :as => 'admin'
+  get "/search", to: "application#search"
 end
