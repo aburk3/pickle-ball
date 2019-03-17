@@ -35,36 +35,10 @@
             <a class="navbar-brand" href="<%= signout_path %>"/>Logout</a>
           <% end %>
 
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-8 col-xs-offset-2">
-                <div class="input-group">
-                  <div class="input-group-btn search-panel">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                      <span id="search_concept">Filter by</span> <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#users">Users</a></li>
-                      <li><a href="#clubs">Clubs</a></li>
-                      <li><a href="#tournaments">Tournaments</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#all">Anything</a></li>
-                    </ul>
-                  </div>
-                  <input type="hidden" name="search_param" value="all" id="search_param">
-                  <input type="text" class="form-control" name="x" placeholder="Search term...">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-
-
+          <%= form_tag(search_path, method: 'get', class: 'navbar-form navbar-right') do %>
+          	<%= search_field_tag 'search', params[:search], class: 'form-control', placeholder: 'Search'  %>
+          	<%= submit_tag "Submit", class: 'btn btn-default', :name => nil %>
+          <% end %>
 
         </div>
         <div class="navbar-collapse collapse">

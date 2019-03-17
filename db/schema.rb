@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_26_012618) do
+ActiveRecord::Schema.define(version: 2019_03_17_204836) do
 
   create_table "clubs", force: :cascade do |t|
     t.string "name"
@@ -36,6 +36,18 @@ ActiveRecord::Schema.define(version: 2019_02_26_012618) do
     t.index ["club_id"], name: "index_meetings_on_club_id"
   end
 
+  create_table "tournaments", force: :cascade do |t|
+    t.string "name"
+    t.string "state"
+    t.string "city"
+    t.datetime "tournament_datetime"
+    t.string "description"
+    t.string "events"
+    t.integer "director"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_clubs", force: :cascade do |t|
     t.integer "user_id"
     t.integer "club_id"
@@ -44,6 +56,15 @@ ActiveRecord::Schema.define(version: 2019_02_26_012618) do
     t.datetime "updated_at", null: false
     t.index ["club_id"], name: "index_user_clubs_on_club_id"
     t.index ["user_id"], name: "index_user_clubs_on_user_id"
+  end
+
+  create_table "user_tournaments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "tournament_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tournament_id"], name: "index_user_tournaments_on_tournament_id"
+    t.index ["user_id"], name: "index_user_tournaments_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

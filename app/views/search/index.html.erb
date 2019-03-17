@@ -1,7 +1,23 @@
-<h3>Search Results:</h3>
-<% if @results  %>
-  <% @results.each do |result| %>
-    <%= link_to "#{ result.first_name } #{ result.last_name }", user_path(result) %>
+<% if @users || @clubs || @tournaments  %>
+  <% if @users.any? %>
+    <h3>Players Found:</h3>
+    <% @users.each do |user| %>
+      <%= link_to "#{ user.first_name } #{ user.last_name }", user_path(user) %>
+    <% end %>
+  <% end %>
+  
+  <% if @clubs.any? %>
+    <h3>Clubs Found:</h3>
+    <% @clubs.each do |club| %>
+      <%= link_to "#{ club.name }", club_path(club) %>
+    <% end %>
+  <% end %>
+
+  <% if %>
+    <h3>Tournaments Found:</h3>
+    <% @tournaments.each do |tournament| %>
+      <%= link_to "#{ tournament.name } #{ tournament }", tournament_path(tournament) %>
+    <% end %>
   <% end %>
 <% else %>
   <p>Sorry! No results were found!</p>

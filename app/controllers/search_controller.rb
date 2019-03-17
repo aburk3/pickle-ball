@@ -1,29 +1,13 @@
 class SearchController < ApplicationController
 
-  def users
+  def index
     if params[:search].blank?
       redirect_to(root_path, alert: "Empty field!") and return
     else
-      @parameter = params[:search].downcase
-      @results = User.all.where("lower(first_name) LIKE :search", search: @parameter)
-    end
-  end
-
-  def clubs
-    if params[:search].blank?
-      redirect_to(root_path, alert: "Empty field!") and return
-    else
-      @parameter = params[:search].downcase
-      @results = Club.all.where("lower(first_name) LIKE :search", search: @parameter)
-    end
-  end
-
-  def tournaments
-    if params[:search].blank?
-      redirect_to(root_path, alert: "Empty field!") and return
-    else
-      @parameter = params[:search].downcase
-      @results = Tournament.all.where("lower(first_name) LIKE :search", search: @parameter)
+      parameter = params[:search].downcase
+      @clubs = Club.all.where("lower(name) LIKE :search", search: "%#{parameter}%")
+      @users = User.all.where("lower(first_name) LIKE :search", search: "%#{parameter}%")
+      @tournaments = Tournament.all.where("lower(name) LIKE :search", search: "%#{parameter}%")
     end
   end
 
