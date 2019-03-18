@@ -15,7 +15,6 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     current_user.posts << @post
     if @post.save
-      binding.pry
       @post.save
       redirect_to posts_path, notice: "Post was successfully created."
     else
