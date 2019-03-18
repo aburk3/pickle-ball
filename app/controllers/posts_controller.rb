@@ -12,8 +12,15 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.create(post_params)
-    redirect_to post
+    @post = Post.new(post_params)
+    binding.pry
+    if @post.save
+    #  @post.users << current_user
+      @post.save
+      redirect_to posts_path, notice: "Post was successfully created."
+    else
+      render :new
+    end
   end
 
   private

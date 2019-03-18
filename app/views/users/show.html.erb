@@ -16,7 +16,7 @@
       <% if @user == current_user %>
         <%= button_to 'Create Club', new_club_path, method: :get, class: 'btn btn-success' %><br>
         <%= button_to 'Join New Club', clubs_path, method: :get, class: 'btn btn-primary' %><br>
-
+        <%= button_to 'Create New Post', new_post_path, method: :get, class: 'btn btn-primary' %><br>
       <% end %>
     </div>
   </div>
