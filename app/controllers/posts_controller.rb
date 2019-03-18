@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
   def show
     @post = Post.find(params[:id])
   end
@@ -16,7 +17,7 @@ class PostsController < ApplicationController
     current_user.posts << @post
     if @post.save
       @post.save
-      redirect_to posts_path, notice: "Post was successfully created."
+      redirect_to post_path(@post), notice: "Post was successfully created."
     else
       redirect_to new_post_path, notice: "Failed to create post."
     end
