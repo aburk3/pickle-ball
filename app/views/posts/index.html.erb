@@ -2,4 +2,64 @@
   <h2><%= post.title %></h2>
   <p><%= post.content %></p>
   <p>Posted by: <%= post.user.first_name + post.user.last_name%></p>
+
+  <div class="container">
+  	<div class="col-md-5">
+      <div class="panel panel-default">
+          <div class="panel-body">
+             <section class="post-heading">
+                <div class="row">
+                    <div class="col-md-11">
+                        <div class="media">
+                          <div class="media-left">
+                            <a href="#">
+                              <img class="media-object photo-profile" src="#" width="40" height="40" alt="...">
+                            </a>
+                          </div>
+                          <div class="media-body">
+                            <a href="#" class="anchor-username"><h4 class="media-heading"><%= post.user.first_name + post.user.last_name%></h4></a>
+                            <a href="#" class="anchor-time"></a>
+                          </div>
+                        </div>
+                    </div>
+                     <div class="col-md-1">
+                         <a href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
+                     </div>
+                </div>
+           </section>
+           <section class="post-body">
+               <p><%= post.content %></p>
+           </section>
+           <section class="post-footer">
+               <hr>
+               <div class="post-footer-option container">
+                    <ul class="list-unstyled">
+                        <li><a href="#"><i class="glyphicon glyphicon-thumbs-up"></i> Like</a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-comment"></i> Comment</a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-share-alt"></i> Share</a></li>
+                    </ul>
+               </div>
+             <div class="post-footer-comment-wrapper">
+               <div class="comment-form">
+
+               </div>
+               <div class="comment">
+                <div class="media">
+                  <div class="media-left">
+                    <a href="#">
+                      <img class="media-object photo-profile" src="#" width="32" height="32" alt="...">
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <a href="#" class="anchor-username"><h4 class="media-heading">Media heading</h4></a>
+                    <a href="#" class="anchor-time">51 mins</a>
+                  </div>
+                </div>
+               </div>
+             </div>
+           </section>
+        </div>
+      </div>
+  	</div>
+  </div>
 <% end %>
