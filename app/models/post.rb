@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
-  has_many :comments
-  has_many :users, through: :comments
+  belongs_to :user
+  has_many :comments, dependent: :destroy
   has_many :post_categories
   has_many :categories, through: :post_categories
   accepts_nested_attributes_for :categories
