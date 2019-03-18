@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
+  has_many :comments
+  has_many :posts, through: :comments
   has_many :user_clubs
   has_many :clubs, :through => :user_clubs
   validates :first_name, presence: true, on: :create
