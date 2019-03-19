@@ -4,8 +4,8 @@ class Tournament < ActiveRecord::Base
 
   validates :name, presence: true, :length => {:within => 5..50}, on: :create
 
-  def is_admin?(user)
-    self.admin == user.id
+  def is_director?(user)
+    self.director == user.id
   end
 
   def reached_max
