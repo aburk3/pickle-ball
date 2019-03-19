@@ -76,7 +76,7 @@
 <br>
 <br>
 
-Dylan's Posts:
+<%= @user.first_name %>'s Posts:
 
 <% @user.posts.each do |post| %>
   <%= link_to post.title, post_path(post) %>
