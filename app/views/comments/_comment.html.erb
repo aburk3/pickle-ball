@@ -3,8 +3,8 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong><%= comment.name %>:</strong>
-          <%= comment.comment %>
+          <strong><%= comment.user.first_name + " " + comment.user.last_name%>:</strong>
+          <%= comment.content %>
         </p>
       </div>
     </div>

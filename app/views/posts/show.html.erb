@@ -2,12 +2,6 @@
 <p>
   Content:<br> <%= @post.content %>
 </p>
-Comments:
-  <% @post.comments.each do |comment| %>
-    <%= link_to comment.user.first_name, user_path(comment.user) %> said
-    <%= comment.content %>
-  <% end %>
-
   <% content_for :page_title, @post.title %>
 
   <section class="section">

@@ -1,21 +1,15 @@
 class CommentsController < ApplicationController
+	before_action :set_comment, only: [:show, :edit, :update, :destory]
 
 	def create
+		@comment = Comment.new(comment_params)
+		@comment.user = current_user
 		@post = Post.find(params[:post_id])
-	 	@comment = @post.comments.create(params[:comment].permit(:comment))
-		redirect_to post_path(@post)
-	end
-
-	def create
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.create(comment_params)
-		binding.pry
-    if @post.save
-			binding.pry
-      @post.save
-      redirect_to post_path(@post), notice: "Post was successfully created."
+		@post.comments << @comment
+    if @comment.save
+      redirect_to post_path(@post)
     else
-      redirect_to post_path(@post), notice: "Failed to create post."
+      render post_path(@post)
     end
   end
 
@@ -31,4 +25,8 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:content)
   end
+
+	def set_comment
+		@comment = Comment.find(params[:id])
+	end
 end
