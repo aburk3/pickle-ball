@@ -1,0 +1,48 @@
+<%= form_for(@tournament) do |f| %>
+  <% if @tournament.errors.any? %>
+    <div id="error_explanation">
+      <h2>There were some errors</h2>
+      <ul>
+        <% @tournament.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, "Tournament Name" %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :state, "State" %><br>
+    <%= f.select :state, options_for_select(us_states) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city, "City" %><br>
+    <%= f.text_field :city %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :tournament_datetime, "Time of Meeting" %><br>
+    <%= f.datetime_select :tournament_datetime, :discard_year => false %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, size: "55x8" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :events %><br>
+    <%= f.text_area :events, size: "55x8" %>
+  </div>
+
+  <div class="actions">
+  	<%= f.submit :Submit, class: 'btn btn-success' %>
+  	<%= link_to "cancel", posts_path(@tournament), :class=>"btn btn-xs btn-danger" %>
+  </div>
+
+<% end %>
