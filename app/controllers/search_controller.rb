@@ -4,11 +4,15 @@ class SearchController < ApplicationController
     if params[:search].blank?
       redirect_to(root_path, alert: "Empty field!") and return
     else
-      parameter = params[:search].downcase
+      parameter = params[:search].downcase.strip
       @clubs = Club.all.where("lower(name) LIKE :search",
        search: "%#{parameter}%"
       )
-      @users = User.all.where("lower(first_name) LIKE :search OR lower(last_name) LIKE :search", search: "%#{parameter}%")
+      @users = User.all.where(
+        "lower(first_name) LIKE :search OR lower(last_name) LIKE :search",
+        search: "%#{parameter}%"
+      )
+
       if @users.count == 0
         split_string = parameter.scan(/\w+/).values_at(0, -1)
         first_name = split_string[0]
