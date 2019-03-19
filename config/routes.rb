@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :meetings, only: [:show, :index, :new, :create, :edit, :update, :destroy]
   end
 
+  resources :tournaments
   resources :meetings, only: [:index, :show, :new, :create, :edit, :update]
 
   root "sessions#new"
