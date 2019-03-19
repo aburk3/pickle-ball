@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:show, :edit, :update, :destory]
 
   def show
     @post = Post.find(params[:id])
@@ -23,10 +24,26 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to post_path(@post), notice: "Update Successful."
+    else
+      redirect_to post_path(@post), notice: "Failed to Update."
+    end
+  end
 
   private
 
   def post_params
     params.require(:post).permit(:title, :content)
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 end
