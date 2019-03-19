@@ -17,7 +17,7 @@
     <% if @tournaments.any?%>
       <h3>Tournaments Found:</h3>
       <% @tournaments.each do |tournament| %>
-        <li><%= link_to "#{ tournament.name } #{ tournament }", tournament_path(tournament) %></li>
+        <li><%= link_to "#{ tournament.name }, #{ tournament.state }", tournament_path(tournament) %></li>
       <% end %>
     <% end %>
   <% else %>
