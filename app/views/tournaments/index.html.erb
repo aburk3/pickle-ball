@@ -13,12 +13,8 @@
                           </div>
                           <div class="media-body">
                             <a href="<%= tournament_path(tournament) %>" class="anchor-username"><h4 class="media-heading"><%= tournament.name %></h4></a>
-                            <%= link_to(tournament.director) do %>
-                              <strong>by: <%= tournament.director.first_name + " " + tournament.director.last_name%></strong>
-                              <span></span>
-                            <% end %>
                             <br>
-                            <%= time_ago_in_words(post.created_at) %> ago
+                            <%= time_ago_in_words(tournament.created_at) %> ago
                             <hr>
                           </div>
                         </div>

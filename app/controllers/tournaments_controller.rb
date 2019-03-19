@@ -17,6 +17,8 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.new(tournament_params)
     @tournament.director = current_user.id
     if @tournament.save
+      @tournament.users << current_user
+      @tournament.save
       redirect_to @tournament, notice: "Tournament was successfully created."
     else
       render :new

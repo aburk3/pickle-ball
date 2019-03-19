@@ -7,7 +7,7 @@
   <% if @tournament.users.include? current_user %>
     <%= button_to 'Unfollow Tournament', { :controller => "users", :action => "unfollow_tournament", :tournament_id => @tournament.id, :user_id=> session[:user_id] }, :method=>:post, data: { confirm: "Are you sure you want to unfollow this tournament?" }, class: 'btn btn-danger' %><br>
     <% if @tournament.is_director?(current_user) %>
-      <%= button_to 'Delete Club', { :controller => "clubs", :action => "destroy", :club_id => @tournament.id, :user_id=> session[:user_id] }, :method=>:delete, data: { confirm: "Are you sure you want to delete this tournament?" }, class: 'btn btn-danger' %>
+      <%= button_to 'Delete Tournament', { :controller => "tournaments", :action => "destroy", :tournament_id => @tournament.id, :user_id=> session[:user_id] }, :method=>:delete, data: { confirm: "Are you sure you want to delete this tournament?" }, class: 'btn btn-danger' %>
     <% end %>
   <% else %>
     <%= button_to 'Follow', { :controller => "users", :action => "follow_tournament", :tournament_id => @tournament.id, :user_id=> session[:user_id] }, :method=>:post, class: "btn btn-primary" %><br>
