@@ -17,8 +17,13 @@
                             </a>
                           </div>
                           <div class="media-body">
-                            <a href="<%= user_path(post.user) %>" class="anchor-username"><h4 class="media-heading"><%= post.user.first_name + " " + post.user.last_name%> - <%= post.title %></h4></a>
-                            <a href="#" class="anchor-time"><%= time_ago_in_words(post.created_at) %></a>
+                            <a href="<%= post_path(post) %>" class="anchor-username"><h4 class="media-heading"><%= post.title %></h4></a>
+                            <%= link_to(post.user) do %>
+                              <strong>by: <%= post.user.first_name + " " + post.user.last_name%></strong>
+                              <span></span>
+                            <% end %>
+                            <br>
+                            <a href="#" class="anchor-time"><%= time_ago_in_words(post.created_at) %> ago</a>
                           </div>
                         </div>
                     </div>
