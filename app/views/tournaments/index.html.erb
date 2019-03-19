@@ -23,3 +23,24 @@
                           </div>
                         </div>
                     </div>
+                  </div>
+             </section>
+             <section class="post-body">
+                 <p><%= tournament.description %></p>
+             </section>
+             <section class="post-footer">
+                 <hr>
+                 <div class="post-footer-option container">
+                      <ul class="list-unstyled">
+                        <li><a href="#"><i class="glyphicon glyphicon-thumbs-up"></i> Like</a></li>
+                        <li><a href="<%= tournament_path(tournament) %>
+  "><i class="glyphicon glyphicon-comment"></i> Comment</a></li>
+                        <li><a href="http://www.facebook.com/sharer.php?u=https://pickle-up.com" target="_blank"><i class="glyphicon glyphicon-share-alt"></i> Share</a></li>
+                      </ul>
+                 </div>
+              </section>
+           </div>
+         </div>
+     	</div>
+     </div>
+   <% end %>

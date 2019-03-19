@@ -54,6 +54,22 @@ class UsersController < ApplicationController
     redirect_to @club, notice: "You have successfully left this club!"
   end
 
+  def unfollow_tournament
+    @tournament = Tournament.find(params[:tournament_id])
+    current_user.tournaments.destroy(@tournament)
+    redirect_to @tournament, notice: "You have successfully unfollowed this tournament!"
+  end
+
+  def follow_tournament
+    @tournament = Tournament.find(params[:tournament_id])
+    @tournament.users << current_user
+    if @tournament.save
+      redirect_to tournament_path(@tournament), notice: "Congratulations! You've followed this tournament."
+    else
+      redirect_to @tournament, notice: "I'm sorry, you were not able to follow this tournament."
+    end
+  end
+
   private
 
     def user_params
