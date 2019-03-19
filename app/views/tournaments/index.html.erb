@@ -1,1 +1,25 @@
 <%= button_to 'Create Tournament Page', new_tournament_path, method: :get, class: 'btn btn-primary' %><br>
+
+<% @tournaments.each do |tournament| %>
+  <div class="container">
+  	<div class="col-md-5">
+      <div class="panel panel-default">
+          <div class="panel-body">
+             <section class="post-heading">
+                <div class="row">
+                    <div class="col-md-11">
+                        <div class="media">
+                          <div class="media-left">
+                          </div>
+                          <div class="media-body">
+                            <a href="<%= tournament_path(tournament) %>" class="anchor-username"><h4 class="media-heading"><%= tournament.name %></h4></a>
+                            <%= link_to(tournament.director) do %>
+                              <strong>by: <%= tournament.director.first_name + " " + tournament.director.last_name%></strong>
+                              <span></span>
+                            <% end %>
+                            <br>
+                            <%= time_ago_in_words(post.created_at) %> ago
+                            <hr>
+                          </div>
+                        </div>
+                    </div>
