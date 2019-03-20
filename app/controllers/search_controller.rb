@@ -8,10 +8,18 @@ class SearchController < ApplicationController
       @clubs = Club.all.where("lower(name) LIKE :search",
        search: "%#{parameter}%"
       )
+
       @users = User.all.where(
         "lower(first_name) LIKE :search OR lower(last_name) LIKE :search",
         search: "%#{parameter}%"
       )
+
+      if @users.empty?
+        @users = User.all.where(
+          "lower(state) LIKE :search OR lower(city) LIKE :search",
+          search: "%#{parameter}%"
+        )
+      end
 
       if @users.count == 0
         split_string = parameter.scan(/\w+/).values_at(0, -1)

@@ -2,11 +2,11 @@
 module ApplicationHelper
   def us_states
     [
-      ['Alabama', 'AL'],
-      ['Alaska', 'AK'],
-      ['Arizona', 'AZ'],
-      ['Arkansas', 'AR'],
-      ['California', 'CA'],
+      ['AL', 'Alabama'],
+      ['AK', 'Alaska'],
+      ['AZ', 'Arizona'],
+      ['AR', 'Arkansas'],
+      ['CA', 'California'],
       ['Colorado', 'CO'],
       ['Connecticut', 'CT'],
       ['Delaware', 'DE'],
