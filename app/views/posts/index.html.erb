@@ -51,7 +51,16 @@
                <div class="comment">
                 <div class="media">
                   <div class="media-body">
-                    <a href="<%= post_path(post) %>" class="anchor-username"><h4 class="media-heading">Comments (<%= post.comments.count %>)</h4></a>
+                    <ul class="text-center list-inline">
+                      <li class="list-inline-item">
+                        <a href="<%= post_path(post) %>" class="anchor-username"><h4 class="media-heading">Comments (<%= post.comments.count %>)</h4></a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="<%= post_path(post) %>" class="anchor-username"><h4 class="media-heading">Likes (<%= post.likes %>)</h4></a>
+                      </li>
+                    </ul>
+
+
                   </div>
                 </div>
                </div>
