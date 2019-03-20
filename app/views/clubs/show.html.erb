@@ -1,5 +1,7 @@
 <div class="center">
-  <h1><%= @club.name + " - " + "Members: #{@club.users.count}" %></h1>
+  <h1><%= @club.name %></h1>
+  <small>Location: <%= @club.state %></small>
+  <h4>Members: <%= @club.users.count %></h4>
   <p>"<%= @club.description %>"</p>
 </div>
 

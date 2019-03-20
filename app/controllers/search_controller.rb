@@ -9,6 +9,13 @@ class SearchController < ApplicationController
        search: "%#{parameter}%"
       )
 
+      if @clubs.empty?
+        @clubs = Club.all.where(
+          "lower(state) LIKE :search OR lower(city) LIKE :search",
+          search: "%#{parameter}%"
+        )
+      end
+
       @users = User.all.where(
         "lower(first_name) LIKE :search OR lower(last_name) LIKE :search",
         search: "%#{parameter}%"
