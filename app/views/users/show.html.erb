@@ -12,12 +12,6 @@
     <% if @user == current_user %>
       <h1>Welcome <%= @user.first_name + " " + @user.last_name %>!</h1>
     <% end %>
-    <div class="mt-2">
-      <% if @user == current_user %>
-        <%= button_to 'Create Club', new_club_path, method: :get, class: 'btn btn-success' %><br>
-        <%= button_to 'Join New Club', clubs_path, method: :get, class: 'btn btn-primary' %><br>
-      <% end %>
-    </div>
   </div>
 </div>
 
@@ -57,10 +51,12 @@
       <% @clubs.each do |club| %>
         <a href="/clubs/<%= club.id %>" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1"><%= club.name %></h5>
+            <h5 class="mb-1"><%= club.name %> </h5>
+            <h6 class="mb-1"> Club Admin: <%= find_club_admin(club).first_name + " " + find_club_admin(club).last_name %> </h6>
           </div>
-          <p class="mb-1">Members: <%= club.users.count %> | Club State: <%= club.state %></p>
-          <small>Description: <%= club.description %></small>
+          <p class="mb-1">Members: <%= club.users.count %> | Club State: <%= club.state %> | Club City: <%= club.city %></p>
+          <b>Description:</b> <br>
+            <small><%= club.description %></small>
         </a>
       <% end %>
     </div>

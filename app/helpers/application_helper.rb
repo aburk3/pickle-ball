@@ -56,4 +56,9 @@ module ApplicationHelper
       ['Wyoming', 'WY']
     ]
   end
+
+  def find_club_admin(club)
+    @user = User.find_by_id(club.club_admin)
+  end
+
 end
