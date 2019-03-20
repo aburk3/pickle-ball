@@ -1,17 +1,25 @@
-<h1>Pickle-Up</h1>
+<h1>Pickleball Central</h1>
 
-<%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
-  <%= f.label :email %>
-  <%= f.text_field :email %><br>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+    <!-- Login Form -->
+    <%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
+      <%= f.label :email %><br>
+      <%= f.text_field :email, class: "fadeIn", class: "favoriteInput"%><br>
 
-  <%= f.submit "Signin" %>
-<% end %>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: "fadeIn third", class: "favoriteInput" %>
 
-<%= link_to('Log in with Facebook!', '/auth/facebook') %><br>
+      <%= f.submit "Signin", class: "fadeIn fourth", class: "favoriteButton" %>
+    <% end %>
 
-or <br>
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a><br>
+      <%= link_to('Log in with Facebook!', '/auth/facebook') %><br>
+      <%= link_to "Sign Up", new_user_path, class: "underlineHover" %>
+    </div>
 
-<%= link_to "Sign Up", new_user_path %>
+  </div>
+</div>
