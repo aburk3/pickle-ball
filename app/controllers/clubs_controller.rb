@@ -62,7 +62,7 @@ class ClubsController < ApplicationController
         :description,
         :state,
         :city,
-        :contact,
+        :contact
       )
     end
 

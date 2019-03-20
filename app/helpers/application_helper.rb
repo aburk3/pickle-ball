@@ -58,7 +58,7 @@ module ApplicationHelper
   end
 
   def find_club_admin(club)
-    @user = User.find_by_id(club.club_admin)
+    User.find_by_id(club.club_admin)
   end
 
 end
