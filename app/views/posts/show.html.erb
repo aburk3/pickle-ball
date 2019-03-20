@@ -31,10 +31,15 @@
           <% end %>
           <ul class="list-inline">
             <li class="list-inline-item">
-              <%= button_to 'Like', { :controller => "posts", :action => "likes", :id => @post.id }, :method => :post, class: "glyphicon glyphicon-thumbs-up" %>
+              <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+              <% if pre_like %>
+                <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
+              <% else %>
+                <%= button_to 'Like', post_likes_path(@post), method: :post %>
+              <% end %>
             </li>
             <li class="list-inline-item">
-              <i>Likes: <%= @post.likes %></i>
+              <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
             </li>
           </ul>
   		  </div>
