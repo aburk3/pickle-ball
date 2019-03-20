@@ -30,11 +30,12 @@
 
           <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
           <% if current_user %>
-            <% if current_page?(user_path(current_user)) %>
-              <a class="navbar-brand" href="<%= edit_user_path %>"/>Edit Profile</a>
-            <% end %>
             <a class="navbar-brand" href="<%= posts_path %>"/>Posts</a>
             <a class="navbar-brand" href="<%= tournaments_path %>"/>Tournaments</a>
+            <a class="navbar-brand" href="<%= clubs_path %>"/>Clubs</a>
+            <% if current_page?(user_path(current_user)) %>
+              <a class="navbar-brand" href="<%= edit_user_path %>"/>Settings</a>
+            <% end %>
             <a class="navbar-brand" href="<%= signout_path %>"/>Logout</a>
             <%= form_tag(search_path, method: 'get', class: 'navbar-form navbar-right') do %>
             	<%= search_field_tag 'search', params[:search], class: 'form-control', placeholder: 'Search'  %>

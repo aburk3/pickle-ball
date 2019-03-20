@@ -1,10 +1,56 @@
-<div class="center">
-  <h1>Clubs</h1>
-</div>
+<h1><b>Pickleball Clubs</b></h1>
+<%= button_to 'Create New Club', new_club_path, method: :get, class: 'btn btn-primary' %><br>
 
+<br>
+<% @clubs.each do |club| %>
+  <div class="container">
+  	<div class="col-md-5">
+      <div class="panel panel-default">
+          <div class="panel-body">
+             <section class="post-heading">
+                <div class="row">
+                    <div class="col-md-11">
+                        <div class="media">
+                          <div class="media-left">
+                            <a href="#">
+                            </a>
+                          </div>
+                          <div class="media-body">
+                            <a href="<%= club_path(club) %>" class="anchor-username"><h4 class="media-heading"><%= club.name %></h4></a>
 
-<% @clubs.open_clubs.each do |club| %>
-  <% if !club.users.include? current_user %>
-    <%= link_to "#{club.name}", club_path(club) %><br>
-  <% end %>
+                            <br>
+                            <%= time_ago_in_words(club.created_at) %> ago
+                            <hr>
+                          </div>
+                        </div>
+                    </div>
+
+                </div>
+           </section>
+           <section class="post-body">
+               <p><%= club.description %></p>
+           </section>
+           <section class="post-footer">
+               <hr>
+             <div class="post-footer-comment-wrapper">
+               <div class="comment-form">
+
+               </div>
+               <div class="comment">
+                <div class="media">
+                  <div class="media-body">
+                    <ul class="text-center list-inline">
+                      <li class="list-inline-item">
+                        <a href="<%= club_path(club) %>" class="anchor-username"><h4 class="media-heading">Members (<%= club.users.count %>)</h4></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+               </div>
+             </div>
+           </section>
+        </div>
+      </div>
+  	</div>
+  </div>
 <% end %>
