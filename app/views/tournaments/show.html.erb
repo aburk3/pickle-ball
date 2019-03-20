@@ -1,6 +1,5 @@
 <div class="center">
   <h1><%= @tournament.name + " - " + "Users Following this Tournament: #{@tournament.users.count}" %></h1>
-  <p>"<%= @tournament.description %>"</p>
 </div>
 
 <div class="center">
@@ -13,6 +12,7 @@
     <%= button_to 'Follow', { :controller => "users", :action => "follow_tournament", :tournament_id => @tournament.id, :user_id=> session[:user_id] }, :method=>:post, class: "btn btn-primary" %><br>
   <% end %>
   <p id="notice"><%= notice %></p>
+  <h3>"<%= @tournament.description %>"</h3>
 </div>
 
 <div class="row">
@@ -26,12 +26,14 @@
           <tr>
             <th scope="col">State</th>
             <th scope="col">City</th>
+            <th scope="col">Director</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td><%= @tournament.state %></td>
             <td><%= @tournament.city %></td>
+            <td><%= find_td(@tournament) %></td>
           </tr>
         </tbody>
       </table>

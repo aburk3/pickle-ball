@@ -3,7 +3,8 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <section class="post-heading">
-          <h4><u><%= meeting.name %></u> - <%= meeting.meeting_datetime %></h4>
+
+          <%= link_to "#{ meeting.name } ", club_meeting_path(@club, meeting) %>
           <div class="row">
             <div class="col-md-11">
               <section class="post-body">

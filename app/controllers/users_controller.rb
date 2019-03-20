@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user), notice: "Update Successful."
     else
-      redirect_to user_path(@user), notice: "Failed to Update."
+      render :edit, notice: "Failed to Update."
     end
   end
 

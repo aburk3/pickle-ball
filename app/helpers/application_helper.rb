@@ -61,4 +61,8 @@ module ApplicationHelper
     User.find_by_id(club.club_admin)
   end
 
+  def find_td(tournament)
+    User.find_by_id(tournament.director).first_name + " " + User.find_by_id(tournament.director).last_name
+  end
+
 end
