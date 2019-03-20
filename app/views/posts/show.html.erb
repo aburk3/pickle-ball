@@ -29,11 +29,20 @@
     				<%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class:"button is-danger" %>
     				</p>
           <% end %>
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <%= button_to 'Like', { :controller => "posts", :action => "likes", :id => @post.id }, :method => :post, class: "glyphicon glyphicon-thumbs-up" %>
+            </li>
+            <li class="list-inline-item">
+              <i>Likes: <%= @post.likes %></i>
+            </li>
+          </ul>
   		  </div>
   		</nav>
   		<hr/>
   	</div>
   </section>
+
 
   <section class="section comments">
   	<div class="container">

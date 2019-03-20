@@ -41,6 +41,7 @@ class ClubsController < ApplicationController
 
   private
     def set_club
+      binding.pry
       @club = Club.find(params[:id])
     end
 
