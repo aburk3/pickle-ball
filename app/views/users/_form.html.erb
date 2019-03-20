@@ -12,11 +12,11 @@
 
   <div class="field">
     <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name, class: "fadeIn", class: "favoriteInput" %>
   </div>
   <div class="field">
     <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, class: "fadeIn", class: "favoriteInput" %>
   </div>
   <% if current_user %>
     <div class="field">
@@ -33,32 +33,32 @@
     </div>
     <div class="field">
       <%= f.label :state, "State" %><br>
-      <%= f.select :state, options_for_select(us_states) %>
+      <%= f.select :state, options_for_select(us_states), class: "fadeIn", class: "favoriteInput" %>
     </div>
     <div class="field">
       <%= f.label :city, "City" %><br>
-      <%= f.text_field :city %>
+      <%= f.text_field :city, class: "fadeIn", class: "favoriteInput" %>
     </div>
     <div class="field">
       <%= f.label :member_num, "Member Number" %><br>
-      <%= f.text_field :member_num %>
+      <%= f.text_field :member_num, class: "fadeIn", class: "favoriteInput" %>
     </div>
   <% end %>
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, class: "fadeIn", class: "favoriteInput" %>
   </div>
   <div class="field">
     <%= f.label :password %><br>
     <% if current_user %>
-      <%= f.password_field :password, placeholder: "Current Password" %>
+      <%= f.password_field :password, placeholder: "Confirm Current Password", class: "fadeIn third", class: "favoriteInput" %>
       <div class="actions">
-        <br><%= f.submit "Save", class: 'btn btn-success' %>
+        <br><%= f.submit "Save", class: 'btn btn-success', class: "fadeIn fourth", class: "favoriteButton" %>
       </div>
     <% else %>
-      <%= f.password_field :password, placeholder: "New Password" %>
+      <%= f.password_field :password, placeholder: "New Password", class: "fadeIn third", class: "favoriteInput" %>
       <div class="actions">
-        <br><%= f.submit :Submit, class: 'btn btn-success' %>
+        <br><%= f.submit :Submit, class: 'btn btn-success', class: "fadeIn fourth", class: "favoriteButton" %>
       </div>
     <% end %>
   </div>
