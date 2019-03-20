@@ -25,6 +25,18 @@ class ClubsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @club = Club.find(params[:id])
+    if @club.update(club_params)
+      redirect_to club_path(@club), notice: "Update Successful."
+    else
+      redirect_to club_path(@club), notice: "Failed to Update."
+    end
+  end
+
   def make_admin
     @club = Club.find(params[:club_id])
     @user = User.find(params[:user_id])
