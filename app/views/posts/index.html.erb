@@ -1,73 +1,29 @@
 <h1><b>Pickleball Posts</b></h1>
 <%= button_to 'Create New Post', new_post_path, method: :get, class: 'btn btn-primary' %><br>
 <br>
-<% @posts.each do |post| %>
-  <div class="container">
-  	<div class="col-md-5">
-      <div class="panel panel-default">
-          <div class="panel-body">
-             <section class="post-heading">
-                <div class="row">
-                    <div class="col-md-11">
-                        <div class="media">
-                          <div class="media-left">
-                            <a href="#">
-                              <% if post.user.image %>
-                                <img class="media-object photo-profile" src="#" width="40" height="40" alt="...">
-                              <% end %>
-                            </a>
-                          </div>
-                          <div class="media-body">
-                            <a href="<%= post_path(post) %>" class="anchor-username"><h4 class="media-heading"><%= post.title %></h4></a>
-                            <%= link_to(post.user) do %>
-                              <strong>by: <%= post.user.first_name + " " + post.user.last_name%></strong>
-                              <span></span>
-                            <% end %>
-                            <br>
-                            <%= time_ago_in_words(post.created_at) %> ago
-                            <hr>
-                          </div>
-                        </div>
-                    </div>
 
-                </div>
-           </section>
-           <section class="post-body">
-               <p><%= post.content %></p>
-           </section>
-           <section class="post-footer">
-               <hr>
-               <div class="post-footer-option container">
-                    <ul class="list-unstyled">
-                      <li><a href="<%= post_path(post) %>
-"><i class="glyphicon glyphicon-comment"></i> Comment</a></li>
-                      <li><a href="http://www.facebook.com/sharer.php?u=https://pickle-up.com" target="_blank"><i class="glyphicon glyphicon-share-alt"></i> Share</a></li>
-                    </ul>
-               </div>
-             <div class="post-footer-comment-wrapper">
-               <div class="comment-form">
-
-               </div>
-               <div class="comment">
-                <div class="media">
-                  <div class="media-body">
-                    <ul class="text-center list-inline">
-                      <li class="list-inline-item">
-                        <a href="<%= post_path(post) %>" class="anchor-username"><h4 class="media-heading">Comments (<%= post.comments.count %>)</h4></a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="<%= post_path(post) %>" class="anchor-username"><h4 class="media-heading"><p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p></h4></a>
-                      </li>
-                    </ul>
-
-
-                  </div>
-                </div>
-               </div>
-             </div>
-           </section>
-        </div>
+<div class="card-deck">
+  <% @posts.each do |post| %>
+    <div class="card">
+      <div class="card-body">
+        <a href="<%= post_path(post) %>" class="card-title"><h4 class="media-heading"><%= post.title %></h4></a>
+        <small>Written by: <%= post.user.first_name + " " + post.user.last_name %></small>
+        <hr>
+        <p class="card-text"><%= post.content %></p>
       </div>
-  	</div>
-  </div>
-<% end %>
+      <div class="media-body">
+        <ul class="text-center list-inline">
+          <li class="list-inline-item">
+            <a href="<%= post_path(post) %>" class="anchor-username"><h4 class="media-heading">Comments (<%= post.comments.count %>)</h4></a>
+          </li>
+          <li class="list-inline-item">
+            <a href="<%= post_path(post) %>" class="anchor-username"><h4 class="media-heading"><p> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%> (<%= post.likes.count %>)</p></h4></a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted"><%= time_ago_in_words(post.created_at) %> ago</small>
+      </div>
+    </div>
+  <% end %>
+</div>
