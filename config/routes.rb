@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
     resources :likes
+    resources :categories
   end
   resources :clubs do
     resources :meetings, only: [:show, :index, :new, :create, :edit, :update, :destroy]
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
   resources :tournaments do
     resources :follows
   end
-  
+
   resources :meetings, only: [:index, :show, :new, :create, :edit, :update]
 
   root "sessions#new"

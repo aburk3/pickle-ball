@@ -69,15 +69,6 @@ ActiveRecord::Schema.define(version: 2019_03_21_021334) do
     t.index ["club_id"], name: "index_meetings_on_club_id"
   end
 
-  create_table "post_categories", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_post_categories_on_category_id"
-    t.index ["post_id"], name: "index_post_categories_on_post_id"
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "content"

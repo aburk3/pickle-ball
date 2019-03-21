@@ -36,10 +36,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def add_category
+    @post = Post.find(params[:id])
+    @post.categories << Category.find(params[:category_id])
+  end
+
   private
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :category)
   end
 
   def set_post

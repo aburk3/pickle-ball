@@ -20,6 +20,11 @@
     <%= f.text_area :content, size: "55x8" %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :categories %><br>
+    <%= f.select :categories, Category.all, :prompt => "Category" %>
+  </div>
+
   <div class="actions">
   	<%= f.submit :Submit, class: 'btn btn-success' %>
   	<%= link_to "cancel", posts_path(@post), :class=>"btn btn-xs btn-danger" %>
