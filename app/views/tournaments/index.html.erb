@@ -12,6 +12,7 @@
         <p class="card-text"><%= tournament.description %></p>
       </div>
       <div class="card-footer">
+        <p><%= tournament.follows.count %> <%= (tournament.follows.count) == 1 ? 'Follow' : 'Follows'%></p>
         <small class="text-muted"><%= time_ago_in_words(tournament.created_at) %> ago</small>
       </div>
     </div>

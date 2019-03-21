@@ -1,8 +1,14 @@
 <div class="center">
-  <h1><%= @tournament.name + " - " + "Users Following this Tournament: #{@tournament.users.count}" %></h1>
+  <h1><%= @tournament.name + " - " + "Users Following this Tournament: #{@tournament.follows.count}" %></h1>
 </div>
 
 <div class="center">
+  <% pre_follow = @tournament.follows.find { |follow| follow.user_id == current_user.id} %>
+  <% if pre_follow %>
+    <%= button_to 'UnFollow', tournament_follow_path(@tournament, pre_follow), method: :delete %>
+  <% else %>
+    <%= button_to 'Follow', tournament_follows_path(@tournament), method: :post %>
+  <% end %>
   <% if @tournament.users.include? current_user %>
     <%= button_to 'Unfollow Tournament', { :controller => "users", :action => "unfollow_tournament", :tournament_id => @tournament.id, :user_id=> session[:user_id] }, :method=>:post, data: { confirm: "Are you sure you want to unfollow this tournament?" }, class: 'btn btn-danger' %><br>
     <% if @tournament.is_director?(current_user) %>
@@ -10,6 +16,7 @@
     <% end %>
   <% else %>
     <%= button_to 'Follow', { :controller => "users", :action => "follow_tournament", :tournament_id => @tournament.id, :user_id=> session[:user_id] }, :method=>:post, class: "btn btn-primary" %><br>
+    <%= button_to 'Actually Follow', tournament_follows_path(@tournament), method: :post %>
   <% end %>
   <p id="notice"><%= notice %></p>
   <h3>"<%= @tournament.description %>"</h3>
