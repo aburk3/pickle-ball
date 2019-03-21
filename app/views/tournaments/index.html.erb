@@ -1,43 +1,19 @@
-<%= button_to 'Create Tournament Page', new_tournament_path, method: :get, class: 'btn btn-primary' %><br>
+<h1><b>Pickleball Posts</b></h1>
+<%= button_to 'Create Tournament', new_tournament_path, method: :get, class: 'btn btn-primary' %><br>
 
-<% @tournaments.each do |tournament| %>
-  <div class="container">
-  	<div class="col-md-5">
-      <div class="panel panel-default">
-          <div class="panel-body">
-             <section class="post-heading">
-                <div class="row">
-                    <div class="col-md-11">
-                        <div class="media">
-                          <div class="media-left">
-                          </div>
-                          <div class="media-body">
-                            <a href="<%= tournament_path(tournament) %>" class="anchor-username"><h4 class="media-heading"><%= tournament.name %></h4></a>
-                            <%= tournament.city %>, <%= tournament.state %>
-                            <br>
-                            <%= time_ago_in_words(tournament.created_at) %> ago
-                            <hr>
-                          </div>
-                        </div>
-                    </div>
-                  </div>
-             </section>
-             <section class="post-body">
-                 <p><%= tournament.description %></p>
-             </section>
-             <section class="post-footer">
-                 <hr>
-                 <div class="post-footer-option container">
-                      <ul class="list-unstyled">
-                        <li><a href="#"><i class="glyphicon glyphicon-thumbs-up"></i> Like</a></li>
-                        <li><a href="<%= tournament_path(tournament) %>
-  "><i class="glyphicon glyphicon-comment"></i> Comment</a></li>
-                        <li><a href="http://www.facebook.com/sharer.php?u=https://pickle-up.com" target="_blank"><i class="glyphicon glyphicon-share-alt"></i> Share</a></li>
-                      </ul>
-                 </div>
-              </section>
-           </div>
-         </div>
-     	</div>
-     </div>
-   <% end %>
+<div class="card-deck">
+  <% @tournaments.each do |tournament| %>
+    <div class="card">
+      <div class="card-body">
+        <a href="<%= tournament_path(tournament) %>" class="card-title"><h4 class="media-heading"><%= tournament.name %></h4></a>
+        <small><i><%= tournament.city %>, <%= tournament.state %></i></small><br>
+        <small>Tournament Director: <%= find_td(tournament) %></small>
+        <hr>
+        <p class="card-text"><%= tournament.description %></p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted"><%= time_ago_in_words(tournament.created_at) %> ago</small>
+      </div>
+    </div>
+  <% end %>
+</div>
