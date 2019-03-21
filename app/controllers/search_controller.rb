@@ -1,6 +1,9 @@
 class SearchController < ApplicationController
 
   def index
+
+  
+
     if params[:search].blank?
       redirect_to(root_path, alert: "Empty field!") and return
     else
