@@ -4,7 +4,7 @@
 
 <div class="card-deck">
   <% @posts.each do |post| %>
-    <div class="card">
+    <div class="card w-50">
       <div class="card-body">
         <a href="<%= post_path(post) %>" class="card-title"><h4 class="media-heading"><%= post.title %></h4></a>
         <small>Written by: <%= post.user.first_name + " " + post.user.last_name %></small>
@@ -14,36 +14,15 @@
       <div class="media-body">
         <ul class="text-center list-inline">
           <li class="list-inline-item">
-            <a href="<%= post_path(post) %>" class="anchor-username"><h4 class="media-heading">Comments (<%= post.comments.count %>)</h4></a>
+            <small>Comments (<%= post.comments.count %>)</small>
           </li>
           <li class="list-inline-item">
-            <a href="<%= post_path(post) %>" class="anchor-username"><h4 class="media-heading"><p> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%> (<%= post.likes.count %>)</p></h4></a>
+            <small><%= (post.likes.count) == 1 ? 'Like' : 'Likes'%> (<%= post.likes.count %>)</small>
           </li>
         </ul>
       </div>
       <div class="card-footer">
         <small class="text-muted"><%= time_ago_in_words(post.created_at) %> ago</small>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-<div class="row mb-2">
-  <% @posts.reverse.each do |post| %>
-    <div class="col-md-6">
-      <div class="card flex-md-row mb-4 box-shadow h-md-250">
-        <div class="card-body d-flex flex-column align-items-start">
-          <% if post.categories %>
-            <strong class="d-inline-block mb-2 text-primary"><%= post.categories.name %></strong>
-          <% end %>
-          <h3 class="mb-0">
-            <a class="text-dark" href="#"><%= post.title %></a>
-          </h3>
-          <div class="mb-1 text-muted">Nov 12</div>
-          <p class="card-text mb-auto"><%= post.content %></p><br>
-          <small>Written by: <%= post.user.first_name + " " + post.user.last_name %></small>
-          <a href="#">Continue reading</a>
-        </div>
       </div>
     </div>
   <% end %>
