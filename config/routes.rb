@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback' => 'sessions#create'
   post "/admin", to: "clubs#make_admin", :as => 'admin'
   get "/search", to: "search#index", :as => 'search'
+  get "/liked", to: "posts#liked"
 end

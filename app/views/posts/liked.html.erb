@@ -1,0 +1,29 @@
+<h1><b>Pickleball Posts You Like</b></h1>
+<%= button_to 'Create New Post', new_post_path, method: :get, class: 'btn btn-primary' %><br>
+<br>
+
+<div class="card-deck">
+  <% @liked.each do |post| %>
+    <div class="card w-50">
+      <div class="card-body">
+        <a href="<%= post_path(post) %>" class="card-title"><h4 class="media-heading"><%= post.title %></h4></a>
+        <small>Written by: <%= post.user.first_name + " " + post.user.last_name %></small>
+        <hr>
+        <p class="card-text"><%= post.content %></p>
+      </div>
+      <div class="media-body">
+        <ul class="text-center list-inline">
+          <li class="list-inline-item">
+            <small>Comments (<%= post.comments.count %>)</small>
+          </li>
+          <li class="list-inline-item">
+            <small><%= (post.likes.count) == 1 ? 'Like' : 'Likes'%> (<%= post.likes.count %>)</small>
+          </li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted"><%= time_ago_in_words(post.created_at) %> ago</small>
+      </div>
+    </div>
+  <% end %>
+</div>

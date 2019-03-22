@@ -9,6 +9,13 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def liked
+    @liked = []
+    current_user.likes.each do |post|
+      @liked << post.post
+    end
+  end
+
   def new
     @post = Post.new
   end
