@@ -4,7 +4,11 @@
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
-            <h5 class="card-title text-center">Sign Up</h5>
+            <% if current_user %>
+              <h5 class="card-title text-center">Update Profile</h5>
+            <% else %>
+              <h5 class="card-title text-center">Sign Up</h5>
+            <% end %>
             <%= form_for @user do |f| %>
 
               <% if @user.errors.any? %>
@@ -36,12 +40,14 @@
 
                 <div class="form-label-group">
                   <label for="utpr_m"></label>
-                  <%= f.select(:utpr_m, [5.0,4.5,4.0,3.5,3.0,2.5,2.0], {include_blank: true}, class: "form-control", placeholder: "Mixed UTPR")%>
+                  <%= f.select(:utpr_m, [5.0,4.5,4.0,3.5,3.0,2.5,2.0], {:prompt => '-- Mixed Doubles
+                    UTPR --'}, class: "form-control")%>
                 </div>
 
                 <div class="form-label-group">
                   <label for="utpr_s"></label>
-                  <%= f.select(:utpr_s, [5.0,4.5,4.0,3.5,3.0,2.5,2.0], {include_blank: true}, class: "form-control", placeholder: "Singles UTPR")%><br>
+                  <%= f.select(:utpr_s, [5.0,4.5,4.0,3.5,3.0,2.5,2.0], {:prompt => '-- Singles
+                    UTPR --'}, class: "form-control")%><br>
                 </div>
 
                 <div class="form-label-group">
