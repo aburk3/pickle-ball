@@ -1,15 +1,18 @@
-<h2><u><%= @post.title %></u></h2>
-<% content_for :page_title, @post.title %>
-<%= link_to(@post.user) do %>
-  <strong>by: <%= @post.user.first_name + " " + @post.user.last_name%></strong>
-  <span></span>
-<% end %>
-<br>
-<p><%= time_ago_in_words(@post.created_at) %> ago</p>
+<div class="text-center">
+  <h2><u><%= @post.title %></u></h2>
+  <% content_for :page_title, @post.title %>
+  <%= link_to(@post.user) do %>
+    <strong>by: <%= @post.user.first_name + " " + @post.user.last_name%></strong>
+  <% end %>
+  <br>
+  <p><%= time_ago_in_words(@post.created_at) %> ago</p>
+</div>
+
+
 <br>
 <br>
 <p>
-  Content:<br> <%= @post.content %>
+  Content:<br> "<%= @post.content %>"
 </p>
 
 

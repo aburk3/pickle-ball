@@ -25,6 +25,10 @@ class TournamentsController < ApplicationController
     end
   end
 
+  def near
+    @tournaments = Tournament.where(city: current_user.city)
+  end
+
   def make_director
     @tournament = Tournament.find(params[:tournament_id])
     @user = User.find(params[:user_id])

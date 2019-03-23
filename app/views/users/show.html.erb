@@ -72,8 +72,11 @@
 <br>
 <br>
 
-<%= @user.first_name %>'s Posts:
+<u><%= @user.first_name %>'s Posts:<br></u>
 
-<% @user.posts.each do |post| %>
-  <%= link_to post.title, post_path(post) %>
-<% end %>
+  <% @user.posts.each do |post| %>
+  <li>
+    <%= link_to post.title, post_path(post) %><br>
+  </li>
+
+  <% end %>

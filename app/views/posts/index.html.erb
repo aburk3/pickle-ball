@@ -2,9 +2,10 @@
 <%= button_to 'Create New Post', new_post_path, method: :get, class: 'btn btn-primary' %><br>
 <br>
 
-<div class="card-deck">
+
+<div class="card-columns">
   <% @posts.each do |post| %>
-    <div class="card w-50">
+    <div class="card">
       <div class="card-body">
         <a href="<%= post_path(post) %>" class="card-title"><h4 class="media-heading"><%= post.title %></h4></a>
         <small>Written by: <%= post.user.first_name + " " + post.user.last_name %></small>

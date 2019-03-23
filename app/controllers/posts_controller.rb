@@ -10,9 +10,9 @@ class PostsController < ApplicationController
   end
 
   def liked
-    @liked = []
+    @posts = []
     current_user.likes.each do |post|
-      @liked << post.post
+      @posts << post.post
     end
   end
 

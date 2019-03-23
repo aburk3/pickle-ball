@@ -2,7 +2,7 @@ class SearchController < ApplicationController
 
   def index
 
-  
+
 
     if params[:search].blank?
       redirect_to(root_path, alert: "Empty field!") and return
@@ -40,8 +40,16 @@ class SearchController < ApplicationController
           first_name: "%#{first_name}%", last_name: "%#{last_name}%"
           )
       end
+
       @tournaments = Tournament.all.where("lower(name) LIKE :search", search: "%#{parameter}%")
+
+      if @tournaments.empty?
+        @tournaments = Tournament.all.where(
+          "lower(state) LIKE :search OR lower(city) LIKE :search",
+          search: "%#{parameter}%"
+        )
+      end
+
     end
   end
-
 end

@@ -1,7 +1,7 @@
 <h1><b>Pickleball Clubs</b></h1>
 <%= button_to 'Create New Club', new_club_path, method: :get, class: 'btn btn-primary' %><br>
 
-<div class="card-deck">
+<div class="card-columns">
   <% @clubs.each do |club| %>
     <div class="card">
       <div class="card-body">
