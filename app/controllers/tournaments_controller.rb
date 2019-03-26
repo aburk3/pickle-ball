@@ -43,6 +43,13 @@ class TournamentsController < ApplicationController
     redirect_to user_path(@tournament.director)
   end
 
+  def followed
+    @tournaments = []
+    current_user.follows.each do |tournament|
+      @tournaments << tournament.tournament
+    end
+  end
+
   private
     def set_tournament
       @tournament = Tournament.find(params[:id])

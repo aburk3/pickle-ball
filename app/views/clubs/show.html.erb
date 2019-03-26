@@ -1,11 +1,11 @@
-<div class="center">
+<div class="text-center">
   <h1><%= @club.name %></h1>
   <small>Location: <%= @club.state %></small>
   <h4>Members: <%= @club.users.count %></h4>
   <p>"<%= @club.description %>"</p>
 </div>
 
-<div class="center">
+<div class="text-center">
   <% if @club.users.include? current_user %>
     <%= button_to 'Leave Club', { :controller => "users", :action => "leave", :club_id => @club.id, :user_id=> session[:user_id] }, :method=>:post, data: { confirm: "Are you sure you want to leave this club?" }, class: 'btn btn-danger' %><br>
     <% if @club.is_admin?(current_user) %>
@@ -34,15 +34,14 @@
   </ul>
 <% end %>
 <hr>
-<div class="center">
+<div class="text-center">
   <% if @club.is_admin?(current_user) %>
     <%= button_to 'New Meeting', { :controller => "meetings", :action => "new", :club_id => @club.id }, :method=>:get, class: 'btn btn-success' %><br>
   <% end %>
 </div>
 
 <% if @club.meetings %>
-  <div class="center">
-
+  <div class="text-center">
     <h3><u>Meetings</u></h3>
   </div>
 

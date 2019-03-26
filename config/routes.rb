@@ -27,5 +27,6 @@ Rails.application.routes.draw do
   post "/admin", to: "clubs#make_admin", :as => 'admin'
   get "/search", to: "search#index", :as => 'search'
   get "/liked", to: "posts#liked"
+  get "/followed", to: "tournaments#followed"
   get "/near", to: "tournaments#near"
 end
