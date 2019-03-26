@@ -2,6 +2,8 @@
   <h1><b>Followed Tournaments</b></h1>
 </div>
 
+<%= button_to 'All Tournaments', tournaments_path, method: :get, class: 'btn btn-primary' %><br>
+
 <div class="card-deck">
   <% @tournaments.each do |tournament| %>
     <div class="card">

@@ -2,6 +2,8 @@
   <h1><b>Liked Posts</b></h1>
 </div>
 
+<%= button_to 'All Posts', posts_path, method: :get, class: 'btn btn-primary' %><br>
+
 <div class="card-deck">
   <% @posts.each do |post| %>
     <div class="card w-50">
