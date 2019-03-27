@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   resources :users
+
   resources :posts do
-    resources :comments
+    resources :comments do
+      get "/delete", to: "comments#destroy"
+    end
     resources :likes
   end
   resources :clubs do
@@ -10,7 +13,9 @@ Rails.application.routes.draw do
 
   resources :tournaments do
     resources :follows
-    resources :tournament_comments
+    resources :tournament_comments do
+      get "/delete", to: "tournament_comments#destroy"
+    end
   end
 
   resources :meetings, only: [:index, :show, :new, :create, :edit, :update]

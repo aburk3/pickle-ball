@@ -15,7 +15,7 @@ class TournamentCommentsController < ApplicationController
 
 	def destroy
 		@tournament = Tournament.find(params[:tournament_id])
-		@comment = @tournament.tournament_comments.find(params[:id])
+		@comment = @tournament.tournament_comments.find(params[:tournament_comment_id])
 		@comment.destroy
 		redirect_to tournament_path(@tournament)
 	end

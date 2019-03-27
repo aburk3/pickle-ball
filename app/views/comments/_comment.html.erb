@@ -6,7 +6,7 @@
           <strong><%= comment.user.first_name + " " + comment.user.last_name%>:</strong>
           <%= comment.content %><br>
           <% if comment.user == current_user %>
-            <%= link_to 'Delete', [comment.post, comment], method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %> 
+            <a href="/posts/<%= comment.post.id %>/comments/<%=comment.id %>/delete"> Delete Comment</a>
           <% end %>
         </p>
       </div>

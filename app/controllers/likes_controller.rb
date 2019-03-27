@@ -11,7 +11,7 @@ class LikesController < ApplicationController
         @post.user.score = @post.user.score.to_i + 1
       else
         @post.user.score += 1
-        @post.user.score.save
+        @post.save
       end
     end
     redirect_to post_path(@post)
