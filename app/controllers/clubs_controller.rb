@@ -45,6 +45,10 @@ class ClubsController < ApplicationController
     redirect_to club_path(@club)
   end
 
+  def near
+    @clubs = Club.where(city: current_user.city)
+  end
+
   def destroy
     @club = Club.find(params[:id])
     @club.destroy

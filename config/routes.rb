@@ -30,4 +30,5 @@ Rails.application.routes.draw do
   get "/liked", to: "posts#liked"
   get "/followed", to: "tournaments#followed"
   get "/near", to: "tournaments#near"
+  get "/localclubs", to: "clubs#near", :as => 'near_club'
 end
