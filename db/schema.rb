@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_21_021334) do
+ActiveRecord::Schema.define(version: 2019_03_27_001704) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -79,6 +79,16 @@ ActiveRecord::Schema.define(version: 2019_03_21_021334) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "tournament_comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id"
+    t.integer "tournament_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tournament_id"], name: "index_tournament_comments_on_tournament_id"
+    t.index ["user_id"], name: "index_tournament_comments_on_user_id"
+  end
+
   create_table "tournaments", force: :cascade do |t|
     t.string "name"
     t.string "state"
@@ -124,11 +134,12 @@ ActiveRecord::Schema.define(version: 2019_03_21_021334) do
     t.integer "member_num"
     t.float "skill_d"
     t.float "skill_s"
-    t.integer "score"
+    t.integer "score", default: 0
     t.string "image"
     t.string "uid"
     t.boolean "admin"
     t.boolean "trainer"
+    t.boolean "tournament_director"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

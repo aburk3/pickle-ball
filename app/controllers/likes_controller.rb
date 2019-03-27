@@ -7,6 +7,12 @@ class LikesController < ApplicationController
       flash[:notice] = "You can't like more than once"
     else
       @post.likes.create(user_id: current_user.id)
+      if @post.user.score == nil
+        @post.user.score = @post.user.score.to_i + 1
+      else
+        @post.user.score += 1
+        @post.user.score.save
+      end
     end
     redirect_to post_path(@post)
   end

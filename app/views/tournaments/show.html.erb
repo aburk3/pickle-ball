@@ -45,3 +45,36 @@
   <% end %>
 </div>
 <hr>
+
+
+<section class="section comments">
+	<div class="container">
+		<h2 class="subtitle is-5"><strong><%= @tournament.tournament_comments.count %></strong> Comments</h2>
+
+    <% @tournament.tournament_comments.each do |comment| %>
+      <div class="box">
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong><%= comment.user.first_name + " " + comment.user.last_name%>:</strong>
+                <%= comment.content %><br>
+                <% if comment.user == current_user %>
+                  <%= link_to 'Delete', [comment.tournament, comment], method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
+                <% end %>
+              </p>
+            </div>
+          </div>
+        </article>
+      <% end %>
+    </div>
+
+
+
+		<div class="comment-form">
+			<hr />
+			<h3 class="subtitle is-3">Leave a reply</h3>
+	 		<%= render 'comments/form' %>
+		</div>
+	</div>
+</section>

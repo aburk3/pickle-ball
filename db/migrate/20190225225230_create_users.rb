@@ -14,11 +14,12 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer :member_num
       t.float :skill_d
       t.float :skill_s
-      t.integer :score
+      t.integer :score, default: 0
       t.string :image
       t.string :uid
       t.boolean :admin
       t.boolean :trainer
+      t.boolean :tournament_director
 
       t.timestamps
     end

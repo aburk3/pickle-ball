@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :tournaments do
     resources :follows
+    resources :tournament_comments
   end
 
   resources :meetings, only: [:index, :show, :new, :create, :edit, :update]
