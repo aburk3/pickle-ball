@@ -30,7 +30,7 @@
     		  	</p>
     		  	<p class="level-item">
     				<%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class:"button is-danger" %>
-            <%= button_to 'Delete Post', { :controller => "posts", :action => "destroy", :club_id => @post.id, :user_id=> session[:user_id] }, :method=>:delete, data: { confirm: "Are you sure you want to delete this Post?" }, class: 'btn btn-danger' %>
+            <%= button_to 'Delete Post', { :controller => "posts", :action => "destroy", :post_id => @post.id, :user_id=> session[:user_id] }, :method=>:delete, data: { confirm: "Are you sure you want to delete this Post?" }, class: 'btn btn-danger' %>
     				</p>
           <% end %>
           <ul class="list-inline">
