@@ -7,13 +7,17 @@
   </div>
 </div>
 
-<h3 class="media-heading"><%= @user.first_name + " " + @user.last_name %></h3>
+<div class="">
+  <h3 class="media-heading"><%= @user.first_name + " " + @user.last_name %></h3>
+  <span class=" badge badge-warning">Pickle Points: <%= @user.score %></span>
+</div>
+
 <span><strong>State: </strong></span>
   <span class="label label-warning"><%= @user.state %></span>
 </center><br>
-<span class=" badge badge-warning"><%= @user.posts.count %> <%= (@user.posts.count) == 1 ? 'Post' : 'Posts'%></span>
+<span class=" badge badge-success"><%= @user.posts.count %> <%= (@user.posts.count) == 1 ? 'Post' : 'Posts'%></span>
 <span class=" badge badge-info"><%= @user.comments.count %> <%= (@user.comments.count) == 1 ? 'Comment' : 'Comments'%></span>
-<% binding.pry %>
+
   <hr>
 
 <div class="row">
