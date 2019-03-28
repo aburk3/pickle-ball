@@ -7,6 +7,8 @@ class FollowsController < ApplicationController
       flash[:notice] = "You can't like more than once"
     else
       @tournament.follows.create(user_id: current_user.id)
+      current_user.score += 1
+      current_user.save
     end
     redirect_to tournament_path(@tournament)
   end
@@ -16,6 +18,8 @@ class FollowsController < ApplicationController
       flash[:notice] = "Cannot unfollow"
     else
       @follow.destroy
+      current_user.score -= 1
+      current_user.save
     end
     redirect_to tournament_path(@tournament)
   end
