@@ -8,6 +8,7 @@
     <% end %>
 
     <% if @clubs.any? %>
+      <hr>
       <h3>Clubs Found:</h3>
       <% @clubs.each do |club| %>
         <li><%= link_to "#{ club.name }", club_path(club) %></li>
@@ -15,9 +16,10 @@
     <% end %>
 
     <% if @tournaments.any?%>
+      <hr>
       <h3>Tournaments Found:</h3>
       <% @tournaments.each do |tournament| %>
-        <li><%= link_to "#{ tournament.name }, #{ tournament.state }", tournament_path(tournament) %></li>
+        <li><%= link_to "#{ tournament.name }", tournament_path(tournament) %></li>
       <% end %>
     <% end %>
   <% else %>

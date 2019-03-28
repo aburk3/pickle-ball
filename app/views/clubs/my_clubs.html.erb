@@ -1,21 +1,18 @@
 <div class="text-center">
   <h1><b>My Clubs</b></h1>
 </div>
+<%= button_to 'Create New Club', new_club_path, method: :get, class: 'btn btn-primary' %><br>
 
-<%= button_to 'Create Tournament', new_club_path, method: :get, class: 'btn btn-primary' %><br>
-
-<div class="card-deck">
+<div class="card-columns">
   <% @clubs.each do |club| %>
     <div class="card">
       <div class="card-body">
         <a href="<%= club_path(club) %>" class="card-title"><h4 class="media-heading"><%= club.name %></h4></a>
-        <small><i><%= club.city %>, <%= club.state %></i></small><br>
-        <small>Tournament Director: <%#= find_td(club) %></small>
+        <small><i>Location: <%= club.city %>, <%= club.state %></i></small>
         <hr>
         <p class="card-text"><%= club.description %></p>
       </div>
       <div class="card-footer">
-        <p><%= club.users.count %> <%= (club.users.count) == 1 ? 'Member' : 'Members'%></p>
         <small class="text-muted"><%= time_ago_in_words(club.created_at) %> ago</small>
       </div>
     </div>
