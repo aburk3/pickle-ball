@@ -40,10 +40,11 @@
   <% end %>
 </div>
 
-<% if @club.meetings %>
+<% if @club.meetings.count > 0 %>
   <div class="text-center">
     <h3><u>Meetings</u></h3>
   </div>
-
-  <%= render :collection => @club.meetings, :partial => "meetings/meeting_list", :as => :meeting %>
+  <% @club.meetings.each do |meeting| %>
+    <%= render :collection => @club.meetings, :partial => "meetings/meeting_list", :as => :meeting %>
+  <% end %>
 <% end %>
