@@ -19,6 +19,8 @@ class ClubsController < ApplicationController
     if @club.save # need to get rid of this, since instance `@club.users << current_user`
       @club.users << current_user
       @club.save
+      current_user.score += 8
+      current_user.save
       redirect_to @club, notice: "Club was successfully created."
     else
       render :new
@@ -61,6 +63,8 @@ class ClubsController < ApplicationController
   def destroy
     @club = Club.find(params[:id])
     @club.destroy
+    current_user.score -= 8
+    current_user.save
     redirect_to user_path(@club.club_admin)
   end
 

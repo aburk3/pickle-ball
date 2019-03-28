@@ -25,7 +25,7 @@ class PostsController < ApplicationController
     current_user.posts << @post
     if @post.save
       @post.save
-      current_user.score += 1
+      current_user.score += 2
       current_user.save
       redirect_to post_path(@post), notice: "Post was successfully created."
     else
@@ -48,7 +48,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    current_user.score -= 1
+    current_user.score -= 2
     current_user.save
     redirect_to posts_path(@post)
   end

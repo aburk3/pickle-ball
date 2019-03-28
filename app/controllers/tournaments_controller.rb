@@ -19,6 +19,8 @@ class TournamentsController < ApplicationController
     if @tournament.save
       @tournament.users << current_user
       @tournament.save
+      current_user.score += 10
+      current_user.save
       redirect_to @tournament, notice: "Tournament was successfully created."
     else
       render :new
@@ -40,6 +42,8 @@ class TournamentsController < ApplicationController
   def destroy
     @tournament = Tournament.find(params[:id])
     @tournament.destroy
+    current_user.score -= 10
+    current_user.save
     redirect_to user_path(@tournament.director)
   end
 
