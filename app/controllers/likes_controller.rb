@@ -10,7 +10,6 @@ class LikesController < ApplicationController
       current_user.score += 1
       current_user.save
     end
-    binding.pry
     redirect_to post_path(@post)
   end
 

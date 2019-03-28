@@ -9,7 +9,7 @@
 
 <div class="">
   <h3 class="media-heading"><%= @user.first_name + " " + @user.last_name %></h3>
-  <span class=" badge badge-warning">Pickle Points: <%= @user.score %></span>
+  <span class=" badge badge-warning">Pickle Points: <%= score(current_user) %></span>
 </div>
 
 <span><strong>State: </strong></span>
@@ -66,7 +66,7 @@
   </div>
 </div>
 
-<div class="col-md-6">
+<div class="">
   <h3><u>Clubs <%= @user.first_name %> is in:</u></h3>
   <% @user.clubs.each do |club| %>
     <%= link_to club.name, club_path(club) %><br>
@@ -74,12 +74,11 @@
 </div>
 <br>
 <br>
-
-<u><%= @user.first_name %>'s Posts:<br></u>
-
+<div class="">
+  <h3><u><%= @user.first_name %>'s Posts:<br></u></h3>
   <% @user.posts.each do |post| %>
   <li>
     <%= link_to post.title, post_path(post) %><br>
   </li>
-
   <% end %>
+</div><br>

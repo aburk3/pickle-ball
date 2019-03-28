@@ -65,4 +65,12 @@ module ApplicationHelper
     User.find_by_id(tournament.director).first_name + " " + User.find_by_id(tournament.director).last_name
   end
 
+  def score(user)
+    likes = user.likes.count
+    comments = user.comments.count * 2
+    posts = user.posts.count * 4
+    likes + comments + posts
+  end
+
+
 end
