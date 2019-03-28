@@ -4,16 +4,15 @@
     <% if @user.image %>
       <img src="<%= @user.image %>", class="user_pic">
     <% end %>
-    <% if @user != current_user %>
-      <h1><%= @user.first_name + " " + @user.last_name %></h1>
-    <% end %>
-  </div>
-  <div class="col-md-6">
-    <% if @user == current_user %>
-      <h1>Welcome <%= @user.first_name + " " + @user.last_name %>!</h1>
-    <% end %>
   </div>
 </div>
+
+<h3 class="media-heading"><%= @user.first_name + " " + @user.last_name %></h3>
+<span><strong>State: </strong></span>
+  <span class="label label-warning"><%= @user.state %></span>
+</center><br>
+<span class=" badge badge-warning"><%= @user.posts.count %> <%= (@user.posts.count) == 1 ? 'Post' : 'Posts'%></span>
+<span class=" badge badge-info"><%= @user.comments.count %> <%= (@user.comments.count) == 1 ? 'Comment' : 'Comments'%></span>
 
   <hr>
 

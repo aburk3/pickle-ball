@@ -49,6 +49,15 @@ class ClubsController < ApplicationController
     @clubs = Club.where(city: current_user.city)
   end
 
+  def my_clubs
+    @clubs = []
+    Club.all.each do |club|
+      if club.users.include?(current_user)
+        @clubs << club
+      end
+    end
+  end
+
   def destroy
     @club = Club.find(params[:id])
     @club.destroy
@@ -66,7 +75,7 @@ class ClubsController < ApplicationController
         :description,
         :state,
         :city,
-        :contact
+        :contact,
       )
     end
 
