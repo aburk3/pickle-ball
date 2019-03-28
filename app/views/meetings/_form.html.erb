@@ -20,7 +20,7 @@
   </div>
   <div class="form-group">
     <%= f.label :meeting_datetime, "Time of Meeting" %><br>
-    <%= f.datetime_select :meeting_datetime, :discard_year => true %>
+    <%= f.datetime_select :meeting_datetime, ampm: true %>
   </div>
   <div class="actions">
     <%= f.submit :Submit, class: 'btn btn-success' %>
