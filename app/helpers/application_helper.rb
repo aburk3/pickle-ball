@@ -69,7 +69,8 @@ module ApplicationHelper
     likes = user.likes.count
     comments = user.comments.count * 2
     posts = user.posts.count * 4
-    likes + comments + posts
+    clubs = user.clubs.count * 3
+    likes + comments + posts + clubs
   end
 
 
