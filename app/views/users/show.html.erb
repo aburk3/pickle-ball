@@ -18,6 +18,7 @@
   <span class=" badge badge-warning">Pickle Points: <%= score(current_user) %></span>
 
   <br>
+  
   <span class=" badge badge-success"><%= @user.posts.count %> <%= (@user.posts.count) == 1 ? 'Post' : 'Posts'%></span>
   <span class=" badge badge-info"><%= @user.comments.count %> <%= (@user.comments.count) == 1 ? 'Comment' : 'Comments'%></span>
 </div>

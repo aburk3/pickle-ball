@@ -3,7 +3,20 @@
     <% if @users.any? %>
       <h3>Players Found:</h3>
       <% @users.each do |user| %>
-        <li><%= link_to "#{ user.first_name } #{ user.last_name }", user_path(user) %></li>
+        <div class="card border-info" style="width: 18rem;">
+          <div class="card-body typerwriter">
+            <h5 class="card-title"><%= user.first_name %> <%= user.last_name %></h5>
+              <p class="card-text typerwriter">
+                <span class=" badge badge-warning">Pickle Points: <%= score(user) %></span>
+
+                <br>
+
+                <span class=" badge badge-success"><%= user.posts.count %> <%= (user.posts.count) == 1 ? 'Post' : 'Posts'%></span>
+                <span class=" badge badge-info"><%= user.comments.count %> <%= (user.comments.count) == 1 ? 'Comment' : 'Comments'%></span>
+              </p>
+            <%= link_to "View Profile", user_path(user), :class=>"btn btn-xs btn-secondary" %>
+          </div>
+        </div><br>
       <% end %>
     <% end %>
 
@@ -11,7 +24,19 @@
       <hr>
       <h3>Clubs Found:</h3>
       <% @clubs.each do |club| %>
-        <li><%= link_to "#{ club.name }", club_path(club) %></li>
+        <div class="card border-secondary" style="width: 18rem;">
+          <div class="card-body typerwriter">
+            <h5 class="card-title"><%= club.name %></h5>
+              <p class="card-text typerwriter">
+
+                <br>
+
+                <span class=" badge badge-success"><%= club.users.count %> <%= (club.users.count) == 1 ? 'Post' : 'Posts'%></span>
+                <span class=" badge badge-info"><%= club.meetings.count %> <%= (club.meetings.count) == 1 ? 'Comment' : 'Comments'%></span>
+              </p>
+            <%= link_to "View Club", club_path(club), :class=>"btn btn-xs btn-secondary" %>
+          </div>
+        </div>
       <% end %>
     <% end %>
 
@@ -19,7 +44,19 @@
       <hr>
       <h3>Tournaments Found:</h3>
       <% @tournaments.each do |tournament| %>
-        <li><%= link_to "#{ tournament.name }", tournament_path(tournament) %></li>
+        <div class="card border-danger" style="width: 18rem;">
+          <div class="card-body typerwriter">
+            <h5 class="card-title"><%= tournament.name %></h5>
+              <p class="card-text typerwriter">
+
+                <br>
+
+                <span class=" badge badge-success"><%= tournament.users.count %> <%= (tournament.users.count) == 1 ? 'Post' : 'Posts'%></span>
+                <span class=" badge badge-info"><%= tournament.follows.count %> <%= (tournament.follows.count) == 1 ? 'Comment' : 'Comments'%></span>
+              </p>
+            <%= link_to "View Club", tournament_path(tournament), :class=>"btn btn-xs btn-secondary" %>
+          </div>
+        </div>
       <% end %>
     <% end %>
   <% else %>
