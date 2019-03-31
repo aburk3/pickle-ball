@@ -1,6 +1,45 @@
-<ul>
-  <% if @users.any? || @clubs.any? || @tournaments.any?  %>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Tournaments (<%= @tournaments.count %>)</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Users (<%= @users.count %>)</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Clubs (<%= @clubs.count %>)</a>
+  </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <% if @tournaments.any?%>
+      <br>
+      <h3>Tournaments Found:</h3>
+      <% @tournaments.each do |tournament| %>
+        <div class="card border-danger" style="width: 18rem;">
+          <div class="card-body typerwriter">
+            <h5 class="card-title"><%= tournament.name %></h5>
+              <p class="card-text typerwriter">
+
+                <br>
+
+                <span class=" badge badge-success"><%= tournament.users.count %> <%= (tournament.users.count) == 1 ? 'Member' : 'Members'%></span>
+                <span class=" badge badge-info"><%= tournament.follows.count %> <%= (tournament.follows.count) == 1 ? 'Follow' : 'Follows'%></span>
+              </p>
+            <%= link_to "View Club", tournament_path(tournament), :class=>"btn btn-xs btn-secondary" %>
+          </div>
+        </div><br>
+      <% end %>
+    <% else %>
+      <br>
+      <h3>No Tournaments were found!</h3>
+    <% end %>
+  </div>
+
+
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
     <% if @users.any? %>
+      <br>
       <h3>Players Found:</h3>
       <% @users.each do |user| %>
         <div class="card border-info" style="width: 18rem;">
@@ -18,10 +57,17 @@
           </div>
         </div><br>
       <% end %>
+    <% else %>
+      <br>
+      <h3>No Players were found!</h3>
     <% end %>
+  </div>
 
+
+
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
     <% if @clubs.any? %>
-      <hr>
+      <br>
       <h3>Clubs Found:</h3>
       <% @clubs.each do |club| %>
         <div class="card border-secondary" style="width: 18rem;">
@@ -36,30 +82,11 @@
               </p>
             <%= link_to "View Club", club_path(club), :class=>"btn btn-xs btn-secondary" %>
           </div>
-        </div>
+        </div><br>
       <% end %>
+    <% else %>
+      <br>
+      <h3>No Clubs were found!</h3>
     <% end %>
-
-    <% if @tournaments.any?%>
-      <hr>
-      <h3>Tournaments Found:</h3>
-      <% @tournaments.each do |tournament| %>
-        <div class="card border-danger" style="width: 18rem;">
-          <div class="card-body typerwriter">
-            <h5 class="card-title"><%= tournament.name %></h5>
-              <p class="card-text typerwriter">
-
-                <br>
-
-                <span class=" badge badge-success"><%= tournament.users.count %> <%= (tournament.users.count) == 1 ? 'Post' : 'Posts'%></span>
-                <span class=" badge badge-info"><%= tournament.follows.count %> <%= (tournament.follows.count) == 1 ? 'Comment' : 'Comments'%></span>
-              </p>
-            <%= link_to "View Club", tournament_path(tournament), :class=>"btn btn-xs btn-secondary" %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  <% else %>
-    <p>Sorry! No results were found!</p>
-  <% end %>
-</ul>
+  </div>
+</div>
