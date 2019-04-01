@@ -22,8 +22,6 @@
               <p class="card-text typerwriter">
 
                 <br>
-
-                <span class=" badge badge-success"><%= tournament.users.count %> <%= (tournament.users.count) == 1 ? 'Member' : 'Members'%></span>
                 <span class=" badge badge-info"><%= tournament.follows.count %> <%= (tournament.follows.count) == 1 ? 'Follow' : 'Follows'%></span>
               </p>
             <%= link_to "View Club", tournament_path(tournament), :class=>"btn btn-xs btn-secondary" %>
