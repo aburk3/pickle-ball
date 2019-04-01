@@ -1,8 +1,15 @@
 <div class="text-center">
   <h1><%= @tournament.name %></h1>
+  <div class="typewriter">
+    <span class=" badge badge-danger"><b>Sanctioning Status:</b> <%= @tournament.status %></span>
+
+    <br>
+    <span class=" badge badge-success"><%= @tournament.follows.count %> <%= (@tournament.follows.count) == 1 ? 'Follow' : 'Followers'%></span>
+  </div>
   <hr>
   <h6><%= "Users Following this Tournament: #{@tournament.follows.count}" %></h6>
 </div>
+
 
 <div class="text-center">
   <% pre_follow = @tournament.follows.find { |follow| follow.user_id == current_user.id} %>

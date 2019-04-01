@@ -66,7 +66,8 @@ class TournamentsController < ApplicationController
         :city,
         :description,
         :events,
-        :director
+        :director,
+        :status
       )
     end
 

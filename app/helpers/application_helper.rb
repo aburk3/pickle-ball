@@ -26,7 +26,7 @@ module ApplicationHelper
       ['Massachusetts', 'MA'],
       ['Michigan', 'MI'],
       ['Minnesota', 'MN'],
-      ['Mississippi', 'MS'],
+      ['MS', 'Mississippi'],
       ['Missouri', 'MO'],
       ['Montana', 'MT'],
       ['Nebraska', 'NE'],

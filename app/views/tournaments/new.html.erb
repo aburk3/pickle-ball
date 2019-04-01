@@ -40,6 +40,11 @@
     <%= f.text_area :events, size: "55x8" %>
   </div>
 
+  <div class="form-group">
+    <label for="status"></label>
+    <%= f.select(:status, ['Sanctioned', 'Non-sanctioned', 'Pending', 'Unknown'], {:prompt => '-- Sanctioning Status --'}, class: "fadeIn")%>
+  </div>
+
   <div class="actions">
   	<%= f.submit :Submit, class: 'btn btn-success' %>
   	<%= link_to "cancel", posts_path(@tournament), :class=>"btn btn-xs btn-danger" %>
