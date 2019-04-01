@@ -27,6 +27,18 @@ class TournamentsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @tournament = Tournament.find(params[:id])
+    if @tournament.update(tournament_params)
+      redirect_to tournament_path(@tournament), notice: "Update Successful."
+    else
+      redirect_to tournament_path(@tournament), notice: "Failed to Update."
+    end
+  end
+
   def near
     @tournaments = Tournament.where(city: current_user.city)
   end
