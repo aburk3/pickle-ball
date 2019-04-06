@@ -6,14 +6,30 @@
   <% end %>
   <br>
   <p><%= time_ago_in_words(@post.created_at) %> ago</p>
+  <ul class="list-inline">
+    <li class="list-inline-item">
+      <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+      <% if pre_like && @post.user != current_user %>
+        <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
+      <% elsif @post.user != current_user %>
+        <%= button_to 'Like', post_likes_path(@post), method: :post %>
+      <% end %>
+    </li>
+    <li class="list-inline-item">
+      <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+    </li>
+  </ul>
 </div>
 
 
-<br>
-<br>
-<p>
-  Content:<br> "<%= @post.content %>"
-</p>
+<div>
+  <p class="lead">
+    <br> <%= @post.content %>
+  </p>
+  <br>
+</div>
+
+<hr>
 
 
   <section class="section">
@@ -32,22 +48,8 @@
             <%= button_to 'Delete Post', { :controller => "posts", :action => "destroy", :post_id => @post.id, :user_id=> session[:user_id] }, :method=>:delete, data: { confirm: "Are you sure you want to delete this Post?" }, class: 'btn btn-danger' %>
     				</p>
           <% end %>
-          <ul class="list-inline">
-            <li class="list-inline-item">
-              <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
-              <% if pre_like && @post.user != current_user %>
-                <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
-              <% elsif @post.user != current_user %>
-                <%= button_to 'Like', post_likes_path(@post), method: :post %>
-              <% end %>
-            </li>
-            <li class="list-inline-item">
-              <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-            </li>
-          </ul>
   		  </div>
   		</nav>
-  		<hr/>
   	</div>
   </section>
 
