@@ -13,3 +13,7 @@ h1 {
 .card-body {
   flex: none !important;
 }
+
+.center {
+  margin: 0px auto;
+}
