@@ -17,3 +17,8 @@ h1 {
 .center {
   margin: 0px auto;
 }
+
+img.resize {
+    width:30px; /* you can use % */
+    height: auto;
+}
