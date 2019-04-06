@@ -34,19 +34,19 @@
               <% if current_user %>
                 <div class="form-label-group">
                   <label for="utpr_d"></label>
-                  <%= f.select(:utpr_d, [5.0,4.5,4.0,3.5,3.0,2.5,2.0], {:prompt => '-- Doubles
+                  <%= f.select(:utpr_d, ["5.0 (Doubles)","4.5 (Doubles)","4.0 (Doubles)","3.5 (Doubles)","3.0 (Doubles)","2.5 (Doubles)","2.0 (Doubles)"], {:prompt => '-- Doubles
                     UTPR --'}, class: "fadeIn", class: "form-control")%>
                 </div>
 
                 <div class="form-label-group">
                   <label for="utpr_m"></label>
-                  <%= f.select(:utpr_m, [5.0,4.5,4.0,3.5,3.0,2.5,2.0], {:prompt => '-- Mixed Doubles
+                  <%= f.select(:utpr_m, ["5.0 (Mixed)","4.5 (Mixed)","4.0 (Mixed)","3.5 (Mixed)","3.0 (Mixed)","2.5 (Mixed)","2.0 (Mixed)"], {:prompt => '-- Mixed Doubles
                     UTPR --'}, class: "form-control")%>
                 </div>
 
                 <div class="form-label-group">
                   <label for="utpr_s"></label>
-                  <%= f.select(:utpr_s, [5.0,4.5,4.0,3.5,3.0,2.5,2.0], {:prompt => '-- Singles
+                  <%= f.select(:utpr_s, ["5.0 (Singles)","4.5 (Singles)","4.0 (Singles)","3.5 (Singles)","3.0 (Singles)","2.5 (Singles)","2.0 (Singles)"], {:prompt => '-- Singles
                     UTPR --'}, class: "form-control")%><br>
                 </div>
 
