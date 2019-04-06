@@ -14,7 +14,7 @@
         <p class="card-text"><%= club.description %></p>
       </div>
       <div class="card-footer">
-        <p><%= club.users.count %> <%= (club.users.count) == 1 ? 'Member' : 'Members'%></p>
+        <small><%= club.users.count %> <%= (club.users.count) == 1 ? 'Member' : 'Members'%></small><br>
         <small class="text-muted"><%= time_ago_in_words(club.created_at) %> ago</small>
       </div>
     </div>
