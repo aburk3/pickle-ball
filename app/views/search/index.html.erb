@@ -20,11 +20,11 @@
           <div class="card-body typerwriter">
             <h5 class="card-title"><%= tournament.name %></h5>
               <p class="card-text typerwriter">
-
+                <small><%= tournament.city %>, <%= tournament.state %></small>
                 <br>
                 <span class=" badge badge-info"><%= tournament.follows.count %> <%= (tournament.follows.count) == 1 ? 'Follow' : 'Follows'%></span>
               </p>
-            <%= link_to "View Club", tournament_path(tournament), :class=>"btn btn-xs btn-secondary" %>
+            <%= link_to "View Tournament", tournament_path(tournament), :class=>"btn btn-xs btn-secondary" %>
           </div>
         </div><br>
       <% end %>
