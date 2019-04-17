@@ -7,136 +7,138 @@
   </div>
 </div>
 
-<div class="typewriter">
-  <span class="typewriter-text"><%= @user.first_name + " " + @user.last_name %></span>
+<div class="container">
+  <div id="app-container">
 
-  <br>
-  <span><strong>State:</strong><small> <%= @user.state %></small> </span>
-</div>
 
-<div class="resize">
-  <%= image_tag 'trainer_icon.png', :class => "resize" %>
-</div>
+    <div class="typewriter">
+      <span class="typewriter-text"><%= @user.first_name + " " + @user.last_name %></span>
 
-<div class="typewriter">
-  <span class=" badge badge-warning">Pickle Points: <%= score(current_user) %></span>
-
-  <br>
-
-  <span class=" badge badge-success"><%= @user.posts.count %> <%= (@user.posts.count) == 1 ? 'Post' : 'Posts'%></span>
-  <span class=" badge badge-info"><%= @user.comments.count %> <%= (@user.comments.count) == 1 ? 'Comment' : 'Comments'%></span>
-</div>
-
-<hr>
-
-<nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Posts</a>
-    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">UTPR</a>
-    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Clubs</a>
-  </div>
-</nav>
-<div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-    <div class="container py-2">
-      <% if @user.posts.any? %>
-        <h2 class="font-weight-light text-center text-muted py-3">Recent Posts</h2>
-        <% @user.posts.to_enum.with_index.reverse_each do |post, index| %>
-        <!-- timeline item 1 -->
-        <!--/row-->
-        <!-- timeline item 2 -->
-          <div class="row">
-              <div class="col-auto text-center flex-column d-none d-sm-flex">
-                  <div class="row h-50">
-                      <div class="col border-right">&nbsp;</div>
-                      <div class="col">&nbsp;</div>
-                  </div>
-                  <h5 class="m-2">
-                      <span class="badge badge-pill bg-success">&nbsp;</span>
-                  </h5>
-                  <% if post != @user.posts.first %>
-                    <div class="row h-50">
-                        <div class="col border-right">&nbsp;</div>
-                        <div class="col">&nbsp;</div>
-                    </div>
-                  <% end %>
-              </div>
-              <div class="col py-2">
-                  <div class="card border-success shadow">
-                      <div class="card-body">
-                          <div class="float-right text-success"><%= time_ago_in_words(post.created_at) %> ago</div>
-                          <h4 class="card-title text-success"><%= post.title %></h4>
-                          <p class="card-text"><%= post.content %></p>
-                          <%= button_to 'View Post', post_path(post), method: :get, class: 'btn btn-sm btn-outline-secondary' %>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        <% end %>
-      <% end %>
+      <br>
+      <span><strong>State:</strong><small> <%= @user.state %></small> </span>
     </div>
-    <!--container-->
+
+    <div class="typewriter">
+      <span class=" badge badge-warning">Pickle Points: <%= score(current_user) %></span>
+
+      <br>
+
+      <span class=" badge badge-success"><%= @user.posts.count %> <%= (@user.posts.count) == 1 ? 'Post' : 'Posts'%></span>
+      <span class=" badge badge-info"><%= @user.comments.count %> <%= (@user.comments.count) == 1 ? 'Comment' : 'Comments'%></span>
+    </div>
 
     <hr>
 
-  </div>
-
-  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-    <h2 class="font-weight-light text-center text-muted py-3"><%= @user.first_name + "'s UTPR Values" %></h2>
-    <div class="row text-center">
-      <% if @user.utpr_d || @user.utpr_m || @user.utpr_s %>
-        <div class="col-md-6" style="margin: auto">
-          <table class="table table-striped table-dark center">
-            <thead>
-              <tr>
-                <th scope="col">Doubles</th>
-                <th scope="col">Mixed</th>
-                <th scope="col">Singles</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><%= @user.utpr_d %></td>
-                <td><%= @user.utpr_m %></td>
-                <td><%= @user.utpr_s %></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      <% end %>
-
-    </div>
-  </div>
-
-  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-    <br>
-    <div class="col-md-6 float-right">
-      <div class="list-group">
-        <a href="<%= clubs_path %>" class="list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between">
-                <p class="mb-1"><b>All Recent Clubs Created</b></p>
-            </div>
-        </a>
-        <% @clubs.each do |club| %>
-          <a href="/clubs/<%= club.id %>" class="list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1"><%= club.name %> </h5>
-              <h6 class="mb-1"> Club Admin: <%= find_club_admin(club).first_name + " " + find_club_admin(club).last_name %> </h6>
-            </div>
-            <p class="mb-1">Members: <%= club.users.count %> | Club State: <%= club.state %> | Club City: <%= club.city %></p>
-            <b>Description:</b> <br>
-              <small><%= club.description %></small>
-          </a>
-        <% end %>
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Posts</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">UTPR</a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Clubs</a>
       </div>
-    </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="container py-2">
+          <% if @user.posts.any? %>
+            <h2 class="font-weight-light text-center text-muted py-3">Recent Posts</h2>
+            <% @user.posts.to_enum.with_index.reverse_each do |post, index| %>
+            <!-- timeline item 1 -->
+            <!--/row-->
+            <!-- timeline item 2 -->
+              <div class="row">
+                  <div class="col-auto text-center flex-column d-none d-sm-flex">
+                      <div class="row h-50">
+                          <div class="col border-right">&nbsp;</div>
+                          <div class="col">&nbsp;</div>
+                      </div>
+                      <h5 class="m-2">
+                          <span class="badge badge-pill bg-success">&nbsp;</span>
+                      </h5>
+                      <% if post != @user.posts.first %>
+                        <div class="row h-50">
+                            <div class="col border-right">&nbsp;</div>
+                            <div class="col">&nbsp;</div>
+                        </div>
+                      <% end %>
+                  </div>
+                  <div class="col py-2">
+                      <div class="card border-success shadow">
+                          <div class="card-body">
+                              <div class="float-right text-success"><%= time_ago_in_words(post.created_at) %> ago</div>
+                              <h4 class="card-title text-success"><%= post.title %></h4>
+                              <p class="card-text"><%= post.content %></p>
+                              <%= button_to 'View Post', post_path(post), method: :get, class: 'btn btn-sm btn-outline-secondary' %>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <!--container-->
 
-    <div class="float-left">
-      <br>
-      <h3><u>Clubs <%= @user.first_name %> is in:</u></h3>
-      <% @user.clubs.each do |club| %>
-        <%= link_to club.name, club_path(club) %><br>
-      <% end %>
+        <hr>
+
+      </div>
+
+      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <h2 class="font-weight-light text-center text-muted py-3"><%= @user.first_name + "'s UTPR Values" %></h2>
+        <div class="row text-center">
+          <% if @user.utpr_d || @user.utpr_m || @user.utpr_s %>
+            <div class="col-md-6" style="margin: auto">
+              <table class="table table-striped table-dark center">
+                <thead>
+                  <tr>
+                    <th scope="col">Doubles</th>
+                    <th scope="col">Mixed</th>
+                    <th scope="col">Singles</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><%= @user.utpr_d %></td>
+                    <td><%= @user.utpr_m %></td>
+                    <td><%= @user.utpr_s %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+        <br>
+        <div class="col-md-6 float-right">
+          <div class="list-group">
+            <a href="<%= clubs_path %>" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <p class="mb-1"><b>All Recent Clubs Created</b></p>
+                </div>
+            </a>
+            <% @clubs.each do |club| %>
+              <a href="/clubs/<%= club.id %>" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1"><%= club.name %> </h5>
+                  <h6 class="mb-1"> Club Admin: <%= find_club_admin(club).first_name + " " + find_club_admin(club).last_name %> </h6>
+                </div>
+                <p class="mb-1">Members: <%= club.users.count %> | Club State: <%= club.state %> | Club City: <%= club.city %></p>
+                <b>Description:</b> <br>
+                  <small><%= club.description %></small>
+              </a>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="float-left">
+          <br>
+          <h3><u>Clubs <%= @user.first_name %> is in:</u></h3>
+          <% @user.clubs.each do |club| %>
+            <%= link_to club.name, club_path(club) %><br>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
