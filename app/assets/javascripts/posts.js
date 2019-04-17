@@ -59,6 +59,7 @@ Post.prototype.formatIndex = function() {
 Post.prototype.formatShow = function() {
   let postHtml = `
     <h3>${this.title}</h3>
+    <button class="next-post">Next</button>
   `
   return postHtml
 }
