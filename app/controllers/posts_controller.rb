@@ -2,7 +2,10 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destory]
 
   def show
-    @post = Post.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @post }
+    end
   end
 
   def index
@@ -10,10 +13,6 @@ class PostsController < ApplicationController
   end
 
   def liked
-    @posts = []
-    current_user.likes.each do |post|
-      @posts << post.post
-    end
   end
 
   def new
@@ -22,11 +21,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    current_user.posts << @post
     if @post.save
       @post.save
-      current_user.score += 2
-      current_user.save
       redirect_to post_path(@post), notice: "Post was successfully created."
     else
       redirect_to new_post_path, notice: "Failed to create post."
@@ -48,8 +44,6 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    current_user.score -= 2
-    current_user.save
     redirect_to posts_path(@post)
   end
 
