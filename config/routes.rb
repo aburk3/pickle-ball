@@ -36,4 +36,5 @@ Rails.application.routes.draw do
   get "/near", to: "tournaments#near"
   get "/localclubs", to: "clubs#near", :as => 'near_club'
   get "/myclubs", to: "clubs#my_clubs", :as => 'my_clubs'
+  get 'posts/:id/next', to: 'posts#next'
 end

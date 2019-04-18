@@ -23,6 +23,17 @@ const bindClickHandlers = () => {
       $('#app-container').append(postHtml)
     })
   })
+
+  $(document).on('click', '.next-post', function() {
+    let id = $(this).attr('data-id')
+    fetch(`posts/${id}/next`)
+  })
+
+  $('#new_comment').on('submit', function(e) {
+    e.preventDefault()
+    console.log($(this).serialize())
+
+  })
 }
 
 const getPosts = () => {
@@ -59,7 +70,7 @@ Post.prototype.formatIndex = function() {
 Post.prototype.formatShow = function() {
   let postHtml = `
     <h3>${this.title}</h3>
-    <button class="next-post">Next</button>
+    <button class="next-post" data-id="${this.id}">Next</button>
   `
   return postHtml
 }
