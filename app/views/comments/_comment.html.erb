@@ -1,14 +1,8 @@
 <div class="box">
   <article class="media">
     <div class="media-content">
-      <div class="content">
-        <p>
-          <strong><%= link_to "#{ comment.user.first_name } #{ comment.user.last_name }", user_path(comment.user) %>:</strong>
-          <%= comment.content %><br>
-          <% if comment.user == current_user %>
-            <small><a href="/posts/<%= comment.post.id %>/comments/<%=comment.id %>/delete"> Delete Comment</a></small>
-          <% end %>
-        </p>
+      <div class="content" id="comment-container">
+      
       </div>
     </div>
   </article>

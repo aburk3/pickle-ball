@@ -31,8 +31,16 @@ const bindClickHandlers = () => {
 
   $('#new_comment').on('submit', function(e) {
     e.preventDefault()
-    console.log($(this).serialize())
+    let id = $(this).attr('data')
+    const values = $(this).serialize()
+    $('#comment_content').val('');
 
+    $.post(`/posts/${id}/comments`, values).done(function(data) {
+      let newComment = new Comment(data)
+      let commentHtml = newComment.formatComment()
+      $(':input[type="submit"]').prop('disabled', false);
+      $('#comment-container').append(commentHtml)
+    })
   })
 }
 
@@ -73,4 +81,19 @@ Post.prototype.formatShow = function() {
     <button class="next-post" data-id="${this.id}">Next</button>
   `
   return postHtml
+}
+
+function Comment(comment) {
+  this.content = comment.content
+  this.user = comment.user
+}
+
+Comment.prototype.formatComment = function() {
+  let commentHtml = `
+  <p>
+    <strong> ${ this.user.first_name } ${ this.user.last_name }:</strong>
+      ${ this.content }<br>
+  </p>
+  `
+  return commentHtml
 }

@@ -7,7 +7,8 @@ class CommentsController < ApplicationController
 		@post = Post.find(params[:post_id])
 		@post.comments << @comment
     if @comment.save
-      redirect_to post_path(@post)
+      # redirect_to post_path(@post)
+			render json: @comment
     else
       render post_path(@post)
     end
