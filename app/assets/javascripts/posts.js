@@ -1,5 +1,6 @@
 $(() => {
-  bindClickHandlers()
+  bindClickHandlers();
+  getAllComments();
 })
 
 const bindClickHandlers = () => {
@@ -27,7 +28,7 @@ const bindClickHandlers = () => {
   $(document).on('click', '.next-post', function() {
     nextId = parseInt($(".next-post").attr("data-id")) + 1;
 
-    $.get("/posts/" + nextId + ".json", function(data) { 
+    $.get("/posts/" + nextId + ".json", function(data) {
       $(".postTitle").text(data["title"]);
       $(".postContent").text(data["content"]);
       $(".js-next").attr("data-id", data["id"]);
@@ -103,3 +104,21 @@ Comment.prototype.formatComment = function() {
   `
   return commentHtml
 }
+
+// This is the JS for the next button on the old show page
+$(function () {
+  $(".js-next").on("click", function() {
+    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    $.get("/posts/" + nextId + ".json", function(data) {
+
+      console.log(data);
+      $(".postTitle").text(data["title"]);
+      $(".postLikes").text(data["likes"].length);
+      $(".postContent").text(data["content"]);
+      $(".postUser").text(data.user.first_name + data.user.last_name);
+      $(".postCreated").text(data.user.created_at);
+      // re-set the id to current on the link
+      $(".js-next").attr("data-id", data["id"]);
+    });
+  });
+});

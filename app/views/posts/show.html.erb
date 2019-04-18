@@ -69,20 +69,5 @@
   <a href="#" class="js-next" data-id="<%=@post.id%>">Next Post</a>
 
   <script type="text/javascript" charset="utf-8">
-  $(function () {
-    $(".js-next").on("click", function() {
-      var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-      $.get("/posts/" + nextId + ".json", function(data) {
-
-        console.log(data);
-        $(".postTitle").text(data["title"]);
-        $(".postLikes").text(data["likes"].length);
-        $(".postContent").text(data["content"]);
-        $(".postUser").text(data.user.first_name + data.user.last_name);
-        $(".postCreated").text(data.user.created_at);
-        // re-set the id to current on the link
-        $(".js-next").attr("data-id", data["id"]);
-      });
-    });
-  });
+  
   </script>
