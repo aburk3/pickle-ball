@@ -25,9 +25,14 @@ const bindClickHandlers = () => {
   })
 
   $(document).on('click', '.next-post', function() {
-    let id = $(this).attr('data-id')
-    fetch(`posts/${id}/next`)
-  })
+    nextId = parseInt($(".next-post").attr("data-id")) + 1;
+
+    $.get("/posts/" + nextId + ".json", function(data) { 
+      $(".postTitle").text(data["title"]);
+      $(".postContent").text(data["content"]);
+      $(".js-next").attr("data-id", data["id"]);
+    });
+  });
 
   $('#new_comment').on('submit', function(e) {
     e.preventDefault()
@@ -77,7 +82,8 @@ Post.prototype.formatIndex = function() {
 
 Post.prototype.formatShow = function() {
   let postHtml = `
-    <h3>${this.title}</h3>
+    <h3 class="postTitle">${this.title}</h3>
+    <p class="postContent">${ this.content }<p>
     <button class="next-post" data-id="${this.id}">Next</button>
   `
   return postHtml
