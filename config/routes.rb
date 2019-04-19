@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :posts do
+    get "/posts/:id/comments/new", to: 'comments#new'
     resources :comments do
       get "/delete", to: "comments#destroy"
     end

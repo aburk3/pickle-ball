@@ -1,7 +1,12 @@
 class CommentsController < ApplicationController
 	before_action :set_comment, only: [:show, :edit, :update, :destory]
 
+	def new
+		@post = Post.find(params[:post_id])
+		binding.pry
+	end
 	def create
+		binding.pry
 		@comment = Comment.new(comment_params)
 		@comment.user = current_user
 		@post = Post.find(params[:post_id])

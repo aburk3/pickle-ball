@@ -1,6 +1,5 @@
 $(() => {
   bindClickHandlers();
-  getAllComments();
 })
 
 const bindClickHandlers = () => {
@@ -82,10 +81,14 @@ Post.prototype.formatIndex = function() {
 }
 
 Post.prototype.formatShow = function() {
+  debugger
+
   let postHtml = `
     <h3 class="postTitle">${this.title}</h3>
-    <p class="postContent">${ this.content }<p>
+    <p class="postContent">${ this.content }</p>
+    <p>${this.comments.content}</p>
     <button class="next-post" data-id="${this.id}">Next</button>
+    <a href="/posts/${this.id}/comments/new">Create Comment</a>
   `
   return postHtml
 }
