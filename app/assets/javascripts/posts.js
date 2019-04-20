@@ -10,7 +10,6 @@ const bindClickHandlers = () => {
     getPosts()
   })
 
-
   $(document).on('click', ".show_link", function(e) {
     e.preventDefault()
     $('#app-container').html('')
@@ -49,6 +48,9 @@ const bindClickHandlers = () => {
   })
 }
 
+/**
+ * Fetches the Post's and appends the returned HTML to index container
+ */
 const getPosts = () => {
   fetch (`/posts.json`)
     .then(res => res.json())
@@ -75,6 +77,9 @@ function Post(post) {
   this.likes = post.likes
 }
 
+/**
+ * Formats the Post's index page
+ */
 Post.prototype.formatIndex = function() {
   let postHtml = `
     <a href="/posts/${this.id}" data-id="${this.id}" class="show_link"><h1>${this.title}</h1></a>
@@ -108,17 +113,4 @@ Post.prototype.formatShow = function() {
 function Comment(comment) {
   this.content = comment.content
   this.user = comment.user
-}
-
-/**
- * Formats the html for a Post's Comment(s)
- */
-Comment.prototype.formatComment = function() {
-  let commentHtml = `
-  <ul
-    <strong>${ this.user.first_name } ${ this.user.last_name }:</strong>
-      ${ this.content }<br>
-  </p>
-  `
-  return commentHtml
 }
