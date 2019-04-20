@@ -36,14 +36,23 @@ const bindClickHandlers = () => {
     });
   });
 
+  /**
+   * Hijacks the 'Create Post' submit form
+   */
   $('#new_post').on('submit', function(e) {
     e.preventDefault();
     const values = $(this).serialize();
 
-    $.post('/posts', values)
-      .done(function(data) {
+    /**
+     * Makes AJAX post, clears container html, creates Post object, formats HTML, and appends HTML to container
+     */
+    $.post('/posts', values).done(function(data) {
+      $('#app-container').html('');
+      const newPost = new Post(data)
+      const htmlToAdd = newPost.formatShow()
 
-      }
+      $('#app-container').html(htmlToAdd);
+    })
   })
 
   $('#new_comment').on('submit', function(e) {
@@ -75,6 +84,9 @@ const getPosts = () => {
     })
 }
 
+/**
+ * Post Constructor for creating a new Post object
+ */
 function Post(post) {
   this.id = post.id
   this.title = post.title
@@ -90,7 +102,9 @@ Post.prototype.formatIndex = function() {
   `
   return postHtml
 }
-
+/**
+ * Used to format the HTML for the Post show page
+ */
 Post.prototype.formatShow = function() {
   let commentHtml = "";
   let postHtml = `

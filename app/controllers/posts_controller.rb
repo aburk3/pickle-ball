@@ -27,6 +27,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save!
       # redirect_to post_path(@post), notice: "Post was successfully created."
+      render json: @post
     else
       redirect_to new_post_path, notice: "Failed to create post."
     end
