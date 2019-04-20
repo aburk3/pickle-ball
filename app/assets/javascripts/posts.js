@@ -3,11 +3,13 @@ $(() => {
 })
 
 const bindClickHandlers = () => {
+  // Prevents Default and updates URL
   $('.all_posts').on('click', (e) => {
     e.preventDefault()
     history.pushState(null, null, "/posts")
     getPosts()
   })
+
 
   $(document).on('click', ".show_link", function(e) {
     e.preventDefault()
@@ -34,6 +36,16 @@ const bindClickHandlers = () => {
     });
   });
 
+  $('#new_post').on('submit', function(e) {
+    e.preventDefault();
+    const values = $(this).serialize();
+
+    $.post('/posts', values)
+      .done(function(data) {
+
+      }
+  })
+
   $('#new_comment').on('submit', function(e) {
     e.preventDefault()
     let id = $(this).attr('data')
@@ -56,7 +68,6 @@ const getPosts = () => {
       $('#app-container').html('')
       posts.forEach(post => {
         let newPost = new Post(post)
-
         let postHtml = newPost.formatIndex()
 
         $('#app-container').append(postHtml)
@@ -81,15 +92,20 @@ Post.prototype.formatIndex = function() {
 }
 
 Post.prototype.formatShow = function() {
-  debugger
-
+  let commentHtml = "";
   let postHtml = `
-    <h3 class="postTitle">${this.title}</h3>
+    <h2 class="postTitle">${this.title}</h2>
     <p class="postContent">${ this.content }</p>
-    <p>${this.comments.content}</p>
+    <ul>`
+  for (i = 0; i < this.comments.length; i++) {
+    postHtml += `
+      <li>${ this.comments[i].content }</li>
+    `
+  }
+  postHtml += `
+    </ul>
     <button class="next-post" data-id="${this.id}">Next</button>
-    <a href="/posts/${this.id}/comments/new">Create Comment</a>
-  `
+    <a href="/posts/${this.id}/comments/new">Create Comment</a>`
   return postHtml
 }
 
@@ -101,7 +117,7 @@ function Comment(comment) {
 Comment.prototype.formatComment = function() {
   let commentHtml = `
   <p>
-    <strong> ${ this.user.first_name } ${ this.user.last_name }:</strong>
+    <strong>${ this.user.first_name } ${ this.user.last_name }:</strong>
       ${ this.content }<br>
   </p>
   `

@@ -24,13 +24,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    current_user.posts << @post
-    if @post.save
-      @post.save
-      current_user.score += 2
-      current_user.save
-      redirect_to post_path(@post), notice: "Post was successfully created."
+    @post = current_user.posts.build(post_params)
+    if @post.save!
+      # redirect_to post_path(@post), notice: "Post was successfully created."
     else
       redirect_to new_post_path, notice: "Failed to create post."
     end
