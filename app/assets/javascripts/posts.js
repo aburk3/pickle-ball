@@ -47,20 +47,6 @@ const bindClickHandlers = () => {
       $('#app-container').html(htmlToAdd);
     })
   })
-
-  $('#new_comment').on('submit', function(e) {
-    e.preventDefault()
-    let id = $(this).attr('data')
-    const values = $(this).serialize()
-    $('#comment_content').val('');
-
-    $.post(`/posts/${id}/comments`, values).done(function(data) {
-      let newComment = new Comment(data)
-      let commentHtml = newComment.formatComment()
-      $(':input[type="submit"]').prop('disabled', false);
-      $('#comment-container').append(commentHtml)
-    })
-  })
 }
 
 const getPosts = () => {
@@ -129,7 +115,7 @@ function Comment(comment) {
  */
 Comment.prototype.formatComment = function() {
   let commentHtml = `
-  <p>
+  <ul
     <strong>${ this.user.first_name } ${ this.user.last_name }:</strong>
       ${ this.content }<br>
   </p>
