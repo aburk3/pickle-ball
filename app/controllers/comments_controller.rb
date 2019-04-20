@@ -3,8 +3,8 @@ class CommentsController < ApplicationController
 
 	def new
 		@post = Post.find(params[:post_id])
-		binding.pry
 	end
+	
 	def create
 		binding.pry
 		@comment = Comment.new(comment_params)

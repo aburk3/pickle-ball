@@ -26,16 +26,6 @@ const bindClickHandlers = () => {
     })
   })
 
-  $(document).on('click', '.next-post', function() {
-    nextId = parseInt($(".next-post").attr("data-id")) + 1;
-
-    $.get("/posts/" + nextId + ".json", function(data) {
-      $(".postTitle").text(data["title"]);
-      $(".postContent").text(data["content"]);
-      $(".js-next").attr("data-id", data["id"]);
-    });
-  });
-
   /**
    * Hijacks the 'Create Post' submit form
    */
@@ -44,7 +34,10 @@ const bindClickHandlers = () => {
     const values = $(this).serialize();
 
     /**
-     * Makes AJAX post, clears container html, creates Post object, formats HTML, and appends HTML to container
+     * Makes AJAX post,
+     * clears container html,
+     * creates Post object, formats HTML,
+     * and appends HTML to container
      */
     $.post('/posts', values).done(function(data) {
       $('#app-container').html('');
@@ -108,7 +101,7 @@ Post.prototype.formatIndex = function() {
 Post.prototype.formatShow = function() {
   let commentHtml = "";
   let postHtml = `
-    <h2 class="postTitle">${this.title}</h2>
+    <h2 class="postTitle">${this.title}</h2> by: ${this.user.first_name + " " + this.user.last_name}
     <p class="postContent">${ this.content }</p>
     <ul>`
   for (i = 0; i < this.comments.length; i++) {
@@ -118,16 +111,22 @@ Post.prototype.formatShow = function() {
   }
   postHtml += `
     </ul>
-    <button class="next-post" data-id="${this.id}">Next</button>
     <a href="/posts/${this.id}/comments/new">Create Comment</a>`
+
   return postHtml
 }
 
+/**
+ * Constructor function for Comments
+ */
 function Comment(comment) {
   this.content = comment.content
   this.user = comment.user
 }
 
+/**
+ * Formats the html for a Post's Comment(s)
+ */
 Comment.prototype.formatComment = function() {
   let commentHtml = `
   <p>
@@ -137,21 +136,3 @@ Comment.prototype.formatComment = function() {
   `
   return commentHtml
 }
-
-// This is the JS for the next button on the old show page
-$(function () {
-  $(".js-next").on("click", function() {
-    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-    $.get("/posts/" + nextId + ".json", function(data) {
-
-      console.log(data);
-      $(".postTitle").text(data["title"]);
-      $(".postLikes").text(data["likes"].length);
-      $(".postContent").text(data["content"]);
-      $(".postUser").text(data.user.first_name + data.user.last_name);
-      $(".postCreated").text(data.user.created_at);
-      // re-set the id to current on the link
-      $(".js-next").attr("data-id", data["id"]);
-    });
-  });
-});
