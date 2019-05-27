@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_04_01_112524) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -32,8 +35,8 @@ ActiveRecord::Schema.define(version: 2019_04_01_112524) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
-    t.integer "user_id"
-    t.integer "post_id"
+    t.bigint "user_id"
+    t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
@@ -41,8 +44,8 @@ ActiveRecord::Schema.define(version: 2019_04_01_112524) do
   end
 
   create_table "follows", force: :cascade do |t|
-    t.integer "tournament_id"
-    t.integer "user_id"
+    t.bigint "tournament_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tournament_id"], name: "index_follows_on_tournament_id"
@@ -50,8 +53,8 @@ ActiveRecord::Schema.define(version: 2019_04_01_112524) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "user_id"
+    t.bigint "post_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_likes_on_post_id"
@@ -63,7 +66,7 @@ ActiveRecord::Schema.define(version: 2019_04_01_112524) do
     t.string "description"
     t.integer "count"
     t.datetime "meeting_datetime"
-    t.integer "club_id"
+    t.bigint "club_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["club_id"], name: "index_meetings_on_club_id"
@@ -73,7 +76,7 @@ ActiveRecord::Schema.define(version: 2019_04_01_112524) do
     t.string "title"
     t.string "content"
     t.integer "likes", default: 0
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
@@ -82,8 +85,8 @@ ActiveRecord::Schema.define(version: 2019_04_01_112524) do
 
   create_table "tournament_comments", force: :cascade do |t|
     t.string "content"
-    t.integer "user_id"
-    t.integer "tournament_id"
+    t.bigint "user_id"
+    t.bigint "tournament_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tournament_id"], name: "index_tournament_comments_on_tournament_id"
@@ -104,8 +107,8 @@ ActiveRecord::Schema.define(version: 2019_04_01_112524) do
   end
 
   create_table "user_clubs", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "club_id"
+    t.bigint "user_id"
+    t.bigint "club_id"
     t.boolean "favorite_club"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -114,8 +117,8 @@ ActiveRecord::Schema.define(version: 2019_04_01_112524) do
   end
 
   create_table "user_tournaments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "tournament_id"
+    t.bigint "user_id"
+    t.bigint "tournament_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tournament_id"], name: "index_user_tournaments_on_tournament_id"
@@ -146,4 +149,18 @@ ActiveRecord::Schema.define(version: 2019_04_01_112524) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
+  add_foreign_key "follows", "tournaments"
+  add_foreign_key "follows", "users"
+  add_foreign_key "likes", "posts"
+  add_foreign_key "likes", "users"
+  add_foreign_key "meetings", "clubs"
+  add_foreign_key "posts", "users"
+  add_foreign_key "tournament_comments", "tournaments"
+  add_foreign_key "tournament_comments", "users"
+  add_foreign_key "user_clubs", "clubs"
+  add_foreign_key "user_clubs", "users"
+  add_foreign_key "user_tournaments", "tournaments"
+  add_foreign_key "user_tournaments", "users"
 end
