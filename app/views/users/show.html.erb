@@ -11,7 +11,11 @@
   <span class="typewriter-text"><%= @user.first_name + " " + @user.last_name %></span>
 
   <br>
-  <span><strong>State:</strong><small> <%= @user.state %></small> </span>
+  <% if @user.state %>
+    <span><strong>State:</strong><small> <%= @user.state %></small> </span>
+  <% else %>
+    <span><strong>State:</strong><small> Value set in 'Profile Settings' above</small> </span>
+  <% end %>
 </div>
 
 <div class="typewriter">
