@@ -2,6 +2,7 @@
 module ApplicationHelper
   def us_states
     [
+      ['-State-', '-State-'],
       ['AL', 'Alabama'],
       ['AK', 'Alaska'],
       ['AZ', 'Arizona'],
