@@ -1,4 +1,7 @@
 <div class="container py-2">
+  <div class="text-center">
+    <h1><b>Posts You Like</b></h1>
+  </div>
   <% if @posts.any? %>
     <h2 class="font-weight-light text-center text-muted py-3">Liked Posts</h2><hr>
     <%= button_to 'All Posts', posts_path, method: :get, class: 'btn btn-success' %><br>
@@ -40,6 +43,7 @@
               </div>
           </div>
       </div>
+
     <% end %>
   <% end %>
 </div>
