@@ -2,6 +2,11 @@
   <h1 class="text-center">Admin Page</h1><br>
   <p>Users count: <%= User.all.count %></p>
   <p>Last User created at: <%= User.last.created_at %></p>
+  <ol>
+    <% User.all.each do |user| %>
+      <li><%= user.first_name %> <%= user.last_name %> - <%= user.state %> - Created at: <%= user.created_at %></li>
+    <% end %>
+  </ol>
   <hr>
   <p>Tournaments count: <%= Tournament.all.count %></p>
   <p>Last Tournament created at: <%= Tournament.last.created_at %></p>
