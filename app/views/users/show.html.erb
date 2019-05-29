@@ -19,12 +19,12 @@
 </div>
 
 <div class="typewriter">
-  <span class=" badge badge-warning">Pickle Points: <%= score(current_user) %></span>
+  <span class=" badge badge-warning">Pickle Points: <%= score(@user) %></span>
 
   <br>
 
   <span class=" badge badge-success"><%= @user.posts.count %> <%= (@user.posts.count) == 1 ? 'Post' : 'Posts'%></span>
-  <span class=" badge badge-info"><%= tournament_comments(current_user) %> <%= (tournament_comments(current_user)) == 1 ? 'Comment' : 'Comments'%></span>
+  <span class=" badge badge-info"><%= total_comments(@user) %> <%= (total_comments(@user)) == 1 ? 'Comment' : 'Comments'%></span>
 </div>
 
 <hr>
