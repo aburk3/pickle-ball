@@ -42,7 +42,7 @@
   		  <div class="level-right">
           <% if current_user == @post.user %>
     		  	<p class="level-item">
-              <%= button_to 'Edit Details', edit_post_path(@post), method: :get, class: 'btn btn-warning' %><br>
+              <%= button_to 'Edit Details', edit_post_path(@post), method: :get, class: 'btn btn-warning' %>
     		  	</p>
     		  	<p class="level-item">
             <%= button_to 'Delete Post', { :controller => "posts", :action => "destroy", :post_id => @post.id, :user_id=> session[:user_id] }, :method=>:delete, data: { confirm: "Are you sure you want to delete this Post?" }, class: 'btn btn-danger' %>
