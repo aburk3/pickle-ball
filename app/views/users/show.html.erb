@@ -24,7 +24,7 @@
   <br>
 
   <span class=" badge badge-success"><%= @user.posts.count %> <%= (@user.posts.count) == 1 ? 'Post' : 'Posts'%></span>
-  <span class=" badge badge-info"><%= @user.comments.count %> <%= (@user.comments.count) == 1 ? 'Comment' : 'Comments'%></span>
+  <span class=" badge badge-info"><%= tournament_comments(current_user) %> <%= (tournament_comments(current_user)) == 1 ? 'Comment' : 'Comments'%></span>
 </div>
 
 <hr>
