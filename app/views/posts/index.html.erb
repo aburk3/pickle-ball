@@ -2,10 +2,10 @@
   <div class="text-center">
     <h1><b>Pickleball Posts</b></h1>
   </div>
-  <%= button_to 'Create New Post', new_post_path, method: :get, class: 'btn btn-primary' %><br>
+
+  <%= button_to 'Create New Post', new_post_path, method: :get, class: 'btn btn-success' %><br>
   <% if @posts.any? %>
-    <h2 class="font-weight-light text-center text-muted py-3">Pickleball Posts</h2><hr>
-    <%= button_to 'Create New Post', new_post_path, method: :get, class: 'btn btn-success' %><br>
+
     <% @posts.to_enum.with_index.reverse_each do |post, index| %>
     <!-- timeline item 1 -->
     <!--/row-->

@@ -79,6 +79,10 @@ module ApplicationHelper
     comments
   end
 
+  def tab_selected(item)
+    is_active = (item.count > 0) ? "active" : ''
+  end
+
 
 
 end

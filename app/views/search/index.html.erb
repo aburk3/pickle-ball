@@ -1,12 +1,24 @@
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Tournaments (<%= @tournaments.count %>)</a>
+    <% if @users.count == 0 && @clubs.count == 0 %>
+      <a class="nav-link <%= tab_selected(@tournaments) %>" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Tournaments (<%= @tournaments.count %>)</a>
+    <% else %>
+      <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Tournaments (<%= @tournaments.count %>)</a>
+    <% end %>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Users (<%= @users.count %>)</a>
+    <% if @tournaments.count == 0 && @clubs.count == 0 %>
+      <a class="nav-link <%= tab_selected(@users) %> " id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Users (<%= @users.count %>)</a>
+    <% else %>
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Users (<%= @users.count %>)</a>
+    <% end %>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Clubs (<%= @clubs.count %>)</a>
+    <% if @tournaments.count == 0 && @users.count == 0 %>
+      <a class="nav-link <%= tab_selected(@clubs) %>" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Clubs (<%= @clubs.count %>)</a>
+    <% else %>
+      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Clubs (<%= @clubs.count %>)</a>
+    <% end %>
   </li>
 </ul>
 
