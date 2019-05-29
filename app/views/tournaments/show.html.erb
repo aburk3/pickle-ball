@@ -65,7 +65,7 @@
           <div class="media-content">
             <div class="content">
               <p>
-                <strong><%= comment.user.first_name + " " + comment.user.last_name%>:</strong>
+                <strong><%= link_to "#{ comment.user.first_name } #{ comment.user.last_name }", user_path(comment.user) %>:</strong>
                 <%= comment.content %><br>
                 <% if comment.user == current_user %>
                   <a href="/tournaments/<%= comment.tournament.id %>/tournament_comments/<%=comment.id %>/delete"> Delete Comment</a>
