@@ -17,7 +17,7 @@
 
   <div class="field">
     <%= f.label :state, "State" %><br>
-    <%= f.select :state, options_for_select(us_states) %>
+    <%= f.select :state, options_for_select(us_states, selected: @tournament.state, prompt: "State") %>
   </div>
 
   <div class="field">
