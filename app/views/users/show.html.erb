@@ -76,8 +76,12 @@
       <% end %>
     </div>
     <!--container-->
-
-    <hr>
+    <% if @user.posts.count > 0 %>
+      <hr>
+    <% else %>
+      <br>
+      <h4>No posts have been created yet.</h4>
+    <% end %>
 
   </div>
 
