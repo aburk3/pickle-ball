@@ -70,6 +70,9 @@
             <li class="nav-item">
               <a class="nav-link" href="<%= edit_user_path(current_user) %>">Profile Settings</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= my_resources_path %>">Resources</a>
+            </li>
           </ul>
           <%= form_tag(search_path, method: 'get', class: 'form-inline my-2 my-lg-0') do %>
           	<%= search_field_tag 'search', params[:search], class: 'form-control mr-sm-2', placeholder: 'Search' %>
