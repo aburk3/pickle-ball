@@ -37,4 +37,5 @@ Rails.application.routes.draw do
   get "/localclubs", to: "clubs#near", :as => 'near_club'
   get "/myclubs", to: "clubs#my_clubs", :as => 'my_clubs'
   get "/resources" => "static#show", :as => 'my_resources'
+  get "/admin" => "admin#show"
 end

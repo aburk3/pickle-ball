@@ -1,0 +1,14 @@
+<% if current_user.email == "aburk3@gmail.com"%>
+  <h1 class="text-center">Admin Page</h1><br>
+  <p>Users count: <%= User.all.count %></p>
+  <p>Last User created at: <%= User.last.created_at %></p>
+  <hr>
+  <p>Tournaments count: <%= Tournament.all.count %></p>
+  <p>Last Tournament created at: <%= Tournament.last.created_at %></p>
+  <hr>
+  <p>Clubs count: <%= Club.all.count %></p>
+  <p>Last Club created at: <%= Club.last.created_at %></p>
+  <hr>
+  <p>Posts count: <%= Post.all.count %></p>
+  <p>Last Post created at: <%= Post.last.created_at %></p>
+<% end %>
