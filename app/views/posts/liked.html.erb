@@ -2,6 +2,7 @@
   <div class="text-center">
     <h1><b>Posts You Like</b></h1>
   </div>
+  <%= button_to 'Create New Post', new_post_path, method: :get, class: 'btn btn-success' %><br>
   <% if @posts.any? %>
     <h2 class="font-weight-light text-center text-muted py-3">Liked Posts</h2><hr>
     <%= button_to 'All Posts', posts_path, method: :get, class: 'btn btn-success' %><br>

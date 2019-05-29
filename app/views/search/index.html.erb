@@ -1,12 +1,12 @@
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Tournaments (<%= @tournaments.count %>)</a>
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Tournaments (<%= @tournaments.count %>)</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Users (<%= @users.count %>)</a>
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Users (<%= @users.count %>)</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Clubs (<%= @clubs.count %>)</a>
+      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Clubs (<%= @clubs.count %>)</a>
   </li>
 </ul>
 
@@ -49,7 +49,7 @@
                 <br>
 
                 <span class=" badge badge-success"><%= user.posts.count %> <%= (user.posts.count) == 1 ? 'Post' : 'Posts'%></span>
-                <span class=" badge badge-info"><%= user.comments.count %> <%= (user.comments.count) == 1 ? 'Comment' : 'Comments'%></span>
+                <span class=" badge badge-info"><%= total_comments(user) %> <%= total_comments(user) == 1 ? 'Comment' : 'Comments'%></span>
               </p>
             <%= link_to "View Profile", user_path(user), :class=>"btn btn-xs btn-secondary" %>
           </div>

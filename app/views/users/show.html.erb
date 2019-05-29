@@ -14,17 +14,17 @@
   <% if @user.state && @user.state != '-State-' %>
     <span><strong>State:</strong><small> <%= @user.state %></small> </span>
   <% elsif !@user.state || @user.state == '-State-' %>
-    <span><strong>State:</strong><small> Value set in 'Profile Settings' above</small> </span>
+    <span><strong>State:</strong><small>Change in Settings</small> </span>
   <% end %>
 </div>
 
 <div class="typewriter">
-  <span class=" badge badge-warning">Pickle Points: <%= score(current_user) %></span>
+  <span class=" badge badge-warning">Pickle Points: <%= score(@user) %></span>
 
   <br>
 
   <span class=" badge badge-success"><%= @user.posts.count %> <%= (@user.posts.count) == 1 ? 'Post' : 'Posts'%></span>
-  <span class=" badge badge-info"><%= @user.comments.count %> <%= (@user.comments.count) == 1 ? 'Comment' : 'Comments'%></span>
+  <span class=" badge badge-info"><%= total_comments(@user) %> <%= (total_comments(@user)) == 1 ? 'Comment' : 'Comments'%></span>
 </div>
 
 <hr>
@@ -76,8 +76,12 @@
       <% end %>
     </div>
     <!--container-->
-
-    <hr>
+    <% if @user.posts.count > 0 %>
+      <hr>
+    <% else %>
+      <br>
+      <h4>No posts have been created yet.</h4>
+    <% end %>
 
   </div>
 

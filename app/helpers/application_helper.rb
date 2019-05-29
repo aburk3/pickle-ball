@@ -68,11 +68,19 @@ module ApplicationHelper
 
   def score(user)
     likes = user.likes.count
-    comments = user.comments.count * 2
     posts = user.posts.count * 4
+    comments = total_comments(user) * 2
     clubs = user.clubs.count * 3
     likes + comments + posts + clubs
   end
 
+  def total_comments(user)
+    comments = (user.comments.count + user.tournament_comments.count)
+    comments
+  end
+
+  def tab_selected(item)
+    is_active = (item.count > 0) ? "active" : ''
+  end
 
 end
