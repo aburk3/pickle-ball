@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments do
       get "/delete", to: "comments#destroy"
+      resources :upvotes
+
     end
     resources :likes
   end
@@ -32,6 +34,7 @@ Rails.application.routes.draw do
   post "/admin", to: "clubs#make_admin", :as => 'admin'
   get "/search", to: "search#index", :as => 'search'
   get "/liked", to: "posts#liked"
+  get "/upvoted", to: "comments#upvoted"
   get "/followed", to: "tournaments#followed"
   get "/near", to: "tournaments#near"
   get "/localclubs", to: "clubs#near", :as => 'near_club'

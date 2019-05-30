@@ -30,6 +30,7 @@ class LikesController < ApplicationController
     end
 
     def find_like
+      binding.pry
      @like = @post.likes.find(params[:id])
     end
 
