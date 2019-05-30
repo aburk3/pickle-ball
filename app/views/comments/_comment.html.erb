@@ -5,6 +5,18 @@
         <p>
           <strong><%= link_to "#{ comment.user.first_name } #{ comment.user.last_name }", user_path(comment.user) %>:</strong>
           <%= comment.content %><br>
+
+
+              <% pre_upvote = comment.upvotes.find { |upvote| upvote.user_id == current_user.id} %>
+              <% if pre_upvote && comment.user != current_user %>
+                <%= button_to 'Downvote', post_comment_upvote_path(@post, comment, pre_upvote), method: :delete %>
+              <% elsif comment.user != current_user %>
+                <%= button_to 'Upvote', post_comment_upvotes_path(@post, comment), method: :post %>
+              <% end %>
+
+              <span><%= comment.upvotes.count %> <%= (comment.upvotes.count) == 1 ? 'Upvote' : 'Upvotes'%></span>
+
+
           <% if comment.user == current_user %>
             <small><a href="/posts/<%= comment.post.id %>/comments/<%=comment.id %>/delete"> Delete Comment</a></small>
           <% end %>

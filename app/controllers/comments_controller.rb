@@ -11,6 +11,13 @@ class CommentsController < ApplicationController
     else
       render post_path(@post)
     end
+	end
+
+	def liked
+    @comments = []
+    current_user.upvotes.each do |post|
+      @comments << post.post
+    end
   end
 
 	def destroy
