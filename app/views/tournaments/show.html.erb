@@ -1,13 +1,12 @@
 <div class="text-center">
   <h1><%= @tournament.name %></h1>
   <div class="typewriter">
-    <span class=" badge badge-danger"><b>Sanctioning Status:</b> <%= @tournament.status %></span>
-
+    <span class=" badge badge-danger tournament_labels"><b>Sanctioning Status:</b> <%= @tournament.status %></span>
     <br>
-    <span class=" badge badge-success"><%= @tournament.follows.count %> <%= (@tournament.follows.count) == 1 ? 'Follow' : 'Followers'%></span>
+    <br>
+    <span class=" badge badge-success tournament_labels"><%= @tournament.follows.count %> <%= (@tournament.follows.count) == 1 ? 'Follow' : 'Followers'%></span>
   </div>
   <hr>
-  <h6><%= "Users Following this Tournament: #{@tournament.follows.count}" %></h6>
 </div>
 
 
@@ -24,7 +23,7 @@
     <%= button_to 'Edit Details', edit_tournament_path, method: :get, class: 'btn btn-warning' %><br>
   <% end %>
   <p id="notice"><%= notice %></p>
-  <h3>"<%= @tournament.description %>"</h3>
+  <h3 id="tournament_description">"<%= @tournament.description %>"</h3>
 </div>
 
 <div class="row">
