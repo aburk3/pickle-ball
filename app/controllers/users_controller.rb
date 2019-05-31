@@ -10,8 +10,17 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user_feed = []
     @clubs = Club.last(2)
+
     @users = User.all
+
+    @tournaments = Tournament.all
+    @posts = Post.all
+    @clubs = Club.all
+
+    @user_feed = @tournaments + @posts + @clubs
+    @sorted_feed = @user_feed.sort_by {|obj| obj.created_at}.reverse!
   end
 
   def create

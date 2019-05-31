@@ -31,13 +31,61 @@
 
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Posts</a>
+    <a class="nav-item nav-link active" id="nav-feed-tab" data-toggle="tab" href="#nav-feed" role="tab" aria-controls="nav-feed" aria-selected="true">Feed</a>
+    <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="false">Posts</a>
     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">UTPR</a>
     <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Clubs</a>
   </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+  <div class="tab-pane fade show active" id="nav-feed" role="tabpanel" aria-labelledby="nav-feed-tab">
+    <div class="container py-2">
+      <h2 class="font-weight-light text-center text-muted py-3">Feed</h2>
+      <% @sorted_feed.each do |object| %>
+        <div class="row">
+          <div class="col-auto text-center flex-column d-none d-sm-flex">
+            <div class="row h-50">
+              <div class="col border-right">&nbsp;</div>
+              <div class="col">&nbsp;</div>
+            </div>
+            <h5 class="m-2">
+                <span class="badge badge-pill bg-success">&nbsp;</span>
+            </h5>
+            <% if object != @sorted_feed.first %>
+              <div class="row h-50">
+                  <div class="col border-right">&nbsp;</div>
+                  <div class="col">&nbsp;</div>
+              </div>
+            <% end %>
+          </div>
+          <div class="col py-2">
+            <div class="card border-success shadow">
+              <div class="card-body">
+                <span class="float-right badge badge-secondary"><%= object.class %></span><br>
+                <div class="float-right text-success"><%= time_ago_in_words(object.created_at) %> ago</div>
+                <% if object.respond_to?(:user) %>
+                  <div class="float-right text-success">Created by: <%= object.user.first_name + " " + object.user.last_name%>...</div>
+                <% end %>
+                <% if object.respond_to?(:title) %>
+                  <h4 class="card-title text-success"><%= object.title %></h4>
+                <% else %>
+                  <h4 class="card-title text-success"><%= object.name %></h4>
+                <% end %>
+                <% if object.respond_to?(:content) %>
+                  <p class="card-text"><%= object.content %></p>
+                <% else %>
+                  <p class="card-text"><%= object.description %></p>
+                <% end %>
+                <%= button_to 'View', eval("#{object.class.name.downcase}_path(object)"), method: :get, class: 'btn btn-sm btn-outline-secondary' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="tab-pane fade show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
     <div class="container py-2">
       <% if @user.posts.any? %>
         <h2 class="font-weight-light text-center text-muted py-3">Recent Posts</h2>
