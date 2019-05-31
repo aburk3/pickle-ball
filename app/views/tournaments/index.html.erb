@@ -1,7 +1,9 @@
 <div class="text-center">
   <h1><b>Pickleball Tournaments</b></h1>
 </div>
+
 <%= button_to 'Create Tournament', new_tournament_path, method: :get, class: 'btn btn-primary' %><br>
+
 <div class="card-columns">
   <% @tournaments.each do |tournament| %>
     <div class="card">
