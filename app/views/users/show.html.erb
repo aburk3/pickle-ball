@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
   <div class="col-md-2">
-    <% if @user.image %>
-      <img src="<%= @user.image %>", class="user_pic">
-    <% end %>
+    <div class="field">
+      <%= form_for(@user) do |f| %>
+      <% end %>
+    </div>
+    <%= image_tag(@user.image, :class => "profile-image") if @user.image.attached? %>
   </div>
 </div>
 
