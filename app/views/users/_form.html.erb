@@ -23,8 +23,13 @@
               <% end %>
 
               <div class="form-label-group">
-                <%= f.label "Profile photo" %>
-                <%= f.file_field :image %>
+                <% if @user.image.attached? %>
+                  <%= f.label :remove_profile_image %>
+                  <%= f.check_box :remove_profile_image %>
+                <% else %>
+                  <%= f.label "Profile photo" %>
+                  <%= f.file_field :image %>
+                <% end %>
               </div>
 
               <div class="form-label-group">

@@ -5,7 +5,7 @@
       <%= form_for(@user) do |f| %>
       <% end %>
     </div>
-    <%= image_tag(@user.image, width: 200, height: 150) if @user.image.attached? %>
+    <%= image_tag(@user.image, :class => "profile-image") if @user.image.attached? %>
   </div>
 </div>
 

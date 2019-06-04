@@ -82,7 +82,8 @@ class UsersController < ApplicationController
         :member_num,
         :skill_d,
         :skill_s,
-        :image
+        :image,
+        :remove_profile_image
       )
     end
 

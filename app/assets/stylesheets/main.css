@@ -35,3 +35,9 @@ img.resize {
   font-size: 16px;
   color: red;
 }
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
