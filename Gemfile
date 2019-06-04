@@ -20,6 +20,7 @@ gem 'thin'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
+gem "google-cloud-storage", "~> 1.8", require: false
 
 gem 'bootstrap-sass', '3.4.1'
 

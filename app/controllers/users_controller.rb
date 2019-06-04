@@ -81,7 +81,8 @@ class UsersController < ApplicationController
         :utpr_s,
         :member_num,
         :skill_d,
-        :skill_s
+        :skill_s,
+        :image
       )
     end
 

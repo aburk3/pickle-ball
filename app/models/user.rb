@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :likes, dependent: :destroy
   has_many :upvotes, dependent: :destroy
   has_many :follows, dependent: :destroy
+  has_one_attached :image
 
   has_many :user_clubs
   has_many :clubs, :through => :user_clubs

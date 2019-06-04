@@ -23,6 +23,11 @@
               <% end %>
 
               <div class="form-label-group">
+                <%= f.label "Profile photo" %>
+                <%= f.file_field :image %>
+              </div>
+
+              <div class="form-label-group">
                 <label for="inputfirst_name"></label>
                 <%= f.text_field :first_name, class: "fadeIn", class: "form-control", placeholder: "First Name"%>
               </div>
