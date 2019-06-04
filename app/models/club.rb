@@ -12,7 +12,7 @@ class Club < ActiveRecord::Base
   end
 
   def reached_max
-    if self.users.count == 5
+    if self.users.count == 1000
       self.has_max = true
     end
   end
