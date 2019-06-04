@@ -5,7 +5,6 @@ test:
 local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
-
 google:
   service: GCS
   project: Pickleball Social
@@ -14,8 +13,7 @@ google:
 google_dev:
   service: GCS
   project: Pickleball Social
-  credentials: <%= Google::APIClient::ClientSecrets.new(JSON.parse(ENV['GOOGLE_APPLICATION_CREDENTIALS'])) %>
-  # credentials: <%= Rails.root.join("config/secrets/pickleball-social.json") %>
+  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'] %>
   bucket: pickleballsocial
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
