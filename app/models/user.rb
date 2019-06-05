@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :tournament_comments, dependent: :destroy
-  has_many :likes, dependent: :destroy
+  has_many :likes, dependent: :delete_all
   has_many :upvotes, dependent: :destroy
   has_many :follows, dependent: :destroy
   has_one_attached :image
