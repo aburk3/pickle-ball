@@ -2,7 +2,12 @@
   <article class="media">
     <div class="media-content">
       <div class="content">
+      <% if comment.user.tournaments.count > 0 %>
+        <a href="/users/<%= comment.user.id %>"><%= image_tag(comment.user.image, :class => "profile-image-small-comment tournament-director") if comment.user.image.attached? %></a>
+      <% else %>
         <a href="/users/<%= comment.user.id %>"><%= image_tag(comment.user.image, :class => "profile-image-small-comment") if comment.user.image.attached? %></a>
+      <% end %>
+
         <p>
           <strong><%= link_to "#{ comment.user.first_name } #{ comment.user.last_name }", user_path(comment.user) %>:</strong>
           <%= comment.content %><br>

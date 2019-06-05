@@ -51,10 +51,33 @@ img.resize {
   margin-left: 25px;
 }
 
+.tournament-director {
+  box-shadow: 0px 0px 25px gold;
+}
+
+.club-director {
+  box-shadow: 0px 0px 25px blue;
+}
+
 .profile-image-small-comment {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   float: left;
   margin-right: 15px;
+}
+
+.post {
+  background-color: red;
+  color: white;
+}
+
+.tournament {
+  background-color: gold;
+  color: black;
+}
+
+.club {
+  background-color: blue;
+  color: white;
 }

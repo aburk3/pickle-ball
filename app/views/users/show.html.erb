@@ -1,7 +1,12 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
   <div class="col-md-2">
-    <%= image_tag(@user.image, :class => "profile-image") if @user.image.attached? %>
+    <% if @user.tournaments.count > 0 %>
+      <%= image_tag(@user.image, :class => "profile-image tournament-director") if @user.image.attached? %>
+    <% else %>
+      <%= image_tag(@user.image, :class => "profile-image") if @user.image.attached? %>
+    <% end %>
+
   </div>
 </div>
 
@@ -60,17 +65,39 @@
             <div class="card border-success shadow">
               <div class="card-body">
                 <% if object.respond_to?(:user) %>
-                  <a href="/users/<%= object.user.id %>"><%= image_tag(object.user.image, :class => "profile-image-small") if object.user.image.attached? %></a>
+                  <% if object.user.tournaments.count > 0 %>
+                    <a href="/users/<%= object.user.id %>"><%= image_tag(object.user.image, :class => "profile-image-small tournament-director") if object.user.image.attached? %></a>
+                  <% else %>
+                    <a href="/users/<%= object.user.id %>"><%= image_tag(object.user.image, :class => "profile-image-small") if object.user.image.attached? %></a>
+                  <% end %>
                 <% end %>
-                <span class="float-right badge badge-secondary"><%= object.class %></span><br>
+
+                <% if object.respond_to?(:title) %>
+                  <span class="float-right badge post"><%= object.class %></span><br>
+                <% elsif object.respond_to?(:club_admin) %>
+                  <span class="float-right badge club"><%= object.class %></span><br>
+                <% else %>
+                  <span class="float-right badge tournament"><%= object.class %></span><br>
+                <% end %>
                 <div class="float-right text-success"><%= time_ago_in_words(object.created_at) %> ago</div>
-                <% if object.respond_to?(:user) %>
-                  <div class="float-right text-success">Created by: <%= object.user.first_name + " " + object.user.last_name%>...</div>
-                <% end %>
                 <% if object.respond_to?(:title) %>
                   <h4 class="card-title text-success"><%= object.title %></h4>
                 <% else %>
                   <h4 class="card-title text-success"><%= object.name %></h4>
+                <% end %>
+                <% if object.respond_to?(:user) %>
+                  <small class="float-left">
+                    <b>Written by:</b>
+                    <%= link_to(object.user) do %>
+                      <strong><%= object.user.first_name + " " + object.user.last_name%></strong>
+                    <% end %>
+                  </small><br>
+                  <% if object.category != "" %>
+                    <span class="badge badge-secondary">Category: <%= object.category %></span>
+                  <% end %>
+                  <span class="badge badge-info">Comments: (<%= object.comments.count %>)</span>
+                  <span class="badge badge-danger">Likes: (<%= object.likes.count %>)</span>
+                  <hr>
                 <% end %>
                 <% if object.respond_to?(:content) %>
                   <p class="card-text"><%= object.content %></p>
@@ -113,9 +140,26 @@
               <div class="col py-2">
                   <div class="card border-success shadow">
                       <div class="card-body">
-                          <a href="/users/<%= post.user.id %>"><%= image_tag(post.user.image, :class => "profile-image-small") if post.user.image.attached? %></a>
+                          <% if post.user.tournaments.count > 0 %>
+                            <a href="/users/<%= post.user.id %>"><%= image_tag(post.user.image, :class => "profile-image-small tournament-director") if post.user.image.attached? %></a>
+                          <% else %>
+                            <a href="/users/<%= post.user.id %>"><%= image_tag(post.user.image, :class => "profile-image-small") if post.user.image.attached? %></a>
+                          <% end %>
+
                           <div class="float-right text-success"><%= time_ago_in_words(post.created_at) %> ago</div>
                           <h4 class="card-title text-success"><%= post.title %></h4>
+                          <small class="float-left">
+                            <b>Written by:</b>
+                            <%= link_to(post.user) do %>
+                              <strong><%= post.user.first_name + " " + post.user.last_name%></strong>
+                            <% end %>
+                          </small><br>
+                          <% if post.category != "" %>
+                            <span class="badge badge-secondary">Category: <%= post.category %></span>
+                          <% end %>
+                          <span class="badge badge-info">Comments: (<%= post.comments.count %>)</span>
+                          <span class="badge badge-danger">Likes: (<%= post.likes.count %>)</span>
+                          <hr>
                           <p class="card-text"><%= post.content %></p>
                           <%= button_to 'View Post', post_path(post), method: :get, class: 'btn btn-sm btn-outline-secondary' %>
                       </div>
