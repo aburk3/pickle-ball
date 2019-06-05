@@ -14,6 +14,7 @@ google_dev:
   service: GCS
   project: Pickleball Social
   credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'] %>
+  #credentials: <%= Rails.root.join("config/secrets/pickleball-social.json") %>
   bucket: pickleballsocial
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
