@@ -10,6 +10,13 @@
               <h5 class="card-title text-center">Sign Up</h5>
             <% end %>
             <%= form_for @user do |f| %>
+              <% if @user.image.attached? %>
+                  <%= f.hidden_field :remove_profile_image %>
+                  <%= f.submit "Delete profile image", class: "" %>
+              <% end %>
+            <% end %>
+
+            <%= form_for @user do |f| %>
 
               <% if @user.errors.any? %>
                 <div id="error_explanation">
@@ -23,10 +30,7 @@
               <% end %>
 
               <div class="form-label-group">
-                <% if @user.image.attached? %>
-                  <%= f.label :remove_profile_image %>
-                  <%= f.check_box :remove_profile_image %>
-                <% else %>
+                <% if @user.image.attached? == false %>
                   <%= f.label "Profile photo" %>
                   <%= f.file_field :image %>
                 <% end %>
