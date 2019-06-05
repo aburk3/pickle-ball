@@ -81,3 +81,9 @@ img.resize {
   background-color: blue;
   color: white;
 }
+
+@media (max-width: 413px) {
+  .home-title {
+    font-size: 28px;
+  }
+}
