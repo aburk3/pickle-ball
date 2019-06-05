@@ -29,7 +29,7 @@
           <div class="col py-2">
               <div class="card border-success shadow">
                   <div class="card-body">
-                    <%= image_tag(post.user.image, :class => "profile-image-small") if post.user.image.attached? %>
+                    <a href="/users/<%= post.user.id %>"><%= image_tag(post.user.image, :class => "profile-image-small") if post.user.image.attached? %></a>
                       <div class="float-right text-success"><%= time_ago_in_words(post.created_at) %> ago</div>
                       <h4 class="card-title text-success"><%= post.title %></h4>
                       <small>
