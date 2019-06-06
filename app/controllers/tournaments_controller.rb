@@ -2,7 +2,13 @@ class TournamentsController < ApplicationController
   before_action :set_tournament, only: [:show, :edit, :update, :destory]
 
   def index
-    @tournaments = Tournament.all
+    if params[:user_id] == nil || params.has_key?(:id)
+      @tournaments = Tournament.all
+    else
+      @user = current_user
+      @tournaments = @user.tournaments
+    end
+
   end
 
   def new
@@ -68,7 +74,7 @@ class TournamentsController < ApplicationController
 
   private
     def set_tournament
-      @tournament = Tournament.find(params[:id])
+        @tournament = Tournament.find(params[:id])
     end
 
     def tournament_params

@@ -41,6 +41,10 @@
                 <a class="dropdown-item" href="<%= tournaments_path %>">All Tournaments</a>
                 <a class="dropdown-item" href="<%= near_path %>">Tournaments Near Me</a>
                 <a class="dropdown-item" href="<%= followed_path %>">Tournaments I Follow</a>
+                <% if current_user.tournaments.count > 0 %>
+                  <a class="dropdown-item" href="<%= user_tournaments_path({:user_id => current_user.id}) %>">My Tournaments</a>
+                <% end %>
+
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="<%= new_tournament_path %>">Create Tournament</a>
               </div>
