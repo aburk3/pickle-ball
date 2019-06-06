@@ -58,6 +58,64 @@ module ApplicationHelper
     ]
   end
 
+  def tournament_events
+    [
+      ['-Event-', '-Event-'],
+      ['Doubles', 'MXDY'],
+      ['Mixed Doubles', 'MXDY'],
+      ['Singles', 'MXDY'],
+      ['AR', 'MXDY'],
+      ['CA', 'MXDY'],
+      ['CO', 'MXDY'],
+      ['CT', 'MXDY'],
+      ['DE', 'MXDY'],
+      ['DC', 'MXDY'],
+      ['FL', 'MXDY'],
+      ['GA', 'MXDY'],
+      ['HI', 'MXDY'],
+      ['ID', 'MXDY'],
+      ['IL', 'MXDY'],
+      ['IN', 'MXDY'],
+      ['IA', 'MXDY'],
+      ['KS', 'MXDY'],
+      ['KY', 'MXDY'],
+      ['LA', 'MXDY'],
+      ['ME', 'MXDY'],
+      ['MD','Maryland'],
+      [ 'MA','Massachusetts'],
+      [ 'MI','Michigan'],
+      [ 'MN','Minnesota'],
+      [ 'MS','Mississippi'],
+      [ 'MO','Missouri'],
+      [ 'MT','Montana'],
+      [ 'NE','Nebraska'],
+      [ 'NV','Nevada'],
+      [ 'NH','New Hampshire'],
+      [ 'NJ','New Jersey'],
+      [ 'NM','New Mexico'],
+      [ 'NY','New York'],
+      [ 'NC','North Carolina'],
+      [ 'ND','North Dakota'],
+      [ 'OH','Ohio'],
+      [ 'OK','Oklahoma'],
+      [ 'OR','Oregon'],
+      [ 'PA','Pennsylvania'],
+      [ 'PR','Puerto Rico'],
+      [ 'RI','Rhode Island'],
+      [ 'SC','South Carolina'],
+      [ 'SD','South Dakota'],
+      [ 'TN','Tennessee'],
+      [ 'TX','Texas'],
+      [ 'UT','Utah'],
+      [ 'VT','Vermont'],
+      [ 'VA','Virginia'],
+      [ 'WA','Washington'],
+      [ 'WV','West Virginia'],
+      [ 'WI','Wisconsin'],
+      [ 'WY','Wyoming']
+    ]
+  end
+
   def find_club_admin(club)
     User.find_by_id(club.club_admin)
   end
