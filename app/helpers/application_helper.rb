@@ -58,6 +58,40 @@ module ApplicationHelper
     ]
   end
 
+  def utpr_doubles
+    [
+      ["5.0 (Doubles)", '5.0'],
+      ["4.5 (Doubles)", '4.5'],
+      ["4.0 (Doubles)", '4.0'],
+      ["3.5 (Doubles)", '3.5'],
+      ["3.0 (Doubles)", '3.0'],
+      ["2.5 (Doubles)", '2.5'],
+      ["2.0 (Doubles)", '2.0']
+    ]
+  end
+  def utpr_mixed
+    [
+      ["5.0 (Mixed)", '5.0'],
+      ["4.5 (Mixed)", '4.5'],
+      ["4.0 (Mixed)", '4.0'],
+      ["3.5 (Mixed)", '3.5'],
+      ["3.0 (Mixed)", '3.0'],
+      ["2.5 (Mixed)", '2.5'],
+      ["2.0 (Mixed)", '2.0']
+    ]
+  end
+  def utpr_singles
+    [
+      ["5.0 (Singles)", '5.0'],
+      ["4.5 (Singles)", '4.5'],
+      ["4.0 (Singles)", '4.0'],
+      ["3.5 (Singles)", '3.5'],
+      ["3.0 (Singles)", '3.0'],
+      ["2.5 (Singles)", '2.5'],
+      ["2.0 (Singles)", '2.0']
+    ]
+  end
+
   def tournament_events
     [
       ['-Event-', '-Event-'],
@@ -115,6 +149,7 @@ module ApplicationHelper
       [ 'WY','Wyoming']
     ]
   end
+
 
   def find_club_admin(club)
     User.find_by_id(club.club_admin)

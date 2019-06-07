@@ -41,10 +41,15 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
+
+    if @user.email != "test@gmail.com" && @user.update(user_params)
       redirect_to user_path(@user), notice: "Update Successful."
     else
-      render :edit, notice: "Failed to Update."
+      if @user.email == "test@gmail.com"
+        redirect_to user_path(@user), notice: "I'm sorry, the test user's profile settings cannot be modified."
+      else
+        render :edit, notice: "Failed to Update."
+      end
     end
   end
 
