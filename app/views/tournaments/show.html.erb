@@ -24,9 +24,13 @@
     <%= button_to 'Edit Details', edit_tournament_path, method: :get, class: 'btn btn-warning' %><br>
   <% end %>
   <p id="notice"><%= notice %></p>
-  <h3 id="tournament_description">"<%= @tournament.description %>"</h3>
-  <h3 id="tournament_description">"<%= @tournament.events %>"</h3>
-</div>
+  <p id="tournament_description"><b>Description: </b><%= @tournament.description %></p>
+
+
+
+  <p><b>Events:</b> <%= @tournament.events %></p>
+
+</div><br>
 
 <div class="row">
   <% if @tournament.state || @tournament.city %>

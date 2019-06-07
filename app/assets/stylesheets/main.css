@@ -25,6 +25,7 @@ img.resize {
 
 #tournament_description {
   word-wrap: break-word;
+  font-size: 100%;
 }
 
 .tournament_labels {
