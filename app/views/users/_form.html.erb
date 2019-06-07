@@ -48,25 +48,22 @@
               <% if current_user %>
                 <div class="form-label-group">
                   <label for="utpr_d"></label>
-                  <%= f.select(:utpr_d, ["5.0 (Doubles)","4.5 (Doubles)","4.0 (Doubles)","3.5 (Doubles)","3.0 (Doubles)","2.5 (Doubles)","2.0 (Doubles)"], {:prompt => '-- Doubles
-                    UTPR --'}, class: "fadeIn", class: "form-control")%>
+                  <%= f.select :utpr_d, options_for_select(utpr_doubles, selected: @user.utpr_d, prompt: "Doubles Value"), {}, {class: 'form-control'} %>
                 </div>
 
                 <div class="form-label-group">
-                  <label for="utpr_m"></label>
-                  <%= f.select(:utpr_m, ["5.0 (Mixed)","4.5 (Mixed)","4.0 (Mixed)","3.5 (Mixed)","3.0 (Mixed)","2.5 (Mixed)","2.0 (Mixed)"], {:prompt => '-- Mixed Doubles
-                    UTPR --'}, class: "form-control")%>
+                  <label for="utpr_d"></label>
+                  <%= f.select :utpr_m, options_for_select(utpr_mixed, selected: @user.utpr_m, prompt: "Mixed Value"), {}, {class: 'form-control'} %>
                 </div>
 
                 <div class="form-label-group">
-                  <label for="utpr_s"></label>
-                  <%= f.select(:utpr_s, ["5.0 (Singles)","4.5 (Singles)","4.0 (Singles)","3.5 (Singles)","3.0 (Singles)","2.5 (Singles)","2.0 (Singles)"], {:prompt => '-- Singles
-                    UTPR --'}, class: "form-control")%><br>
+                  <label for="utpr_d"></label>
+                  <%= f.select :utpr_s, options_for_select(utpr_singles, selected: @user.utpr_s, prompt: "Singles Value"), {}, {class: 'form-control'} %>
                 </div>
 
                 <div class="form-label-group">
                   <label for="state"></label>
-                  <%= f.select :state, options_for_select(us_states, selected: current_user.state, prompt: "State"), class: "fadeIn", class: "form-control" %><br>
+                  <%= f.select :state, options_for_select(us_states, selected: current_user.state, prompt: "State"), {}, {class: 'form-control'} %><br>
                 </div>
 
                 <div class="form-label-group">
