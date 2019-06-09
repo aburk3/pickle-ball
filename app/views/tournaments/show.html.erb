@@ -14,13 +14,13 @@
 <div class="text-center">
   <% pre_follow = @tournament.follows.find { |follow| follow.user_id == current_user.id} %>
   <% if pre_follow %>
-    <%= button_to 'UnFollow', tournament_follow_path(@tournament, pre_follow), method: :delete, class: 'btn btn-danger' %><br>
+    <%= button_to 'UnFollow', tournament_follow_path(@tournament, pre_follow), method: :delete, class: 'btn btn-cancel' %><br>
   <% else %>
     <%= button_to 'Follow', tournament_follows_path(@tournament), method: :post, class: 'btn btn-info' %><br>
   <% end %>
 
   <% if @tournament.is_director?(current_user) %>
-    <%= button_to 'Delete Tournament', { :controller => "tournaments", :action => "destroy", :tournament_id => @tournament.id, :user_id=> session[:user_id] }, :method=>:delete, data: { confirm: "Are you sure you want to delete this tournament?" }, class: 'btn btn-danger' %><br>
+    <%= button_to 'Delete Tournament', { :controller => "tournaments", :action => "destroy", :tournament_id => @tournament.id, :user_id=> session[:user_id] }, :method=>:delete, data: { confirm: "Are you sure you want to delete this tournament?" }, class: 'btn btn-cancel' %><br>
     <%= button_to 'Edit Details', edit_tournament_path, method: :get, class: 'btn btn-warning' %><br>
   <% end %>
   <p id="notice"><%= notice %></p>
