@@ -1,6 +1,6 @@
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
-      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Tournaments (<%= @tournaments.count %>)</a>
+      <a class="nav-item nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Tournaments (<%= @tournaments.count %>)</a>
   </li>
   <li class="nav-item">
       <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Users (<%= @users.count %>)</a>
@@ -24,7 +24,7 @@
                 <br>
                 <span class=" badge badge-info"><%= tournament.follows.count %> <%= (tournament.follows.count) == 1 ? 'Follow' : 'Follows'%></span>
               </p>
-            <%= link_to "View Tournament", tournament_path(tournament), :class=>"btn btn-xs btn-secondary" %>
+            <%= link_to "View Tournament", tournament_path(tournament), :class=>"btn btn-sm" %>
           </div>
         </div><br>
       <% end %>
@@ -51,7 +51,7 @@
                 <span class=" badge badge-success"><%= user.posts.count %> <%= (user.posts.count) == 1 ? 'Post' : 'Posts'%></span>
                 <span class=" badge badge-info"><%= total_comments(user) %> <%= total_comments(user) == 1 ? 'Comment' : 'Comments'%></span>
               </p>
-            <%= link_to "View Profile", user_path(user), :class=>"btn btn-xs btn-secondary" %>
+            <%= link_to "View Profile", user_path(user), :class=>"btn btn-sm" %>
           </div>
         </div><br>
       <% end %>
@@ -78,7 +78,7 @@
                 <span class=" badge badge-success"><%= club.users.count %> <%= (club.users.count) == 1 ? 'Post' : 'Posts'%></span>
                 <span class=" badge badge-info"><%= club.meetings.count %> <%= (club.meetings.count) == 1 ? 'Comment' : 'Comments'%></span>
               </p>
-            <%= link_to "View Club", club_path(club), :class=>"btn btn-xs btn-secondary" %>
+            <%= link_to "View Club", club_path(club), :class=>"btn btn-sm" %>
           </div>
         </div><br>
       <% end %>

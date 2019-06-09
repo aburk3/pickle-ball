@@ -2,6 +2,10 @@
   margin-top: 80px;
 }
 
+body {
+  background-color: #91b3bc;
+}
+
 h1 {
   text-align: center;
 }
@@ -12,6 +16,16 @@ h1 {
 
 .card-body {
   flex: none !important;
+  background-color: #ebeced;
+}
+
+.landing-page {
+  background: transparent !important;
+  color: #011627;
+}
+
+.card-title {
+  color: #011627 !important;
 }
 
 .center {
@@ -34,7 +48,7 @@ img.resize {
 
 .profile_category {
   font-size: 16px;
-  color: red;
+  color: #e71d36;
 }
 
 .profile-image {
@@ -53,11 +67,13 @@ img.resize {
 }
 
 .tournament-director {
-  box-shadow: 0px 0px 25px gold;
+  /* box-shadow: 0px 0px 25px gold; */
+  border: 3px solid gold;
 }
 
 .club-director {
-  box-shadow: 0px 0px 25px blue;
+  /* box-shadow: 0px 0px 25px blue; */
+  border: 3px solid blue;
 }
 
 .profile-image-small-comment {
@@ -70,7 +86,7 @@ img.resize {
 
 .post {
   background-color: red;
-  color: white;
+  color: #ebeced;
 }
 
 .tournament {
@@ -87,4 +103,195 @@ img.resize {
   .home-title {
     font-size: 28px;
   }
+}
+
+.navbar,
+.nav-item {
+  background-color: #011627 !important;
+}
+
+.nav-link.focus,
+.nav-link:hover,
+.btn:hover {
+  background-color: #ebeced !important;
+  color: #011627 !important;
+}
+
+.navbar-brand,
+.nav-link {
+  color: #ebeced !important;
+}
+
+.home-tab-title {
+  color: #011627 !important;
+  font-weight: bold !important;
+}
+
+a {
+  color: #e71d36 !important;
+}
+
+.badge-pill {
+  background-color: #011627 !important;
+}
+
+.card {
+  border-color: #e71d36;
+  border-width: 2px;
+}
+
+.btn-sm {
+  border-color: #011627 !important;
+  border-width: 2px !important;
+}
+
+.search-btn {
+  border-color: #ebeced !important;
+  border-width: 1px !important;
+}
+
+.btn-sm:hover,
+.search-btn {
+  background-color: #e71d36 !important;
+  color: #ebeced !important;
+}
+
+hr {
+  border-color: #011627 !important;
+  border-width: 2px !important;
+}
+
+.time-ago-card {
+  color: #011627 !important;
+}
+
+.form-control:focus {
+  background-color: #ebeced !important;
+  color: #011627 !important;
+  border-color: #ebeced !important;
+}
+
+.btn-cancel {
+  background-color: #011627 !important;
+  border-color: #e71d36 !important;
+  border-width: 2px !important;
+  color: #ebeced !important;
+}
+
+.btn-cancel:hover {
+  background-color: #ebeced !important;
+  color: #011627 !important;
+}
+
+.btn-submit-form {
+  background-color: #2ec4b6 !important;
+  border-color: #011627 !important;
+  border-width: 2px !important;
+}
+
+.post-header {
+  background-color: #ebeced;
+  color: #011627;
+  margin-top: 2.5%;
+  padding-top: 5px;
+}
+
+/* NEW CSS FOR LANDING PAGE */
+
+html,
+body {
+  height: 100%;
+}
+
+.title {
+  color: #ebeced;
+}
+
+.skewed-bg {
+  background: #011627;
+  padding: 100px 0;
+  -webkit-transform: skew(0deg, -10deg);
+  -moz-transform: skew(0deg, -10deg);
+  -ms-transform: skew(0deg, -10deg);
+  -o-transform: skew(0deg, -10deg);
+  transform: skew(0deg, -10deg);
+  margin-top: 50px;
+}
+.skewed-bg .content {
+  -webkit-transform: skew(0deg, 10deg);
+  -moz-transform: skew(0deg, 10deg);
+  -ms-transform: skew(0deg, 10deg);
+  -o-transform: skew(0deg, 10deg);
+  transform: skew(0deg, 10deg);
+  text-align: left;
+}
+.skewed-bg .content .title {
+  padding-top: 0;
+  font-weight: normal;
+}
+.skewed-bg .content .text {
+  width: 60%;
+  margin: 25px auto;
+  color: #ebeced;
+}
+
+.footer {
+  padding-top: 300px;
+}
+.footer .credits {
+  text-align: center;
+  color: #ebeced;
+}
+.footer .credits .link {
+  color: #011627;
+  text-decoration: none;
+}
+
+.btn-landing-page {
+  background-color: #011627;
+  color: #ebeced !important;
+}
+
+.btn-landing-page:hover {
+  background-color: #ebeced !important;
+  color: #011627 !important;
+  border-color: #011627;
+}
+
+.button {
+  border-radius: 4px;
+  background-color: #011627;
+  border: none;
+  color: #ebeced;
+  text-align: center;
+  font-size: 24px;
+  padding: 5px;
+  width: 96%;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
 }
