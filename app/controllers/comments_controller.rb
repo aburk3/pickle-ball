@@ -6,8 +6,9 @@ class CommentsController < ApplicationController
 		@comment.user = current_user
 		@post = Post.find(params[:post_id])
 		@post.comments << @comment
-    if @comment.save
-      redirect_to post_path(@post)
+		if @comment.save
+			UserMailer.with(post: @post, comment: @comment).new_comment.deliver_later
+			redirect_to post_path(@post)
     else
       render post_path(@post)
     end
