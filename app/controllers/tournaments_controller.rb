@@ -22,6 +22,7 @@ class TournamentsController < ApplicationController
   def create
     @tournament = Tournament.new(tournament_params)
     @tournament.director = current_user.id
+
     if @tournament.save
       @tournament.users << current_user
       @tournament.save
@@ -83,6 +84,7 @@ class TournamentsController < ApplicationController
         :state,
         :city,
         :description,
+        :url,
         :events,
         :director,
         :status

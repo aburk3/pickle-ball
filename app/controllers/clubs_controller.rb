@@ -77,6 +77,7 @@ class ClubsController < ApplicationController
       params.require(:club).permit(
         :name,
         :description,
+        :url,
         :state,
         :city,
         :contact,

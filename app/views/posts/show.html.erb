@@ -1,26 +1,28 @@
-<div class="text-center post-header">
-  <h2><u><%= @post.title %></u></h2>
-  <% content_for :page_title, @post.title %>
-  <strong>by:
-  <%= link_to(@post.user) do %>
-     <%= @post.user.first_name + " " + @post.user.last_name%>
-  <% end %>
-  </strong>
-  <br>
-  <p><%= time_ago_in_words(@post.created_at) %> ago</p>
-  <ul class="list-inline">
-    <li class="list-inline-item">
-      <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
-      <% if pre_like && @post.user != current_user %>
-        <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
-      <% elsif @post.user != current_user %>
-        <%= button_to 'Like', post_likes_path(@post), method: :post %>
-      <% end %>
-    </li>
-    <li class="list-inline-item">
-      <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-    </li>
-  </ul>
+<div class="wrapper">
+  <div class="text-center post-header">
+    <h2><u><%= @post.title %></u></h2>
+    <% content_for :page_title, @post.title %>
+    <strong>by:
+    <%= link_to(@post.user) do %>
+      <%= @post.user.first_name + " " + @post.user.last_name%>
+    <% end %>
+    </strong>
+    <br>
+    <p><%= time_ago_in_words(@post.created_at) %> ago</p>
+    <ul class="list-inline">
+      <li class="list-inline-item">
+        <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+        <% if pre_like && @post.user != current_user %>
+          <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
+        <% elsif @post.user != current_user %>
+          <%= button_to 'Like', post_likes_path(@post), method: :post %>
+        <% end %>
+      </li>
+      <li class="list-inline-item">
+        <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+      </li>
+    </ul>
+  </div>
 </div>
 
 

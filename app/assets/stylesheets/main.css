@@ -189,11 +189,17 @@ hr {
   border-width: 2px !important;
 }
 
+.wrapper {
+  text-align: center;
+}
 .post-header {
   background-color: #ebeced;
   color: #011627;
-  margin-top: 2.5%;
-  padding-top: 5px;
+  /* margin-top: 2.5%; */
+  margin-top: 5%;
+  padding: 15px 35px 0px 35px;
+  border-radius: 25px;
+  display: inline-block;
 }
 
 /* NEW CSS FOR LANDING PAGE */
@@ -294,4 +300,10 @@ body {
 .button:hover span:after {
   opacity: 1;
   right: 0;
+}
+
+.details-container {
+  background-color: #ebeced;
+  border-radius: 25px;
+  padding: 5px;
 }
