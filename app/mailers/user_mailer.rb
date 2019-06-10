@@ -7,7 +7,7 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Welcome Pickleball Social')
   end
 
-  def new_comment
+  def post_comment
     @post = params[:post]
     @comment = params[:comment]
     @user = @post.user
@@ -16,4 +16,12 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Your post has a new comment!')
   end
 
+  def tournament_comment
+    @tournament = params[:tournament]
+    @comment = params[:comment]
+    @user = User.where(:id => @tournament.director)[0]
+    tournament_id = @tournament.id.to_s
+    @url = 'https://pickleballsocial.herokuapp.com/tournaments/' + tournament_id
+    mail(to: @user.email, subject: 'Your tournament has a new comment!')
+  end
 end

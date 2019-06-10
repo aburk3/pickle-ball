@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 		@post.comments << @comment
 		if @comment.save
 			if @comment.user != @post.user
-				UserMailer.with(post: @post, comment: @comment).new_comment.deliver_later
+				UserMailer.with(post: @post, comment: @comment).post_comment.deliver_later
 			end
 			redirect_to post_path(@post)
     else

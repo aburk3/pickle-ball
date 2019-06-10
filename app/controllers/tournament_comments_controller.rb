@@ -6,7 +6,11 @@ class TournamentCommentsController < ApplicationController
 		@comment.user = current_user
 		@tournament = Tournament.find(params[:tournament_id])
 		@tournament.tournament_comments << @comment
-    if @comment.save
+		@user = User.where(:id => @tournament.director)
+		if @comment.save
+			if @comment.user != @user
+				UserMailer.with(tournament: @tournament, comment: @comment).tournament_comment.deliver_later
+			end
       redirect_to tournament_path(@tournament)
     else
       render tournament_path(@tournament)
