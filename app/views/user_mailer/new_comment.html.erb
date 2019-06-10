@@ -6,10 +6,10 @@
   <body>
     <h1>Hello <%= @user.first_name %>!</h1>
     <p>
-      Your post <%= @post.title %>, has a new comment by <b><%= @comment.user.first_name %></b>!
+      Your post "<%= @post.title %>", has a new comment by <b><%= @comment.user.first_name %></b>!
     </p>
     <p>
-      <b>Comment: <%= @comment.content %></b>
+      <b>Comment:</b> "<%= @comment.content %>"
     </p>
     <p>
       To view this comment on Pickleball Social, please follow this link: <%= @url %>.
