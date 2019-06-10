@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello <%= @user.first_name %>!</h1>
+    <p>
+      Your post <%= @post.title %>, has a new comment by <b><%= @comment.user.first_name %></b>!
+    </p>
+    <p>
+      <b>Comment: <%= @comment.content %></b>
+    </p>
+    <p>
+      To view this comment on Pickleball Social, please follow this link: <%= @url %>.
+    </p>
+
+    <p>
+      To stop receiving updates on your post, please email 'Stop emails' to <b>pickleballsocial@gmail.com</b> - Thank you
+    </p>
+  </body>
+</html>
