@@ -24,8 +24,15 @@
     <%= button_to 'Edit Details', edit_tournament_path, method: :get, class: 'btn btn-warning' %><br>
   <% end %>
   <p id="notice"><%= notice %></p>
-  <p id="tournament_description"><b>Description: </b><%= @tournament.description %></p>
-  <p><b>Events:</b> <%= @tournament.events %></p>
+  <div class="details-container">
+    <p id="tournament_description"><b>Description: </b><%= @tournament.description %></p>
+    <% if @tournament.url != "" || @tournament.url.present? %>
+      <p id="tournament_description"><b>URL: </b><a href="<%=@tournament.url%>" target="_blank"><%= @tournament.url %></a></p>
+    <% end %>
+    <% if @tournament.events != ""%>
+      <p><b>Events:</b> <%= @tournament.events %></p>
+    <% end %>
+  </div>
 
 </div><br>
 

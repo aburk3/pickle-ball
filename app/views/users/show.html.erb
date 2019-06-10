@@ -47,14 +47,16 @@
       <% @sorted_feed.each do |object| %>
         <div class="row">
           <div class="col-auto text-center flex-column d-none d-sm-flex">
+
             <div class="row h-50">
               <div class="col border-right">&nbsp;</div>
               <div class="col">&nbsp;</div>
             </div>
+
             <h5 class="m-2">
                 <span class="badge badge-pill bg-success">&nbsp;</span>
             </h5>
-            <% if object != @sorted_feed.first %>
+            <% if object != @sorted_feed.last %>
               <div class="row h-50">
                   <div class="col border-right">&nbsp;</div>
                   <div class="col">&nbsp;</div>

@@ -1,8 +1,13 @@
 <div class="text-center">
   <h1><%= @club.name %></h1>
-  <small>Location: <%= @club.state %></small>
-  <h4>Members: <%= @club.users.count %></h4>
-  <p>"<%= @club.description %>"</p>
+  <div class="details-container">
+    <small>Location: <%= @club.state %></small>
+    <h4>Members: <%= @club.users.count %></h4>
+    <p><%= @club.description %></p>
+    <% if @club.url != "" || @club.url.present? %>
+      <p id="tournament_description"><b>URL: </b><a href="<%=@club.url%>" target="_blank"><%= @club.url %></a></p>
+    <% end %>
+  </div><br>
 </div>
 
 <div class="text-center">
