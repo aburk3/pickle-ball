@@ -307,3 +307,7 @@ body {
   border-radius: 25px;
   padding: 5px;
 }
+
+.prevent-overflow {
+  word-wrap: break-word;
+}
