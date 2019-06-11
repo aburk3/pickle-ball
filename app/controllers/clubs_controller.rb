@@ -33,6 +33,8 @@ class ClubsController < ApplicationController
   def update
     @club = Club.find(params[:id])
     if @club.update(club_params)
+      @club.url = Tournament.format_url(@club.url)
+      @club.save
       redirect_to club_path(@club), notice: "Update Successful."
     else
       redirect_to club_path(@club), notice: "Failed to Update."

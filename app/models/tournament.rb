@@ -16,7 +16,7 @@ class Tournament < ActiveRecord::Base
     end
   end
 
-  def format_url(url)
+  def self.format_url(url)
     if !url.include?("http") && !url.include?("www")
       url.prepend("https://")
     elsif url.include?("www.")
