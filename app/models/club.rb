@@ -17,4 +17,12 @@ class Club < ActiveRecord::Base
     end
   end
 
+  def self.format_url(url)
+    if !url.include?("http") && !url.include?("www")
+      url.prepend("https://")
+    elsif url.include?("www.")
+      url.sub! 'www.', 'https://'
+    end
+  end
+
 end

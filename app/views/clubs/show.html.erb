@@ -5,7 +5,7 @@
     <h4>Members: <%= @club.users.count %></h4>
     <p><%= @club.description %></p>
     <% if @club.url != "" || @club.url.present? %>
-      <p id="tournament_description"><b>URL: </b><a href="<%=@club.url%>" target="_blank"><%= @club.url %></a></p>
+      <button onclick="window.open('<%= @club.url %>', '_blank')" style="color:#011627">Club Link</button>
     <% end %>
   </div><br>
 </div>

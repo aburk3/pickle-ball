@@ -44,8 +44,8 @@
             </div>
 
             <div class="form-group">
-              <%= f.label :url, "Registration Link - Please ensure 'https://' is prepended to url (e.g. https://www.)" %><br>
-              <%= f.text_area :url, :size=>"55x1" %>
+              <%= f.label :url, "Registration Link" %><br>
+              <%= f.text_area :url, :size=>"55x2" %>
             </div>
 
             <div class="form-group">
@@ -60,7 +60,7 @@
 
             <div class="actions">
               <%= f.submit :Submit, class: 'btn btn-submit-form' %>
-              <%= link_to "Cancel", posts_path(@tournament), :class=>"btn btn-xs btn-cancel" %>
+              <%= link_to "Cancel", tournaments_path(@tournament), :class=>"btn btn-xs btn-cancel" %>
             </div>
 
           <% end %>
