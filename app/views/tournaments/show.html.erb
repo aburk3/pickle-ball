@@ -27,7 +27,9 @@
   <div class="details-container">
     <p id="tournament_description"><b>Description: </b><%= @tournament.description %></p>
     <% if @tournament.url != "" || @tournament.url.present? %>
-      <p id="tournament_description"><b>URL: </b><a href="<%=@tournament.url%>" target="_blank"><%= @tournament.url %></a></p>
+      <form action="<%=@tournament.url%>" method="get" target="_blank">
+         <button type="submit">Registration Link</button>
+      </form>
     <% end %>
     <% if @tournament.events != ""%>
       <p><b>Events:</b> <%= @tournament.events %></p>
