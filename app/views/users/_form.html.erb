@@ -87,6 +87,10 @@
                   <%= f.password_field :password, class: "fadeIn third", class: "form-control", placeholder: "New Password" %>
                   <label for="inputPassword"></label>
                 </div>
+                <div class="field">
+                  <%= f.label "Email Notifications:" %> <br>
+                  <%= f.check_box :email_notifications %> <br />
+                </div>
                 <div class="actions">
                   <br><%= f.submit "Save", class: "fadeIn fourth", class: "btn btn-lg btn-primary btn-block text-uppercase" %>
                 </div>
