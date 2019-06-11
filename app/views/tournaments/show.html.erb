@@ -27,9 +27,7 @@
   <div class="details-container">
     <p id="tournament_description"><b>Description: </b><%= @tournament.description %></p>
     <% if @tournament.url != "" || @tournament.url.present? %>
-      <form action="<%=@tournament.url%>" method="get" target="_blank">
-         <button type="submit">Registration Link</button>
-      </form>
+      <%= link_to "Registration Link", @tournament.url, :target => "_blank" %>
     <% end %>
     <% if @tournament.events != ""%>
       <p><b>Events:</b> <%= @tournament.events %></p>
