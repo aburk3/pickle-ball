@@ -95,7 +95,8 @@ class UsersController < ApplicationController
         :skill_d,
         :skill_s,
         :image,
-        :remove_profile_image
+        :remove_profile_image,
+        :email_notifications
       )
     end
 

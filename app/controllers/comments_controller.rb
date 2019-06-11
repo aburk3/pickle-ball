@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 		@post = Post.find(params[:post_id])
 		@post.comments << @comment
 		if @comment.save
-			if @comment.user != @post.user
+			if @comment.user != @post.user && @post.user.email_notifications == true
 				UserMailer.with(post: @post, comment: @comment).post_comment.deliver_later
 			end
 			redirect_to post_path(@post)
