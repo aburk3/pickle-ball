@@ -79,15 +79,17 @@
                 <% else %>
                   <a href="/users/<%= comment.user.id %>"><%= image_tag(comment.user.image, :class => "profile-image-small-comment") if comment.user.image.attached? %></a>
                 <% end %>
-                <strong><%= link_to "#{ comment.user.first_name } #{ comment.user.last_name }", user_path(comment.user) %>:</strong>
-                <%= comment.content %><br>
-                <% if comment.user == current_user %>
-                  <a href="/tournaments/<%= comment.tournament.id %>/tournament_comments/<%=comment.id %>/delete"> Delete Comment</a>
-                <% end %>
               </p>
             </div>
           </div>
         </article>
+          <p class="prevent-overflow">
+            <strong><%= link_to "#{ comment.user.first_name } #{ comment.user.last_name }", user_path(comment.user) %>:</strong>
+            <%= comment.content %><br>
+            <% if comment.user == current_user %>
+              <a href="/tournaments/<%= comment.tournament.id %>/tournament_comments/<%=comment.id %>/delete"> Delete Comment</a>
+            <% end %>
+          </p>
       <% end %>
     </div>
 
