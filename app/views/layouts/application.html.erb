@@ -81,6 +81,9 @@
             <li class="nav-item">
               <a class="nav-link" href="<%= my_resources_path %>">Resources</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.places2play.org/" target="_blank">Venues (External Link)</a>
+            </li>
           </ul>
           <%= form_tag(search_path, method: 'get', class: 'form-inline my-2 my-lg-0') do %>
           	<%= search_field_tag 'search', params[:search], class: 'form-control mr-sm-2', placeholder: 'state/city/player...' %>

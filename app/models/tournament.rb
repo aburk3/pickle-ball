@@ -4,7 +4,7 @@ class Tournament < ActiveRecord::Base
   has_many :follows, dependent: :destroy
   has_many :tournament_comments, dependent: :destroy
 
-  validates :name, presence: true, :length => {:within => 5..50}, on: :create
+  validates :name, presence: true, :length => {:within => 5..100}, on: :create
 
   def is_director?(user)
     self.director == user.id
