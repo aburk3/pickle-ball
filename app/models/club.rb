@@ -5,7 +5,7 @@ class Club < ActiveRecord::Base
 
   scope :open_clubs, -> { where(status: true) }
 
-  validates :name, presence: true, :length => {:within => 5..30}, on: :create
+  validates :name, presence: true, :length => {:within => 5..100}, on: :create
 
   def is_admin?(user)
     self.club_admin == user.id
