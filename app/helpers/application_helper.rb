@@ -66,7 +66,8 @@ module ApplicationHelper
       ["3.5 (Doubles)", '3.5'],
       ["3.0 (Doubles)", '3.0'],
       ["2.5 (Doubles)", '2.5'],
-      ["2.0 (Doubles)", '2.0']
+      ["2.0 (Doubles)", '2.0'],
+      ["N/A", '0.0']
     ]
   end
   def utpr_mixed
@@ -77,7 +78,8 @@ module ApplicationHelper
       ["3.5 (Mixed)", '3.5'],
       ["3.0 (Mixed)", '3.0'],
       ["2.5 (Mixed)", '2.5'],
-      ["2.0 (Mixed)", '2.0']
+      ["2.0 (Mixed)", '2.0'],
+      ["N/A", '0.0']
     ]
   end
   def utpr_singles
@@ -88,7 +90,8 @@ module ApplicationHelper
       ["3.5 (Singles)", '3.5'],
       ["3.0 (Singles)", '3.0'],
       ["2.5 (Singles)", '2.5'],
-      ["2.0 (Singles)", '2.0']
+      ["2.0 (Singles)", '2.0'],
+      ["N/A", '0.0']
     ]
   end
 
