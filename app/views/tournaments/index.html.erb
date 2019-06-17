@@ -2,7 +2,12 @@
   <h1><b>Pickleball Tournaments</b></h1>
 </div>
 
-<%= button_to 'Create Tournament', new_tournament_path, method: :get, class: 'btn btn-submit-form' %><br>
+<div>
+  <%= link_to new_tournament_path, method: :get do %>
+    <i class="fas fa-plus-square fa-2x"></i>
+  <% end %>
+</div>
+<br>
 
 <div class="card-columns">
   <% @tournaments.each do |tournament| %>
