@@ -1,8 +1,13 @@
 <div class="text-center">
   <h1><b>Pickleball Clubs</b></h1>
 </div>
-<%= button_to 'Create New Club', new_club_path, method: :get, class: 'btn btn-submit-form' %><br>
-
+<%#= button_to 'Create New Club', new_club_path, method: :get, class: 'btn btn-submit-form' %><br>
+<div>
+  <%= link_to new_club_path, method: :get do %>
+    <i class="fas fa-plus-square fa-2x"></i>
+  <% end %>
+</div>
+<br>
 <div class="card-columns">
   <% @clubs.each do |club| %>
     <div class="card">

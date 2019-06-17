@@ -1,104 +1,104 @@
-<div class="text-center">
-  <h1><%= @tournament.name %></h1>
-  <div class="typewriter">
-    <span class=" badge badge-danger tournament_labels"><b>Sanctioning Status:</b> <%= @tournament.status %></span>
-    <br>
-    <br>
-    <span class=" badge badge-success tournament_labels"><%= @tournament.follows.count %> <%= (@tournament.follows.count) == 1 ? 'Follow' : 'Followers'%></span>
-  </div>
-  <hr>
-</div>
-
-
-
-<div class="text-center">
-  <% pre_follow = @tournament.follows.find { |follow| follow.user_id == current_user.id} %>
-  <% if pre_follow %>
-    <%= button_to 'UnFollow', tournament_follow_path(@tournament, pre_follow), method: :delete, class: 'btn btn-cancel' %><br>
-  <% else %>
-    <%= button_to 'Follow', tournament_follows_path(@tournament), method: :post, class: 'btn btn-info' %><br>
-  <% end %>
-
-  <% if @tournament.is_director?(current_user) || current_user.admin == true %>
-    <%= button_to 'Delete Tournament', { :controller => "tournaments", :action => "destroy", :tournament_id => @tournament.id, :user_id=> session[:user_id] }, :method=>:delete, data: { confirm: "Are you sure you want to delete this tournament?" }, class: 'btn btn-cancel' %><br>
-    <%= button_to 'Edit Details', edit_tournament_path, method: :get, class: 'btn btn-warning' %><br>
-  <% end %>
-  <p id="notice"><%= notice %></p>
-  <div class="details-container">
-    <p id="tournament_description"><b>Description: </b><%= @tournament.description %></p>
-    <% if @tournament.url != "" || @tournament.url.present? %>
-      <button onclick="window.open('<%= @tournament.url %>', '_blank')" style="color:#011627">Registration Link</button>
-    <% end %>
-    <% if @tournament.events != ""%>
-      <p><b>Events:</b> <%= @tournament.events %></p>
-    <% end %>
-  </div>
-
-</div><br>
-
-<div class="row">
-  <% if @tournament.state || @tournament.city %>
-    <div class="col-md-3">
-      <div class="d-flex w-100 center">
-          <p class="mb-1"></p>
-      </div>
-      <table class="table table-striped table-dark">
-        <thead>
-          <tr>
-            <th scope="col">State</th>
-            <th scope="col">City</th>
-            <th scope="col">Director</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%= @tournament.state %></td>
-            <td><%= @tournament.city %></td>
-            <td><%= find_td(@tournament) %></td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="text-center">
+    <h1><%= @tournament.name %></h1>
+    <div class="typewriter">
+      <span class=" badge badge-danger tournament_labels"><b>Sanctioning Status:</b> <%= @tournament.status %></span>
+      <br>
+      <br>
+      <span class=" badge badge-success tournament_labels"><%= @tournament.follows.count %> <%= (@tournament.follows.count) == 1 ? 'Follow' : 'Followers'%></span>
     </div>
-  <% end %>
-</div>
-<hr>
+    <hr>
+  </div>
 
 
-<section class="section comments">
-	<div class="container">
-		<h2 class="subtitle is-5"><strong><%= @tournament.tournament_comments.count %></strong> Comments</h2>
 
-    <% @tournament.tournament_comments.each do |comment| %>
-      <div class="box">
-        <article class="media">
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <% if comment.user.tournaments.count > 0 %>
-                  <a href="/users/<%= comment.user.id %>"><%= image_tag(comment.user.image, :class => "profile-image-small-comment tournament-director") if comment.user.image.attached? %></a>
-                <% else %>
-                  <a href="/users/<%= comment.user.id %>"><%= image_tag(comment.user.image, :class => "profile-image-small-comment") if comment.user.image.attached? %></a>
-                <% end %>
-              </p>
-            </div>
-          </div>
-        </article>
-          <p class="prevent-overflow">
-            <strong><%= link_to "#{ comment.user.first_name } #{ comment.user.last_name }", user_path(comment.user) %>:</strong>
-            <%= comment.content %><br>
-            <% if comment.user == current_user %>
-              <a href="/tournaments/<%= comment.tournament.id %>/tournament_comments/<%=comment.id %>/delete"> Delete Comment</a>
-            <% end %>
-          </p>
+  <div class="text-center">
+    <% pre_follow = @tournament.follows.find { |follow| follow.user_id == current_user.id} %>
+    <% if pre_follow %>
+      <%= button_to 'UnFollow', tournament_follow_path(@tournament, pre_follow), method: :delete, class: 'btn btn-cancel' %><br>
+    <% else %>
+      <%= button_to 'Follow', tournament_follows_path(@tournament), method: :post, class: 'btn btn-info' %><br>
+    <% end %>
+
+    <% if @tournament.is_director?(current_user) || current_user.admin == true %>
+      <%= button_to 'Delete Tournament', { :controller => "tournaments", :action => "destroy", :tournament_id => @tournament.id, :user_id=> session[:user_id] }, :method=>:delete, data: { confirm: "Are you sure you want to delete this tournament?" }, class: 'btn btn-cancel' %><br>
+      <%= button_to 'Edit Details', edit_tournament_path, method: :get, class: 'btn btn-warning' %><br>
+    <% end %>
+    <p id="notice"><%= notice %></p>
+    <div class="details-container">
+      <p id="tournament_description"><b>Description: </b><%= @tournament.description %></p>
+      <% if @tournament.url != "" || @tournament.url.present? %>
+        <button onclick="window.open('<%= @tournament.url %>', '_blank')" style="color:#011627">Registration Link</button>
+      <% end %>
+      <% if @tournament.events != ""%>
+        <p><b>Events:</b> <%= @tournament.events %></p>
       <% end %>
     </div>
 
+  </div><br>
+
+  <div class="row">
+    <% if @tournament.state || @tournament.city %>
+      <div class="col-md-3">
+        <div class="d-flex w-100 center">
+            <p class="mb-1"></p>
+        </div>
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col">State</th>
+              <th scope="col">City</th>
+              <th scope="col">Director</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @tournament.state %></td>
+              <td><%= @tournament.city %></td>
+              <td><%= find_td(@tournament) %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+  <hr>
 
 
-		<div class="comment-form">
-			<hr />
-			<h3 class="subtitle is-3">Leave a reply</h3>
-	 		<%= render 'comments/form' %>
-		</div>
-	</div>
-</section>
+  <section class="section comments">
+    <div class="container">
+      <h2 class="subtitle is-5"><strong><%= @tournament.tournament_comments.count %></strong> Comments</h2>
+
+      <% @tournament.tournament_comments.each do |comment| %>
+        <div class="box">
+          <article class="media">
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <% if comment.user.tournaments.count > 0 %>
+                    <a href="/users/<%= comment.user.id %>"><%= image_tag(comment.user.image, :class => "profile-image-small-comment tournament-director") if comment.user.image.attached? %></a>
+                  <% else %>
+                    <a href="/users/<%= comment.user.id %>"><%= image_tag(comment.user.image, :class => "profile-image-small-comment") if comment.user.image.attached? %></a>
+                  <% end %>
+                </p>
+              </div>
+            </div>
+          </article>
+            <p class="prevent-overflow">
+              <strong><%= link_to "#{ comment.user.first_name } #{ comment.user.last_name }", user_path(comment.user) %>:</strong>
+              <%= comment.content %><br>
+              <% if comment.user == current_user %>
+                <a href="/tournaments/<%= comment.tournament.id %>/tournament_comments/<%=comment.id %>/delete"> Delete Comment</a>
+              <% end %>
+            </p>
+        <% end %>
+      </div>
+
+
+
+      <div class="comment-form">
+        <hr />
+        <h3 class="subtitle is-3">Leave a reply</h3>
+        <%= render 'comments/form' %>
+      </div>
+    </div>
+  </section>
