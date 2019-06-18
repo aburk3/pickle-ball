@@ -23,7 +23,6 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.new(tournament_params)
     @tournament.director = current_user.id
     if @tournament.save
-      @tournament.url = Tournament.format_url(@tournament.url)
       @tournament.users << current_user
       @tournament.save
       current_user.save
@@ -40,7 +39,7 @@ class TournamentsController < ApplicationController
   def update
     @tournament = Tournament.find(params[:id])
     if @tournament.update(tournament_params)
-      @tournament.url = Tournament.format_url(@tournament.url)
+
       @tournament.save
 
       redirect_to tournament_path(@tournament), notice: "Update Successful."

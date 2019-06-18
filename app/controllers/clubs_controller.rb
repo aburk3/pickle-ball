@@ -17,6 +17,9 @@ class ClubsController < ApplicationController
     @club = Club.new(club_params)
     @club.club_admin = current_user.id
     if @club.save # need to get rid of this, since instance `@club.users << current_user`
+      if @club.url != ""
+        @club.url = Club.format_url(@club.url)
+      end
       @club.users << current_user
       @club.save
       current_user.score += 8
@@ -33,7 +36,6 @@ class ClubsController < ApplicationController
   def update
     @club = Club.find(params[:id])
     if @club.update(club_params)
-      @club.url = Tournament.format_url(@club.url)
       @club.save
       redirect_to club_path(@club), notice: "Update Successful."
     else
