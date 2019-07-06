@@ -25,7 +25,7 @@ h1 {
 }
 
 /* .card-title {
-  color: #5da9e9 !important;
+  color: #023c5b !important;
 } */
 
 .center {
@@ -107,13 +107,13 @@ img.resize {
 
 .navbar,
 .nav-item {
-  background-color: #5da9e9 !important;
+  background-color: #023c5b !important;
 }
 
 .nav-link.focus,
 .nav-link:hover {
   background-color: #ffffff !important;
-  color: #5da9e9 !important;
+  color: #023c5b !important;
 }
 
 .nav-link.active {
@@ -123,7 +123,7 @@ img.resize {
 
 .dropdown-item.focus,
 .dropdown-item:hover {
-  background-color: #5da9e9 !important;
+  background-color: #023c5b !important;
   color: #ffffff !important;
 }
 
@@ -143,11 +143,11 @@ img.resize {
 }
 
 a {
-  color: #8797b2 !important;
+  color: #14171a !important;
 }
 
 .badge-pill {
-  background-color: #5da9e9 !important;
+  background-color: #023c5b !important;
 }
 
 .btn-sm {
@@ -159,6 +159,12 @@ a {
 }
 
 .search-btn {
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+.search-btn:hover {
+  background-color: #ffffff !important;
   color: #14171a !important;
 }
 
@@ -168,7 +174,7 @@ hr {
 }
 
 .time-ago-card {
-  color: #5da9e9 !important;
+  color: #023c5b !important;
 }
 
 .form-control:focus {
@@ -178,7 +184,7 @@ hr {
 }
 
 .btn-cancel {
-  color: #14171a !important;
+  color: #ffffff !important;
   background-color: #8797b2 !important;
 }
 
@@ -187,7 +193,7 @@ hr {
 }
 
 .btn-submit-form {
-  background-color: #5da9e9 !important;
+  background-color: #023c5b !important;
   color: #ffffff !important;
 }
 
@@ -251,24 +257,24 @@ body {
   color: #ffffff;
 }
 .footer .credits .link {
-  color: #5da9e9;
+  color: #023c5b;
   text-decoration: none;
 }
 
 .btn-landing-page {
-  background-color: #5da9e9;
+  background-color: #023c5b;
   color: #ffffff !important;
 }
 
 .btn-landing-page:hover {
   background-color: #ffffff !important;
-  color: #5da9e9 !important;
-  border-color: #5da9e9;
+  color: #023c5b !important;
+  border-color: #023c5b;
 }
 
 .button {
   border-radius: 4px;
-  background-color: #5da9e9;
+  background-color: #023c5b;
   border: none;
   color: #ffffff;
   text-align: center;
