@@ -29,6 +29,34 @@
   <span class=" badge badge-success"><%= @user.posts.count %> <%= (@user.posts.count) == 1 ? 'Post' : 'Posts'%></span>
   <span class=" badge badge-info"><%= total_comments(@user) %> <%= (total_comments(@user)) == 1 ? 'Comment' : 'Comments'%></span>
 </div>
+<br>
+<br>
+<br>
+
+<div class="col-md-8 recentevents-box">
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="recentevents-date recentevents-header">Latest Clubs and Tournaments</h3>
+      <h3 class="recentevents-date recentevents-header" id="recentevents-header">Latest Clubs and Tournaments</h3>
+    </div>
+    <div class="col-md-6">
+    </div>
+    <div class="col-md-6">
+      <ul>
+        <% @clubs.last(3).each do |club| %>
+          <li><a href="#"><%= club.name %></a></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <ul>
+        <% @tournaments.last(3).each do |tournament| %>
+          <li><a href="#"><%= tournament.name %></a></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <hr>
 
