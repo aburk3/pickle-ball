@@ -44,14 +44,14 @@
     <div class="col-md-6">
       <ul>
         <% @clubs.last(3).each do |club| %>
-          <li><a href="#"><%= club.name %></a></li>
+          <li><%= link_to club.name, club_path(club) %></li>
         <% end %>
       </ul>
     </div>
     <div class="col-md-6">
       <ul>
         <% @tournaments.last(3).each do |tournament| %>
-          <li><a href="#"><%= tournament.name %></a></li>
+          <li><%= link_to tournament.name, tournament_path(tournament) %></li>
         <% end %>
       </ul>
     </div>
