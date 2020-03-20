@@ -9,20 +9,24 @@
 </div>
 <br>
 
-<div class="card-columns">
-  <% @tournaments.each do |tournament| %>
-    <div class="card">
-      <div class="card-body">
-        <a href="<%= tournament_path(tournament) %>" class="card-title"><h4 class="media-heading"><%= tournament.name %></h4></a>
-        <small><i><%= tournament.city %>, <%= tournament.state %></i></small><br>
-        <small>Tournament Director: <%= find_td(tournament) %></small>
-        <hr>
-        <p class="card-text"><%= tournament.description %></p>
+<% if @tournaments.empty? %>
+    <p><b>There do not appear to be any tournaments in your area. Try searching for a city/state in the search bar, or view all tournaments.</b></p>
+<% else %>
+  <div class="card-columns">
+    <% @tournaments.each do |tournament| %>
+      <div class="card">
+        <div class="card-body">
+          <a href="<%= tournament_path(tournament) %>" class="card-title"><h4 class="media-heading"><%= tournament.name %></h4></a>
+          <small><i><%= tournament.city %>, <%= tournament.state %></i></small><br>
+          <small>Tournament Director: <%= find_td(tournament) %></small>
+          <hr>
+          <p class="card-text"><%= tournament.description %></p>
+        </div>
+        <div class="card-footer">
+          <p><%= tournament.follows.count %> <%= (tournament.follows.count) == 1 ? 'Follow' : 'Follows'%></p>
+          <small class="text-muted"><%= time_ago_in_words(tournament.created_at) %> ago</small>
+        </div>
       </div>
-      <div class="card-footer">
-        <p><%= tournament.follows.count %> <%= (tournament.follows.count) == 1 ? 'Follow' : 'Follows'%></p>
-        <small class="text-muted"><%= time_ago_in_words(tournament.created_at) %> ago</small>
-      </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% end %>
