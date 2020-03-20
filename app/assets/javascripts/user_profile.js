@@ -13,8 +13,6 @@ let options = {
 };
 let prnDt = new Date().toLocaleTimeString("en-us", options);
 
-console.log(prnDt);
-
 window.onload = () => {
   document.getElementById("recentevents-header").innerText = prnDt;
 };
