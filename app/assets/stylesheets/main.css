@@ -291,7 +291,7 @@ body {
 }
 
 .button span:after {
-  content: '\00bb';
+  content: "\00bb";
   position: absolute;
   opacity: 0;
   top: 0;
@@ -321,4 +321,25 @@ body {
 
 .prevent-overflow {
   word-wrap: break-word;
+}
+
+.recentevents-box {
+  background: white;
+  border: 5px solid #023c5b;
+}
+
+.recentevents-date {
+  background: #023c5b;
+  font-family: "Fjalla One", sans-serif;
+  text-align: center;
+  padding: 8px;
+  font-size: 18px;
+  letter-spacing: 1px;
+  margin-top: -21px;
+  margin-bottom: 21px;
+}
+
+.recentevents-header {
+  color: #fff;
+  padding: 5px 0px;
 }
