@@ -4,11 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.2'
+# gem 'rails', '~> 5.2.3'
+gem 'rails', '~> 6.0'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
-# Use Puma as the app server
-gem 'puma', '~> 3.11'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -20,7 +20,7 @@ gem 'thin'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
-gem "google-cloud-storage", "~> 1.8", require: false
+
 
 gem 'bootstrap-sass', '3.4.1'
 
@@ -43,8 +43,8 @@ gem "font-awesome-rails"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+# for railties app_generator_test
+gem "bootsnap", ">= 1.4.4", require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -72,6 +72,32 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# gem "aws-sdk-s3", require: false
 
 gem 'jquery-rails'
+
+gem 'webpacker', '~> 4.x'
+
+# Action Cable
+group :cable do
+  gem "puma", require: false
+
+  gem "hiredis", require: false
+  gem "redis", "~> 4.0", require: false
+
+  gem "redis-namespace"
+
+  gem "websocket-client-simple", github: "matthewd/websocket-client-simple", branch: "close-race", require: false
+
+  gem "blade", require: false, platforms: [:ruby]
+  gem "blade-sauce_labs_plugin", require: false, platforms: [:ruby]
+  gem "sprockets-export", require: false
+end
+
+# Active Storage
+group :storage do
+  gem "aws-sdk-s3", require: false
+  gem "google-cloud-storage", "~> 1.8", require: false
+  gem "azure-storage-blob", require: false
+
+  gem "image_processing", "~> 1.2"
+end
