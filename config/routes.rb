@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     end
   end
 
+  mount ActionCable.server => '/cable'
+
   resources :meetings, only: [:index, :show, :new, :create, :edit, :update]
 
   root "sessions#new"
