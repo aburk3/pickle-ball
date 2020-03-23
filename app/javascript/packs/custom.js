@@ -9,7 +9,7 @@ let options = {
   hour: "2-digit",
   minute: "2-digit",
   second: "2-digit",
-  hour12: false
+  hour12: true
 };
 let prnDt = new Date().toLocaleTimeString("en-us", options);
 
