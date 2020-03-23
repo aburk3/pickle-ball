@@ -15,7 +15,8 @@
 // const imagePath = (name) => images(name, true)
 
 import "../stylesheets/application";
-import "bootstrap";
+import "jquery";
+import("src/plugins"); // note the function usage!
 
 console.log("Welcome to my site :D");
 
