@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_logged_in, :only => [:show, :index]
+  before_action :require_logged_in, only: [:create, :edit, :destroy, :leave, :join]
 
   def new
     @user = User.new

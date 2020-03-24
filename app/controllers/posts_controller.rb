@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
+  skip_before_action :require_logged_in, :only => [:show, :index]
   before_action :set_post, only: [:show, :edit, :update, :destory]
+  before_action :require_logged_in, only: [:create, :new]
 
   def show
     @post = Post.find(params[:id])
