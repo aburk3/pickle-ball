@@ -1,5 +1,7 @@
 class ClubsController < ApplicationController
   before_action :set_club, only: [:show, :edit, :update, :destory]
+  skip_before_action :require_logged_in, :only => [:show, :index]
+  before_action :require_logged_in, only: [:create, :new, :near, :my_clubs, :make_admin, :update]
 
   def index
     @clubs = Club.all

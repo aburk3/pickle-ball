@@ -13,12 +13,16 @@
 <div class="text-center">
   <% if @club.users.include? current_user %>
     <%= button_to 'Leave Club', { :controller => "users", :action => "leave", :club_id => @club.id, :user_id=> session[:user_id] }, :method=>:post, data: { confirm: "Are you sure you want to leave this club?" }, class: 'btn btn-cancel' %><br>
-    <% if @club.is_admin?(current_user) || current_user.admin == true %>
-      <%= button_to 'Delete Club', { :controller => "clubs", :action => "destroy", :club_id => @club.id, :user_id=> session[:user_id] }, :method=>:delete, data: { confirm: "Are you sure you want to delete this club?" }, class: 'btn btn-cancel' %><br>
-      <%= button_to 'Edit Club', { :controller => "clubs", :action => "edit", :club_id => @club.id, :user_id=> session[:user_id] }, :method=>:get, class: 'btn btn-warning' %>
+    <% if current_user %>
+      <% if @club.is_admin?(current_user) || current_user.admin == true %>
+        <%= button_to 'Delete Club', { :controller => "clubs", :action => "destroy", :club_id => @club.id, :user_id=> session[:user_id] }, :method=>:delete, data: { confirm: "Are you sure you want to delete this club?" }, class: 'btn btn-cancel' %><br>
+        <%= button_to 'Edit Club', { :controller => "clubs", :action => "edit", :club_id => @club.id, :user_id=> session[:user_id] }, :method=>:get, class: 'btn btn-warning' %>
+      <% end %>
     <% end %>
+  <% elsif current_user %>
   <% else %>
-    <%= button_to 'Join', { :controller => "users", :action => "join", :club_id => @club.id, :user_id=> session[:user_id] }, :method=>:post, class: "btn btn-sm" %><br>
+    <%#= button_to 'Join', { :controller => "users", :action => "join", :club_id => @club.id, :user_id=> session[:user_id] }, :method=>:post, class: "btn btn-sm" %><br>
+    <%= link_to "Join", new_user_path, :class=>"btn btn-sm" %>
   <% end %>
   <p id="notice"><%= notice %></p>
 </div>
@@ -29,19 +33,23 @@
   <ul>
     <li>
       <%= link_to "#{ user.first_name } #{ user.last_name }", user_path(user) %>
-      <% if (@club.is_admin?(current_user) && (@club.club_admin != user.id)) || (current_user.admin == true && (@club.club_admin != user.id)) %>
-        <%= button_to 'Make Admin', {:controller => "clubs", :action => "make_admin", :club_id => @club.id, :user_id=> user.id}, :method=>:post, class: "btn-xs btn-primary" %>
-      <% end %>
-      <% if user.id == @club.club_admin %>
-        (Club Admin)
+      <% if current_user %>
+        <% if (@club.is_admin?(current_user) && (@club.club_admin != user.id)) || (current_user.admin == true && (@club.club_admin != user.id)) %>
+          <%= button_to 'Make Admin', {:controller => "clubs", :action => "make_admin", :club_id => @club.id, :user_id=> user.id}, :method=>:post, class: "btn-xs btn-primary" %>
+        <% end %>
+        <% if user.id == @club.club_admin %>
+          (Club Admin)
+        <% end %>
       <% end %>
     </li>
   </ul>
 <% end %>
 <hr>
 <div class="text-center">
-  <% if @club.is_admin?(current_user) || current_user.admin == true %>
-    <%= button_to 'New Meeting', { :controller => "meetings", :action => "new", :club_id => @club.id }, :method=>:get, class: 'btn btn-submit-form' %><br>
+  <% if current_user %>
+    <% if @club.is_admin?(current_user) || current_user.admin == true %>
+      <%= button_to 'New Meeting', { :controller => "meetings", :action => "new", :club_id => @club.id }, :method=>:get, class: 'btn btn-submit-form' %><br>
+    <% end %>
   <% end %>
 </div>
 

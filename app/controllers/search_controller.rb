@@ -1,11 +1,11 @@
 class SearchController < ApplicationController
+  skip_before_action :require_logged_in, :only => [:show, :index]
+
 
   def index
 
-
-
     if params[:search].blank?
-      redirect_to(root_path, alert: "Empty field!") and return
+      redirect_to(user_path(current_user), alert: "Empty field!") and return
     else
       parameter = params[:search].downcase.strip
       @clubs = Club.all.where("lower(name) LIKE :search",

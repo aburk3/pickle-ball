@@ -26,8 +26,9 @@ Rails.application.routes.draw do
 
   resources :meetings, only: [:index, :show, :new, :create, :edit, :update]
 
-  root "sessions#new"
-  get "/signin", to: "sessions#new"
+  # root "sessions#new"
+  root "feed#index"
+  get "/signin", to: "sessions#new", :as => 'sign_in'
   post "/signin", to: "sessions#create"
   get "/signout", to: "sessions#destroy"
   post "/join", to: "users#join"
@@ -45,4 +46,5 @@ Rails.application.routes.draw do
   get "/myclubs", to: "clubs#my_clubs", :as => 'my_clubs'
   get "/resources" => "static#show", :as => 'my_resources'
   get "/admin" => "admin#show"
+  get "/feed" => "feed#index", :as => 'viewer_feed'
 end

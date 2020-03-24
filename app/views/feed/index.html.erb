@@ -1,0 +1,105 @@
+<br>
+<br>
+<div class="col-md-8 recentevents-box">
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="recentevents-date recentevents-header">Latest Clubs and Tournaments</h3>
+      <h3 class="recentevents-date recentevents-header" id="recentevents-header"></h3>
+    </div>
+    <div class="col-md-6">
+    </div>
+    <div class="col-md-6">
+      <ul class="new-events">
+        <% @clubs.last(3).each do |club| %>
+          <li><%= link_to club.name, club_path(club) %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <ul class="new-events new-tournaments">
+        <% @tournaments.last(3).each do |tournament| %>
+          <li><%= link_to tournament.name, tournament_path(tournament) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-feed" role="tabpanel" aria-labelledby="nav-feed-tab">
+    <div class="container py-2">
+      <h2 class="font-weight-light text-center text-muted py-3 home-tab-title">Feed</h2>
+      <% @sorted_feed.each do |object| %>
+        <div class="row">
+          <div class="col-auto text-center flex-column d-none d-sm-flex">
+
+            <div class="row h-50">
+              <div class="col border-right">&nbsp;</div>
+              <div class="col">&nbsp;</div>
+            </div>
+
+            <h5 class="m-2">
+                <span class="badge badge-pill bg-success">&nbsp;</span>
+            </h5>
+            <% if object != @sorted_feed.last %>
+              <div class="row h-50">
+                  <div class="col border-right">&nbsp;</div>
+                  <div class="col">&nbsp;</div>
+              </div>
+            <% end %>
+          </div>
+          <div class="col py-2">
+            <div class="card shadow">
+              <div class="card-body">
+                <% if object.respond_to?(:user) %>
+                  <% if object.user.tournaments.count > 0 %>
+                    <a href="/users/<%= object.user.id %>"><%= image_tag(object.user.image, :class => "profile-image-small tournament-director") if object.user.image.attached? %></a>
+                  <% else %>
+                    <a href="/users/<%= object.user.id %>"><%= image_tag(object.user.image, :class => "profile-image-small") if object.user.image.attached? %></a>
+                  <% end %>
+                <% end %>
+
+                <% if object.respond_to?(:title) %>
+                  <span class="float-right badge post"><%= object.class %></span><br>
+                <% elsif object.respond_to?(:club_admin) %>
+                  <span class="float-right badge club"><%= object.class %></span><br>
+                <% else %>
+                  <span class="float-right badge tournament"><%= object.class %></span><br>
+                <% end %>
+                <div class="float-right time-ago-card"><%= time_ago_in_words(object.created_at) %> ago</div>
+                <% if object.respond_to?(:title) %>
+                  <h4 class="card-title"><%= object.title %></h4>
+                <% else %>
+                  <h4 class="card-title"><%= object.name %></h4>
+                <% end %>
+                <% if object.respond_to?(:user) %>
+                  <small class="float-left">
+                    <b>Written by:</b>
+                    <%= link_to(object.user) do %>
+                      <strong><%= object.user.first_name + " " + object.user.last_name%></strong>
+                    <% end %>
+                  </small><br>
+                  <% if object.category != "" %>
+                    <span class="badge badge-secondary">Category: <%= object.category %></span>
+                  <% end %>
+                  <span class="badge badge-info">Comments: (<%= object.comments.count %>)</span>
+                  <span class="badge badge-danger">Likes: (<%= object.likes.count %>)</span>
+                  <hr>
+                <% end %>
+                <% if object.respond_to?(:content) %>
+                  <p class="card-text"><%= object.content %></p>
+                <% else %>
+                  <p class="card-text"><%= object.description %></p>
+                <% end %>
+                <%= button_to 'View', eval("#{object.class.name.downcase}_path(object)"), method: :get, class: 'btn btn-sm' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+
+<%= javascript_pack_tag 'custom' %>

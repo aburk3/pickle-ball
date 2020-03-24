@@ -26,12 +26,16 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
 
   <body>
-    <% if !current_user %>
-      <nav hidden class="navbar navbar-expand-lg navbar-light bg-light ">
-    <% end %>
       <% if current_user %>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="<%= signout_path %>">Log Out |</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <% else %>
+      	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="<%= sign_in_path %>">Login |</a>
+        <a class="navbar-brand" href="<%= new_user_path %>">Sign Up |</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,24 +45,38 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <% if current_user %>
-              <a class="nav-link" href="<%= root_url %>">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="<%= user_path(current_user) %>">Home <span class="sr-only">(current)</span></a>
+            <% else %>
+            	<a class="nav-link" href="<%= root_url %>">Feed<span class="sr-only">(current)</span></a>
             <% end %>
           </li>
-          <% if current_user %>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Tournaments
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="<%= tournaments_path %>">All Tournaments</a>
-                <a class="dropdown-item" href="<%= near_path %>">Tournaments Near Me</a>
-                <a class="dropdown-item" href="<%= followed_path %>">Tournaments I Follow</a>
-                <% if current_user.tournaments.count > 0 %>
-                  <a class="dropdown-item" href="<%= user_tournaments_path({:user_id => current_user.id}) %>">My Tournaments</a>
+                <% if current_user %>
+                  <a class="dropdown-item" href="<%= near_path %>">Tournaments Near Me</a>
+                  <a class="dropdown-item" href="<%= followed_path %>">Tournaments I Follow</a>
+                <% else %>
+                  <a class="dropdown-item" href="<%= new_user_path %>">Tournaments Near Me</a>
+                  <a class="dropdown-item" href="<%= new_user_path %>">Tournaments I Follow</a>
+                <% end %>
+
+                <% if current_user %>
+                  <% if current_user.tournaments.count > 0 %>
+                    <a class="dropdown-item" href="<%= user_tournaments_path({:user_id => current_user.id}) %>">My Tournaments</a>
+                  <% end %>
                 <% end %>
 
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<%= new_tournament_path %>">Create Tournament</a>
+                <% if current_user %>
+                  <a class="dropdown-item" href="<%= new_tournament_path %>">Create Tournament</a>
+                <% else %>
+                  <a class="dropdown-item" href="<%= new_user_path %>">Create Tournament</a>
+                <% end %>
+
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -67,10 +85,20 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="<%= clubs_path %>">All Clubs</a>
-                <a class="dropdown-item" href="<%= near_club_path %>">Clubs Near Me</a>
-                <a class="dropdown-item" href="<%= my_clubs_path %>">My Clubs</a>
+                <% if current_user %>
+                  <a class="dropdown-item" href="<%= near_club_path %>">Clubs Near Me</a>
+                  <a class="dropdown-item" href="<%= my_clubs_path %>">My Clubs</a>
+                <% else %>
+                  <a class="dropdown-item" href="<%= new_user_path %>">Clubs Near Me</a>
+                  <a class="dropdown-item" href="<%= new_user_path %>">My Clubs</a>
+                <% end %>
+
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<%= new_club_path %>">Create Club</a>
+                <% if current_user %>
+                  <a class="dropdown-item" href="<%= new_club_path %>">Create Club</a>
+                <% else %>
+                  <a class="dropdown-item" href="<%= new_user_path %>">Create Club</a>
+                <% end %>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -79,14 +107,25 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="<%= posts_path %>">All Posts</a>
-                <a class="dropdown-item" href="<%= liked_path %>">Liked Posts</a>
+                <% if current_user %>
+                  <a class="dropdown-item" href="<%= liked_path %>">Liked Posts</a>
+                <% else %>
+                  <a class="dropdown-item" href="<%= new_user_path %>">Liked Posts</a>
+                <% end %>
+
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<%= new_post_path %>">Create Post</a>
+                <% if current_user %>
+                  <a class="dropdown-item" href="<%= new_post_path %>">Create Post</a>
+                <% else %>
+                  <a class="dropdown-item" href="<%= new_user_path %>">Create Post</a>
+                <% end %>
               </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<%= edit_user_path(current_user) %>">Profile Settings</a>
-            </li>
+            <% if current_user %>
+              <li class="nav-item">
+                <a class="nav-link" href="<%= edit_user_path(current_user) %>">Profile Settings</a>
+              </li>
+            <% end %>
             <li class="nav-item">
               <a class="nav-link" href="<%= my_resources_path %>">Resources</a>
             </li>
@@ -99,7 +138,6 @@
           	<%= submit_tag "Submit", class: 'btn search-btn my-2 my-sm-0', :name => nil %>
           <% end %>
         </div>
-      <% end %>
     </nav>
     <!-- content -->
     <div class="container"  role="main">

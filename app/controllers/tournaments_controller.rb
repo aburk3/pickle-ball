@@ -1,5 +1,7 @@
 class TournamentsController < ApplicationController
   before_action :set_tournament, only: [:show, :edit, :update, :destory]
+  skip_before_action :require_logged_in, :only => [:show, :index]
+  before_action :require_logged_in, only: [:create, :new, :near, :make_director, :destroy, :followed, :update]
 
   def index
     if params[:user_id] == nil || params.has_key?(:id)
