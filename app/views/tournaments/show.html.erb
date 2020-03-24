@@ -12,9 +12,9 @@
 
 
   <div class="text-center">
-    <% pre_follow = @tournament.follows.find { |follow| follow.user_id == current_user.id} %>
-
     <% if current_user %>
+      <% pre_follow = @tournament.follows.find { |follow| follow.user_id == current_user.id} %>
+
       <% if pre_follow %>
         <%= button_to 'UnFollow', tournament_follow_path(@tournament, pre_follow), method: :delete, class: 'btn btn-cancel' %><br>
       <% else %>
