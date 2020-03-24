@@ -32,32 +32,7 @@
 <br>
 <br>
 <br>
-
-<div class="col-md-8 recentevents-box">
-  <div class="row">
-    <div class="col-md-6">
-      <h3 class="recentevents-date recentevents-header">Latest Clubs and Tournaments</h3>
-      <h3 class="recentevents-date recentevents-header" id="recentevents-header"></h3>
-    </div>
-    <div class="col-md-6">
-    </div>
-    <div class="col-md-6">
-      <ul class="new-events">
-        <% @clubs.last(3).each do |club| %>
-          <li><%= link_to club.name, club_path(club) %></li>
-        <% end %>
-      </ul>
-    </div>
-    <div class="col-md-6">
-      <ul class="new-events new-tournaments">
-        <% @tournaments.last(3).each do |tournament| %>
-          <li><%= link_to tournament.name, tournament_path(tournament) %></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
-
+<%= render 'layouts/recent_events' %>
 <hr>
 
 <nav>
