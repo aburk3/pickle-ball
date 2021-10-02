@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://pickleballsocial.herokuapp.com/
 
-Things you may want to cover:
+* This application is for users to create clubs, meetings, tournaments, posts, and above all - connect with other pickleball players.
 
-* Ruby version
+![image](https://user-images.githubusercontent.com/24820716/135728397-f00e84c4-86f9-477e-acac-63836c8adb36.png)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
